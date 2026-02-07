@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://cb6u1ac45o58t"]
+
+[ext_resource type="Texture2D" uid="uid://cpeqsa02qtrk4" path="res://icon.svg" id="1_13gqi"]
+[ext_resource type="PackedScene" uid="uid://jy063nk1qcma" path="res://scenes/casa/casa.tscn" id="2_g87tv"]
+[ext_resource type="Texture2D" uid="uid://btpk0adbc122m" path="res://scenes/casa/sprites/casa_1.png" id="3_juhyc"]
+[ext_resource type="Texture2D" uid="uid://d3pvysv52yvb1" path="res://scenes/casa/sprites/casa_2.png" id="4_ss1mm"]
+[ext_resource type="Texture2D" uid="uid://cubewld7tm26r" path="res://scenes/casa/sprites/casa_3.png" id="5_i07r1"]
+[ext_resource type="Texture2D" uid="uid://pcb83qxa30g" path="res://scenes/casa/sprites/casa_4.png" id="6_d3hg6"]
+[ext_resource type="PackedScene" uid="uid://dp8ojf16qwn8w" path="res://scenes/personaje/personaje.tscn" id="7_i07r1"]
+
+[node name="Pueblo" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 2.3841858e-07)
+scale = Vector2(10.937499, 10.889739)
+texture = ExtResource("1_13gqi")
+
+[node name="Casa1" parent="." instance=ExtResource("2_g87tv")]
+position = Vector2(-385, -227)
+sprite_casa = ExtResource("3_juhyc")
+
+[node name="Casa2" parent="." instance=ExtResource("2_g87tv")]
+position = Vector2(380, -227)
+sprite_casa = ExtResource("4_ss1mm")
+
+[node name="Casa3" parent="." instance=ExtResource("2_g87tv")]
+position = Vector2(-373, 296)
+sprite_casa = ExtResource("5_i07r1")
+
+[node name="Casa4" parent="." instance=ExtResource("2_g87tv")]
+position = Vector2(380, 296)
+sprite_casa = ExtResource("6_d3hg6")
+
+[node name="Personaje" parent="." instance=ExtResource("7_i07r1")]
