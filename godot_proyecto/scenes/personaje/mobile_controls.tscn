@@ -1,0 +1,102 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3a5v2xgw4hy1"]
+
+[ext_resource type="Script" uid="uid://bxcnsmrvddn7e" path="res://scenes/personaje/mobile_controls.gd" id="1_mobile"]
+
+[node name="MobileControls" type="CanvasLayer"]
+script = ExtResource("1_mobile")
+
+[node name="DirectionButtons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UpButton" type="TouchScreenButton" parent="DirectionButtons"]
+position = Vector2(100, 500)
+scale = Vector2(2, 2)
+shape_centered = false
+shape_visible = false
+
+[node name="ColorRect" type="ColorRect" parent="DirectionButtons/UpButton"]
+offset_right = 60.0
+offset_bottom = 60.0
+color = Color(0.2, 0.6, 1, 0.5)
+
+[node name="Label" type="Label" parent="DirectionButtons/UpButton"]
+offset_right = 60.0
+offset_bottom = 60.0
+text = "↑"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DownButton" type="TouchScreenButton" parent="DirectionButtons"]
+position = Vector2(100, 640)
+scale = Vector2(2, 2)
+shape_centered = false
+shape_visible = false
+
+[node name="ColorRect" type="ColorRect" parent="DirectionButtons/DownButton"]
+offset_right = 60.0
+offset_bottom = 60.0
+color = Color(0.2, 0.6, 1, 0.5)
+
+[node name="Label" type="Label" parent="DirectionButtons/DownButton"]
+offset_right = 60.0
+offset_bottom = 60.0
+text = "↓"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeftButton" type="TouchScreenButton" parent="DirectionButtons"]
+position = Vector2(30, 570)
+scale = Vector2(2, 2)
+shape_centered = false
+shape_visible = false
+
+[node name="ColorRect" type="ColorRect" parent="DirectionButtons/LeftButton"]
+offset_right = 60.0
+offset_bottom = 60.0
+color = Color(0.2, 0.6, 1, 0.5)
+
+[node name="Label" type="Label" parent="DirectionButtons/LeftButton"]
+offset_right = 60.0
+offset_bottom = 60.0
+text = "←"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightButton" type="TouchScreenButton" parent="DirectionButtons"]
+position = Vector2(170, 570)
+scale = Vector2(2, 2)
+shape_centered = false
+shape_visible = false
+
+[node name="ColorRect" type="ColorRect" parent="DirectionButtons/RightButton"]
+offset_right = 60.0
+offset_bottom = 60.0
+color = Color(0.2, 0.6, 1, 0.5)
+
+[node name="Label" type="Label" parent="DirectionButtons/RightButton"]
+offset_right = 60.0
+offset_bottom = 60.0
+text = "→"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractButton" type="TouchScreenButton" parent="."]
+position = Vector2(1050, 570)
+scale = Vector2(2.5, 2.5)
+shape_centered = false
+shape_visible = false
+
+[node name="ColorRect" type="ColorRect" parent="InteractButton"]
+offset_right = 80.0
+offset_bottom = 80.0
+color = Color(1, 0.4, 0.2, 0.5)
+
+[node name="Label" type="Label" parent="InteractButton"]
+offset_right = 80.0
+offset_bottom = 80.0
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1

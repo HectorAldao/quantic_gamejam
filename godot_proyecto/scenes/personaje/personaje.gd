@@ -6,18 +6,27 @@ const SPEED = 300.0
 
 
 var animated_sprite
+var mobile_controls = null
 
 
 func _ready() -> void:
 	animated_sprite = $AnimatedSprite2D
 	
 	animated_sprite.play("idle")
+	
+	# Get reference to mobile controls if they exist
+	mobile_controls = get_node_or_null("MobileControls")
 
 
 func _physics_process(_delta: float) -> void:
 	# Get input direction for top-down movement
 	var direction = Input.get_vector("move_character_left", "move_character_right", "move_character_up", "move_character_down")
 	
+	# If mobile controls exist and are visible, use their input instead
+	if mobile_controls and mobile_controls.visible:
+		var mobile_dir = mobile_controls.get_direction()
+		if mobile_dir != Vector2.ZERO:
+			direction = mobile_dir
 	
 	# Apply movement
 	if direction != Vector2.ZERO:
@@ -47,3 +56,10 @@ func _input(event: InputEvent) -> void:
 	# Handle interact button
 	if event.is_action_pressed("interact"):
 		interact.emit()
+	
+	# Also check mobile controls for interact button
+	if mobile_controls and mobile_controls.visible:
+		if mobile_controls.is_interact_pressed():
+			interact.emit()
+			# Reset the pressed state to prevent multiple triggers
+			mobile_controls.interact_pressed = false
