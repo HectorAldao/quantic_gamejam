@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dp8ojf16qwn8w"]
+[gd_scene load_steps=4 format=3 uid="uid://dp8ojf16qwn8w"]
 
 [ext_resource type="SpriteFrames" uid="uid://cxbyitbfikqd0" path="res://scenes/personaje/personaje_sprites.tres" id="1_vycqi"]
 [ext_resource type="Script" uid="uid://bh2slaggp8gp3" path="res://scenes/personaje/personaje.gd" id="1_yq61j"]
-[ext_resource type="PackedScene" uid="uid://d3a5v2xgw4hy1" path="res://scenes/personaje/mobile_controls.tscn" id="3_mobile"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yq61j"]
 radius = 25.019993
@@ -21,5 +20,3 @@ shape = SubResource("CircleShape2D_yq61j")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
-
-[node name="MobileControls" parent="." instance=ExtResource("3_mobile")]

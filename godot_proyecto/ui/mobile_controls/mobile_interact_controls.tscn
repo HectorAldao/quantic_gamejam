@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtmrfm2vdxu3b"]
+
+[ext_resource type="Script" uid="uid://de45yo43em6gf" path="res://ui/mobile_controls/mobile_interact_controls.gd" id="1_ajwrq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8sn4o"]
+font_size = 70
+
+[node name="MobileInteractControls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ajwrq")
+
+[node name="InteractButton" type="TouchScreenButton" parent="."]
+action = "interact"
+
+[node name="ColorRect" type="ColorRect" parent="InteractButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.26666668, 0.46666667, 0.8, 0.6039216)
+
+[node name="Label" type="Label" parent="InteractButton"]
+offset_left = 13.0
+offset_top = 6.0
+offset_right = 65.0
+offset_bottom = 102.0
+scale = Vector2(0.2863984, 0.2863984)
+text = "I"
+label_settings = SubResource("LabelSettings_8sn4o")
+horizontal_alignment = 1
+vertical_alignment = 1

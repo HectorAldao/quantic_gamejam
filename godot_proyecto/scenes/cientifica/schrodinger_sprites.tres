@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://b0ys47vlkgkq6"]
+
+[ext_resource type="Texture2D" uid="uid://bvqv8ijejw6e0" path="res://scenes/personaje/personaje_sprites/multiframes_place_holder.png" id="1_u1g46"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b0y4"]
+atlas = ExtResource("1_u1g46")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrqoy"]
+atlas = ExtResource("1_u1g46")
+region = Rect2(2000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyf3w"]
+atlas = ExtResource("1_u1g46")
+region = Rect2(1500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fije"]
+atlas = ExtResource("1_u1g46")
+region = Rect2(2500, 0, 500, 500)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b0y4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrqoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyf3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fije")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]

@@ -1,0 +1,96 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3a5v2xgw4hy1"]
+
+[ext_resource type="Script" uid="uid://k2lvy6jdg8ye" path="res://ui/mobile_controls/mobile_move_controls.gd" id="1_5djs8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6c8j7"]
+font_size = 70
+
+[node name="MobileMoveControls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_5djs8")
+
+[node name="UpButton" type="TouchScreenButton" parent="."]
+position = Vector2(35, 0)
+action = "move_character_up"
+
+[node name="ColorRect" type="ColorRect" parent="UpButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.26666668, 0.46666667, 0.8, 0.6039216)
+
+[node name="Label" type="Label" parent="UpButton"]
+offset_left = 13.0
+offset_top = 6.0
+offset_right = 65.0
+offset_bottom = 102.0
+scale = Vector2(0.2863984, 0.2863984)
+text = "U"
+label_settings = SubResource("LabelSettings_6c8j7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DownButton" type="TouchScreenButton" parent="."]
+position = Vector2(35, 58)
+action = "move_character_down"
+
+[node name="ColorRect" type="ColorRect" parent="DownButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.26666668, 0.46666667, 0.8, 0.6039216)
+
+[node name="Label" type="Label" parent="DownButton"]
+offset_left = 13.0
+offset_top = 6.0
+offset_right = 65.0
+offset_bottom = 102.0
+scale = Vector2(0.2863984, 0.2863984)
+text = "D"
+label_settings = SubResource("LabelSettings_6c8j7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeftButton" type="TouchScreenButton" parent="."]
+position = Vector2(2, 30)
+action = "move_character_left"
+
+[node name="ColorRect" type="ColorRect" parent="LeftButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.26666668, 0.46666667, 0.8, 0.6039216)
+
+[node name="Label" type="Label" parent="LeftButton"]
+offset_left = 13.0
+offset_top = 6.0
+offset_right = 65.0
+offset_bottom = 102.0
+scale = Vector2(0.2863984, 0.2863984)
+text = "L"
+label_settings = SubResource("LabelSettings_6c8j7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightButton" type="TouchScreenButton" parent="."]
+position = Vector2(68, 30)
+action = "move_character_right"
+
+[node name="ColorRect" type="ColorRect" parent="RightButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.26666668, 0.46666667, 0.8, 0.6039216)
+
+[node name="Label" type="Label" parent="RightButton"]
+offset_left = 13.0
+offset_top = 6.0
+offset_right = 65.0
+offset_bottom = 102.0
+scale = Vector2(0.2863984, 0.2863984)
+text = "R"
+label_settings = SubResource("LabelSettings_6c8j7")
+horizontal_alignment = 1
+vertical_alignment = 1

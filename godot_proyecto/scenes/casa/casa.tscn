@@ -10,8 +10,8 @@ script = ExtResource("1_frsrf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 19.5)
 shape = SubResource("RectangleShape2D_hvvb5")

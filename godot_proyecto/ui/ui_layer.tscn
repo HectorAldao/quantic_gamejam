@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://djs8eia3lkxhq"]
+
+[ext_resource type="PackedScene" uid="uid://d3a5v2xgw4hy1" path="res://ui/mobile_controls/mobile_move_controls.tscn" id="1_xqqt7"]
+[ext_resource type="PackedScene" uid="uid://dtmrfm2vdxu3b" path="res://ui/mobile_controls/mobile_interact_controls.tscn" id="2_00rn6"]
+
+[node name="UILayer" type="CanvasLayer"]
+
+[node name="HUDContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MobileMoveControls" parent="HUDContainer" instance=ExtResource("1_xqqt7")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 39.0
+offset_top = -148.0
+offset_right = 39.0
+offset_bottom = -148.0
+grow_horizontal = 1
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="MobileInteractControls" parent="HUDContainer" instance=ExtResource("2_00rn6")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = -68.0
+offset_top = -114.0
+offset_right = -68.0
+offset_bottom = -114.0
+grow_horizontal = 0
+grow_vertical = 0
