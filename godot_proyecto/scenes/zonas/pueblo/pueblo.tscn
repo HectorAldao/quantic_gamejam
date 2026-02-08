@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://cb6u1ac45o58t"]
+
+[ext_resource type="Texture2D" uid="uid://cpeqsa02qtrk4" path="res://icon.svg" id="1_aaqcw"]
+[ext_resource type="PackedScene" uid="uid://jy063nk1qcma" path="res://scenes/objetos/casa/casa.tscn" id="2_0l5ct"]
+[ext_resource type="Texture2D" uid="uid://btpk0adbc122m" path="res://scenes/objetos/casa/sprites/casa_1.png" id="3_i7phy"]
+[ext_resource type="Texture2D" uid="uid://d3pvysv52yvb1" path="res://scenes/objetos/casa/sprites/casa_2.png" id="4_norcv"]
+[ext_resource type="Texture2D" uid="uid://cubewld7tm26r" path="res://scenes/objetos/casa/sprites/casa_3.png" id="5_4ed80"]
+[ext_resource type="Texture2D" uid="uid://pcb83qxa30g" path="res://scenes/objetos/casa/sprites/casa_4.png" id="6_mjabk"]
+[ext_resource type="PackedScene" uid="uid://dp8ojf16qwn8w" path="res://scenes/personaje/personaje.tscn" id="7_owgkr"]
+[ext_resource type="PackedScene" uid="uid://dbbfena1obqto" path="res://scenes/cientifica/cientifica.tscn" id="8_56j6e"]
+[ext_resource type="SpriteFrames" uid="uid://by8lmj841y1vw" path="res://scenes/cientifica/curie_sprites.tres" id="9_3pfhl"]
+[ext_resource type="SpriteFrames" uid="uid://b0ys47vlkgkq6" path="res://scenes/cientifica/schrodinger_sprites.tres" id="10_td4hj"]
+[ext_resource type="Script" uid="uid://btvnx178rj1tg" path="res://scenes/zonas/pueblo/puerta_granja.gd" id="11_0l5ct"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i07r1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aaqcw"]
+size = Vector2(7.0017624, 11.27298)
+
+[node name="Pueblo" type="Node2D" unique_id=780892664]
+
+[node name="Suelo" type="Sprite2D" parent="." unique_id=1056217518]
+position = Vector2(0, 2.3841858e-07)
+scale = Vector2(10.937499, 10.889739)
+texture = ExtResource("1_aaqcw")
+
+[node name="Granja" type="Sprite2D" parent="." unique_id=1696222272]
+position = Vector2(-19, -687)
+scale = Vector2(4.68597, 1.0040402)
+texture = ExtResource("1_aaqcw")
+
+[node name="Casa1" parent="." unique_id=674768920 instance=ExtResource("2_0l5ct")]
+position = Vector2(-385, -227)
+sprite_casa = ExtResource("3_i7phy")
+
+[node name="Casa2" parent="." unique_id=1686206632 instance=ExtResource("2_0l5ct")]
+position = Vector2(380, -227)
+sprite_casa = ExtResource("4_norcv")
+
+[node name="Casa3" parent="." unique_id=1322408490 instance=ExtResource("2_0l5ct")]
+position = Vector2(-373, 296)
+sprite_casa = ExtResource("5_4ed80")
+
+[node name="Casa4" parent="." unique_id=1292456474 instance=ExtResource("2_0l5ct")]
+position = Vector2(380, 296)
+sprite_casa = ExtResource("6_mjabk")
+
+[node name="Personaje" parent="." unique_id=778088364 instance=ExtResource("7_owgkr")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=372991180]
+position = Vector2(-688, -6)
+rotation = 3.1415927
+scale = Vector2(1.9238148, -68.744576)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=211700022]
+scale = Vector2(0.99999994, 1)
+shape = SubResource("RectangleShape2D_i07r1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=269109059]
+position = Vector2(-709.5277, 0)
+scale = Vector2(0.9999999, 1)
+shape = SubResource("RectangleShape2D_i07r1")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1971868405]
+position = Vector2(-356.58313, -9.789864)
+scale = Vector2(35.069214, 0.030773927)
+shape = SubResource("RectangleShape2D_i07r1")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1459178911]
+position = Vector2(-356.58313, 9.964422)
+scale = Vector2(35.069214, 0.030773927)
+shape = SubResource("RectangleShape2D_i07r1")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1904209381]
+position = Vector2(-347.74652, -9.353466)
+scale = Vector2(15.314609, 0.035785753)
+shape = SubResource("RectangleShape2D_i07r1")
+
+[node name="Curie" parent="." unique_id=333613127 instance=ExtResource("8_56j6e")]
+position = Vector2(195, -279)
+sprite_cientifica = ExtResource("9_3pfhl")
+
+[node name="Schrodinger" parent="." unique_id=779790831 instance=ExtResource("8_56j6e")]
+position = Vector2(-193, -119)
+sprite_cientifica = ExtResource("10_td4hj")
+npc_name = "schrodinger"
+
+[node name="PuertaGranja" type="Area2D" parent="." unique_id=373123021]
+position = Vector2(-24, -602)
+scale = Vector2(25.136524, 2.1520884)
+script = ExtResource("11_0l5ct")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuertaGranja" unique_id=1827709907]
+position = Vector2(0.5569585, -4.6466455)
+scale = Vector2(1, 0.99999976)
+shape = SubResource("RectangleShape2D_aaqcw")

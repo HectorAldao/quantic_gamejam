@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ccjrvrph0nbwp"]
+
+[ext_resource type="Script" uid="uid://bt67d7a4227jh" path="res://ui/dialog/dialog_box.gd" id="1_dialog"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rbc74"]
+
+[node name="DialogBox" type="Control" unique_id=859321096]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dialog")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=265110413]
+layout_mode = 0
+offset_right = 446.0
+offset_bottom = 97.0
+color = Color(0, 0, 0, 0.6666667)
+
+[node name="Label" type="Label" parent="." unique_id=677498308]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 437.0
+offset_bottom = 90.0
+text = "Hola"
+label_settings = SubResource("LabelSettings_rbc74")

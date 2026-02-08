@@ -58,6 +58,7 @@ func _input(event: InputEvent) -> void:
 	# Handle interact button
 	if event.is_action_pressed("interact"):
 		interact.emit()
+		print("E pulsada")
 	
 	# Also check mobile interact controls for interact button
 	if mobile_interact_controls and mobile_interact_controls.visible:

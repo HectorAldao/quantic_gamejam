@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dp8ojf16qwn8w"]
+[gd_scene format=3 uid="uid://dp8ojf16qwn8w"]
 
 [ext_resource type="SpriteFrames" uid="uid://cxbyitbfikqd0" path="res://scenes/personaje/personaje_sprites.tres" id="1_vycqi"]
 [ext_resource type="Script" uid="uid://bh2slaggp8gp3" path="res://scenes/personaje/personaje.gd" id="1_yq61j"]
@@ -6,17 +6,17 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_yq61j"]
 radius = 25.019993
 
-[node name="Personaje" type="CharacterBody2D"]
+[node name="Personaje" type="CharacterBody2D" unique_id=1717447656]
 script = ExtResource("1_yq61j")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1354832465]
 position = Vector2(0, -18)
 scale = Vector2(0.104619786, 0.104619786)
 sprite_frames = ExtResource("1_vycqi")
 animation = &"up"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2009475230]
 shape = SubResource("CircleShape2D_yq61j")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=581934748]
 position_smoothing_enabled = true

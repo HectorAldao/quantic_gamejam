@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://cxbyitbfikqd0"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://cxbyitbfikqd0"]
 
 [ext_resource type="Texture2D" uid="uid://bvqv8ijejw6e0" path="res://scenes/personaje/personaje_sprites/multiframes_place_holder.png" id="1_govta"]
 [ext_resource type="Texture2D" uid="uid://de6t4rrskd25i" path="res://scenes/personaje/personaje_sprites/frames_place_holder.png" id="1_gvpg0"]

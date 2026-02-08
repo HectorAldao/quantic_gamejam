@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://djs8eia3lkxhq"]
+[gd_scene format=3 uid="uid://djs8eia3lkxhq"]
 
 [ext_resource type="PackedScene" uid="uid://d3a5v2xgw4hy1" path="res://ui/mobile_controls/mobile_move_controls.tscn" id="1_xqqt7"]
 [ext_resource type="PackedScene" uid="uid://dtmrfm2vdxu3b" path="res://ui/mobile_controls/mobile_interact_controls.tscn" id="2_00rn6"]
+[ext_resource type="PackedScene" uid="uid://ccjrvrph0nbwp" path="res://ui/dialog/dialog_box.tscn" id="3_00rn6"]
+[ext_resource type="Script" uid="uid://cjkbmk50710gm" path="res://ui/ui_layer.gd" id="4_ui"]
 
-[node name="UILayer" type="CanvasLayer"]
+[node name="UILayer" type="CanvasLayer" unique_id=97634786]
+script = ExtResource("4_ui")
 
-[node name="HUDContainer" type="Control" parent="."]
+[node name="HUDContainer" type="Control" parent="." unique_id=514590018]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="MobileMoveControls" parent="HUDContainer" instance=ExtResource("1_xqqt7")]
+[node name="MobileMoveControls" parent="HUDContainer" unique_id=2029103319 instance=ExtResource("1_xqqt7")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -27,7 +30,7 @@ grow_horizontal = 1
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="MobileInteractControls" parent="HUDContainer" instance=ExtResource("2_00rn6")]
+[node name="MobileInteractControls" parent="HUDContainer" unique_id=2017149518 instance=ExtResource("2_00rn6")]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -37,4 +40,17 @@ offset_top = -114.0
 offset_right = -68.0
 offset_bottom = -114.0
 grow_horizontal = 0
+grow_vertical = 0
+
+[node name="DialogBox" parent="HUDContainer" unique_id=859321096 instance=ExtResource("3_00rn6")]
+visible = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = -188.0
+offset_top = -124.0
+offset_right = -188.0
+offset_bottom = -124.0
 grow_vertical = 0
