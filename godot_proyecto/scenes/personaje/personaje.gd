@@ -8,6 +8,7 @@ const SPEED = 300.0
 var animated_sprite
 var mobile_move_controls = null
 var mobile_interact_controls = null
+var can_move: bool = true
 
 
 func _ready() -> void:
@@ -18,9 +19,26 @@ func _ready() -> void:
 	# Get reference to mobile controls if they exist
 	mobile_move_controls = get_node_or_null("Camera2D/MobileMoveControls")
 	mobile_interact_controls = get_node_or_null("Camera2D/MobileInteractControls")
+	
+	# For stop moving while dialog
+	var root = get_tree().current_scene
+	_connect_signal(root)
+
+
+func _connect_signal(node: Node) -> void:
+	#print(node)
+	if node.has_signal("change_move"):
+		node.change_move.connect(_on_change_move)
+	
+	for child in node.get_children():
+		_connect_signal(child)
 
 
 func _physics_process(_delta: float) -> void:
+	
+	if not can_move:
+		return
+	
 	# Get input direction for top-down movement
 	var direction = Input.get_vector("move_character_left", "move_character_right", "move_character_up", "move_character_down")
 	
@@ -66,3 +84,9 @@ func _input(event: InputEvent) -> void:
 			interact.emit()
 			# Reset the pressed state to prevent multiple triggers
 			mobile_interact_controls.interact_pressed = false
+
+func _on_change_move(tf: bool) -> void:
+	if tf:
+		can_move = true
+	else:
+		can_move = false

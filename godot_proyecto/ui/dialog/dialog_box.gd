@@ -1,5 +1,7 @@
 extends Control
 
+signal change_move(tf: bool)
+
 @onready var label = $Label
 @onready var color_rect = $ColorRect
 
@@ -19,6 +21,7 @@ func start_dialog(npc_name: String, dialog_lines: Array = []) -> void:
 		current_dialog_index = 0
 		show_current_dialog()
 		show()
+		change_move.emit(false)
 
 
 func show_current_dialog() -> void:
@@ -36,8 +39,8 @@ func advance_dialog() -> void:
 		current_npc = ""
 		current_dialog_index = 0
 		current_dialog_list = []
+		change_move.emit(true)
 
 
 func is_dialog_active() -> bool:
 	return visible
-

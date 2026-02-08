@@ -13,7 +13,6 @@ func _ready() -> void:
 func _connect_npcs(node: Node) -> void:
 	#print(node)
 	if node.has_signal("dialog_requested"):
-		print(node,"has dialog_requested")
 		node.dialog_requested.connect(_on_dialog_requested)
 	
 	for child in node.get_children():
@@ -21,7 +20,6 @@ func _connect_npcs(node: Node) -> void:
 
 
 func _on_dialog_requested(npc_name: String, dialog_lines: Array = []) -> void:
-	print("_on_dialog_requested")
 	if not dialog_box.is_dialog_active():
 		dialog_box.start_dialog(npc_name, dialog_lines)
 	else:

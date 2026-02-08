@@ -41,7 +41,3 @@ func _on_body_exited(_body: Node2D) -> void:
 func _on_player_interact() -> void:
 	if player_in_area:
 		get_tree().change_scene_to_file("res://scenes/zonas/granja/granja.tscn")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

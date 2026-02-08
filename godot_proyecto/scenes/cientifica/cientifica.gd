@@ -32,8 +32,6 @@ func _ready() -> void:
 	var root = get_tree().current_scene
 	_search_player_recursively(root)
 
-	#if not player:
-	#	player = get_node_or_null("/root/Personaje")
 	if player:
 		player.interact.connect(_on_player_interact)
 	

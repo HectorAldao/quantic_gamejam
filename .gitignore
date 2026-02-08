@@ -4,6 +4,7 @@ session.vim
 .godot/
 *.tmp
 *.log
+addons/
 
 /android/
 .nomedia
