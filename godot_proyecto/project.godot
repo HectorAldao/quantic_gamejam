@@ -19,10 +19,6 @@ run/main_scene="uid://cb6u1ac45o58t"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
-[autoload]
-
-UiLayer="*res://ui/ui_layer.tscn"
-
 [input]
 
 interact={

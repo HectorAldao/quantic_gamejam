@@ -11,6 +11,7 @@
 [ext_resource type="SpriteFrames" uid="uid://by8lmj841y1vw" path="res://scenes/cientifica/curie_sprites.tres" id="9_3pfhl"]
 [ext_resource type="SpriteFrames" uid="uid://b0ys47vlkgkq6" path="res://scenes/cientifica/schrodinger_sprites.tres" id="10_td4hj"]
 [ext_resource type="Script" uid="uid://btvnx178rj1tg" path="res://scenes/zonas/pueblo/puerta_granja.gd" id="11_0l5ct"]
+[ext_resource type="PackedScene" uid="uid://djs8eia3lkxhq" path="res://ui/ui_layer.tscn" id="12_i7phy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i07r1"]
 
@@ -95,3 +96,5 @@ script = ExtResource("11_0l5ct")
 position = Vector2(0.5569585, -4.6466455)
 scale = Vector2(1, 0.99999976)
 shape = SubResource("RectangleShape2D_aaqcw")
+
+[node name="UILayer" parent="." unique_id=97634786 instance=ExtResource("12_i7phy")]
