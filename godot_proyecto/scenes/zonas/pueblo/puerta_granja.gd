@@ -1,15 +1,15 @@
 extends Area2D
 
+@export_file("*.tscn") var target_scene_path: String
+
 var player: CharacterBody2D
 var player_in_area: bool = false
+var root
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
-	
-	var root = get_tree().current_scene
+	root = get_tree().current_scene
 	_search_player_recursively(root)
 
 	print("primer player", player)
@@ -21,23 +21,15 @@ func _ready() -> void:
 		print("player conectado")
 
 
-
 func _search_player_recursively(node: Node) -> void:
 	if node.has_signal("interact"):
 		player = node
 		return
 	for child in node.get_children():
 		_search_player_recursively(child)
-		
 
-func _on_body_entered(_body: Node2D) -> void:
-	player_in_area = true
-
-
-func _on_body_exited(_body: Node2D) -> void:
-	player_in_area = false
-	
 
 func _on_player_interact() -> void:
-	if player_in_area:
-		get_tree().change_scene_to_file("res://scenes/zonas/granja/granja.tscn")
+	var bodies = get_overlapping_bodies()
+	if player in bodies:
+		get_tree().change_scene_to_file(target_scene_path)
