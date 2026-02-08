@@ -3,31 +3,19 @@ extends Control
 @onready var label = $Label
 @onready var color_rect = $ColorRect
 
-var dialogs: Dictionary = {}
 var current_npc: String = ""
 var current_dialog_index: int = 0
 var current_dialog_list: Array = []
 
 func _ready() -> void:
-	# Load dialogs from JSON
-	var file = FileAccess.open("res://ui/dialog/dialogs/dialogs.json", FileAccess.READ)
-	if file:
-		var json_text = file.get_as_text()
-		file.close()
-		
-		var json = JSON.new()
-		var parse_result = json.parse(json_text)
-		if parse_result == OK:
-			dialogs = json.get_data()
-	
 	# Hide dialog box initially
 	hide()
 
 
-func start_dialog(npc_name: String) -> void:
-	if npc_name in dialogs:
+func start_dialog(npc_name: String, dialog_lines: Array = []) -> void:
+	if dialog_lines.size() > 0:
 		current_npc = npc_name
-		current_dialog_list = dialogs[npc_name]
+		current_dialog_list = dialog_lines
 		current_dialog_index = 0
 		show_current_dialog()
 		show()

@@ -20,9 +20,9 @@ func _connect_npcs(node: Node) -> void:
 		_connect_npcs(child)
 
 
-func _on_dialog_requested(npc_name: String) -> void:
+func _on_dialog_requested(npc_name: String, dialog_lines: Array = []) -> void:
 	print("_on_dialog_requested")
 	if not dialog_box.is_dialog_active():
-		dialog_box.start_dialog(npc_name)
+		dialog_box.start_dialog(npc_name, dialog_lines)
 	else:
 		dialog_box.advance_dialog()

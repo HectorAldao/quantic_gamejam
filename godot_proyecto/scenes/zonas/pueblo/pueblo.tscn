@@ -79,6 +79,7 @@ shape = SubResource("RectangleShape2D_i07r1")
 [node name="Curie" parent="." unique_id=333613127 instance=ExtResource("8_56j6e")]
 position = Vector2(195, -279)
 sprite_cientifica = ExtResource("9_3pfhl")
+npc_name = null
 
 [node name="Schrodinger" parent="." unique_id=779790831 instance=ExtResource("8_56j6e")]
 position = Vector2(-193, -119)
