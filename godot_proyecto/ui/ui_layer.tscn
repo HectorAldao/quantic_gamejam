@@ -4,14 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://dtmrfm2vdxu3b" path="res://ui/mobile_controls/mobile_interact_controls.tscn" id="2_00rn6"]
 [ext_resource type="PackedScene" uid="uid://ccjrvrph0nbwp" path="res://ui/dialog/dialog_box.tscn" id="3_00rn6"]
 [ext_resource type="Script" uid="uid://cjkbmk50710gm" path="res://ui/ui_layer.gd" id="4_ui"]
-[ext_resource type="Texture2D" uid="uid://clyxbrpxqyymp" path="res://assets/transicion/transicion_negra.png" id="5_vu3t1"]
 
 [sub_resource type="Animation" id="Animation_vu3t1"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TransicionNegra:modulate")
+tracks/0/path = NodePath("HUDContainer/ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,7 +26,7 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TransicionNegra:modulate")
+tracks/0/path = NodePath("HUDContainer/ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -93,12 +92,16 @@ offset_right = -188.0
 offset_bottom = -124.0
 grow_vertical = 0
 
-[node name="TransicionNegra" type="Sprite2D" parent="." unique_id=1277155589]
-position = Vector2(577.5, 323.5)
-scale = Vector2(4.8361344, 4.258278)
-texture = ExtResource("5_vu3t1")
+[node name="ColorRect" type="ColorRect" parent="HUDContainer" unique_id=694718794]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="TransicionNegra" unique_id=686364647]
-root_node = NodePath("../..")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUDContainer/ColorRect" unique_id=686364647]
+root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_15oer")
 autoplay = &"fade_in"
