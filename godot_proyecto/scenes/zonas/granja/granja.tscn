@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cpeqsa02qtrk4" path="res://icon.svg" id="1_fjv00"]
 [ext_resource type="Script" uid="uid://btvnx178rj1tg" path="res://scenes/zonas/pueblo/puerta_granja.gd" id="2_ieqsx"]
 [ext_resource type="PackedScene" uid="uid://dp8ojf16qwn8w" path="res://scenes/personaje/personaje.tscn" id="2_wlvj5"]
+[ext_resource type="PackedScene" uid="uid://djs8eia3lkxhq" path="res://ui/ui_layer.tscn" id="4_j1vlt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ieqsx"]
 
@@ -57,3 +58,5 @@ shape = SubResource("RectangleShape2D_j1vlt")
 
 [node name="Personaje" parent="." unique_id=1717447656 instance=ExtResource("2_wlvj5")]
 position = Vector2(0, 560)
+
+[node name="UILayer" parent="." unique_id=97634786 instance=ExtResource("4_j1vlt")]

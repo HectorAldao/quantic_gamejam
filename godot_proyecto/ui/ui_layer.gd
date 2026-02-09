@@ -10,6 +10,7 @@ func _ready() -> void:
 	_connect_npcs(root)
 
 
+
 func _connect_npcs(node: Node) -> void:
 	#print(node)
 	if node.has_signal("dialog_requested"):

@@ -4,6 +4,44 @@
 [ext_resource type="PackedScene" uid="uid://dtmrfm2vdxu3b" path="res://ui/mobile_controls/mobile_interact_controls.tscn" id="2_00rn6"]
 [ext_resource type="PackedScene" uid="uid://ccjrvrph0nbwp" path="res://ui/dialog/dialog_box.tscn" id="3_00rn6"]
 [ext_resource type="Script" uid="uid://cjkbmk50710gm" path="res://ui/ui_layer.gd" id="4_ui"]
+[ext_resource type="Texture2D" uid="uid://clyxbrpxqyymp" path="res://assets/transicion/transicion_negra.png" id="5_vu3t1"]
+
+[sub_resource type="Animation" id="Animation_vu3t1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransicionNegra:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8aggs"]
+resource_name = "fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransicionNegra:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_15oer"]
+_data = {
+&"RESET": SubResource("Animation_vu3t1"),
+&"fade_in": SubResource("Animation_8aggs")
+}
 
 [node name="UILayer" type="CanvasLayer" unique_id=97634786]
 script = ExtResource("4_ui")
@@ -54,3 +92,13 @@ offset_top = -124.0
 offset_right = -188.0
 offset_bottom = -124.0
 grow_vertical = 0
+
+[node name="TransicionNegra" type="Sprite2D" parent="." unique_id=1277155589]
+position = Vector2(577.5, 323.5)
+scale = Vector2(4.8361344, 4.258278)
+texture = ExtResource("5_vu3t1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TransicionNegra" unique_id=686364647]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_15oer")
+autoplay = &"fade_in"
