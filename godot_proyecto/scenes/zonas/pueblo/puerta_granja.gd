@@ -32,4 +32,12 @@ func _search_player_recursively(node: Node) -> void:
 func _on_player_interact() -> void:
 	var bodies = get_overlapping_bodies()
 	if player in bodies:
+		# Guardar datos en el Global antes de salir
+		var old_scene = get_tree().current_scene
+		
+		if old_scene.name == "Pueblo":
+			Global.huevos = int($"../Huevos/HuevosLabel".text)
+		elif old_scene.name == "Granja":
+			Global.huevos = $"../Huevos".huevos
+		
 		get_tree().change_scene_to_file(target_scene_path)

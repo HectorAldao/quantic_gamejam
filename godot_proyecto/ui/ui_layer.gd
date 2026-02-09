@@ -4,7 +4,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	await get_tree().process_frame
-	
+	visible = true
 	# Connect all cientifica NPCs
 	var root = get_tree().current_scene
 	_connect_npcs(root)

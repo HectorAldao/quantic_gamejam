@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cb6u1ac45o58t"]
 
+[ext_resource type="Script" uid="uid://dck23cm02c86p" path="res://scenes/zonas/pueblo/pueblo.gd" id="1_4ed80"]
 [ext_resource type="Texture2D" uid="uid://cpeqsa02qtrk4" path="res://icon.svg" id="1_aaqcw"]
 [ext_resource type="PackedScene" uid="uid://jy063nk1qcma" path="res://scenes/objetos/casa/casa.tscn" id="2_0l5ct"]
 [ext_resource type="Texture2D" uid="uid://btpk0adbc122m" path="res://scenes/objetos/casa/sprites/casa_1.png" id="3_i7phy"]
@@ -12,13 +13,18 @@
 [ext_resource type="SpriteFrames" uid="uid://b0ys47vlkgkq6" path="res://scenes/cientifica/schrodinger_sprites.tres" id="10_td4hj"]
 [ext_resource type="Script" uid="uid://btvnx178rj1tg" path="res://scenes/zonas/pueblo/puerta_granja.gd" id="11_0l5ct"]
 [ext_resource type="PackedScene" uid="uid://djs8eia3lkxhq" path="res://ui/ui_layer.tscn" id="12_i7phy"]
+[ext_resource type="Script" uid="uid://bgbhc8rx4c8hg" path="res://scenes/zonas/pueblo/huevos.gd" id="13_norcv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i07r1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aaqcw"]
 size = Vector2(7.0017624, 11.27298)
 
+[sub_resource type="LabelSettings" id="LabelSettings_i7phy"]
+font_size = 30
+
 [node name="Pueblo" type="Node2D" unique_id=780892664]
+script = ExtResource("1_4ed80")
 
 [node name="Suelo" type="Sprite2D" parent="." unique_id=1056217518]
 position = Vector2(0, 2.3841858e-07)
@@ -99,3 +105,15 @@ shape = SubResource("RectangleShape2D_aaqcw")
 position = Vector2(0, -575)
 
 [node name="UILayer" parent="." unique_id=97634786 instance=ExtResource("12_i7phy")]
+visible = false
+
+[node name="Huevos" type="Node2D" parent="." unique_id=1996660095]
+script = ExtResource("13_norcv")
+
+[node name="HuevosLabel" type="Label" parent="Huevos" unique_id=1930689023]
+offset_left = 178.0
+offset_top = -666.0
+offset_right = 218.0
+offset_bottom = -624.0
+text = "0"
+label_settings = SubResource("LabelSettings_i7phy")
