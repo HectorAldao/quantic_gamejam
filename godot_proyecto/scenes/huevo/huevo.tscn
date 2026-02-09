@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cmc8gxxdfvept"]
+
+[ext_resource type="Script" uid="uid://caso7rsmoyydy" path="res://scenes/huevo/huevo.gd" id="1_dhisd"]
+[ext_resource type="Texture2D" uid="uid://cjt6f20lhh652" path="res://assets/huevo/huevo.png" id="2_pulgs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dhisd"]
+radius = 95.50097
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pulgs"]
+
+[node name="Huevo" type="Node2D" unique_id=1524998521]
+scale = Vector2(0.087467715, 0.087467715)
+script = ExtResource("1_dhisd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1344822892]
+modulate = Color(0.28085047, 0.24889258, 0.521788, 1)
+texture = ExtResource("2_pulgs")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2104866609]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1245847324]
+scale = Vector2(1.2888838, 1.6463768)
+shape = SubResource("CircleShape2D_dhisd")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1945640815]
+scale = Vector2(6.540077, 6.2006736)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=698912437]
+shape = SubResource("CircleShape2D_pulgs")

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://de6t4rrskd25i"
-path="res://.godot/imported/frames_place_holder.png-1c4d1b0d24ca7728c5632d5a29dfb739.ctex"
+path="res://.godot/imported/frames_place_holder.png-04eb943823f40b2cf11b025b0c97df3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/personaje/personaje_sprites/frames_place_holder.png"
-dest_files=["res://.godot/imported/frames_place_holder.png-1c4d1b0d24ca7728c5632d5a29dfb739.ctex"]
+source_file="res://assets/personaje_sprites/frames_place_holder.png"
+dest_files=["res://.godot/imported/frames_place_holder.png-04eb943823f40b2cf11b025b0c97df3c.ctex"]
 
 [params]
 

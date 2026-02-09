@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cpeqsa02qtrk4" path="res://icon.svg" id="1_fjv00"]
 [ext_resource type="Script" uid="uid://csepsulbktqms" path="res://scenes/zonas/granja/granja.gd" id="1_supsg"]
+[ext_resource type="PackedScene" uid="uid://cmc8gxxdfvept" path="res://scenes/huevo/huevo.tscn" id="2_0tmab"]
 [ext_resource type="Script" uid="uid://btvnx178rj1tg" path="res://scenes/zonas/pueblo/puerta_granja.gd" id="2_ieqsx"]
 [ext_resource type="PackedScene" uid="uid://dp8ojf16qwn8w" path="res://scenes/personaje/personaje.tscn" id="2_wlvj5"]
 [ext_resource type="PackedScene" uid="uid://djs8eia3lkxhq" path="res://ui/ui_layer.tscn" id="4_j1vlt"]
@@ -14,6 +15,7 @@ size = Vector2(7.0017624, 11.27298)
 
 [node name="Granja" type="Node2D" unique_id=1924357717]
 script = ExtResource("1_supsg")
+huevo_cuantico = ExtResource("2_0tmab")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=38483466]
 position = Vector2(0, 2.3841858e-07)
@@ -67,3 +69,9 @@ visible = false
 
 [node name="Huevos" type="Node2D" parent="." unique_id=1195456192]
 script = ExtResource("5_ja1ua")
+
+[node name="SpawnArea" type="ReferenceRect" parent="." unique_id=1845448531]
+offset_left = -562.0
+offset_top = -102.0
+offset_right = 571.0
+offset_bottom = 478.0

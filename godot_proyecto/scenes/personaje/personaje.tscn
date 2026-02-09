@@ -13,7 +13,7 @@ script = ExtResource("1_yq61j")
 position = Vector2(0, -18)
 scale = Vector2(0.104619786, 0.104619786)
 sprite_frames = ExtResource("1_vycqi")
-animation = &"up"
+animation = &"down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2009475230]
 shape = SubResource("CircleShape2D_yq61j")

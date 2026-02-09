@@ -9,6 +9,9 @@ func _ready() -> void:
 	var root = get_tree().current_scene
 	_connect_npcs(root)
 
+	Global.cantidad_huevos_cambiada.connect(_al_cambiar_huevos)
+	$HUDContainer/PanelHuevos/Label.text = str(Global.huevos_cogidos)
+
 
 
 func _connect_npcs(node: Node) -> void:
@@ -25,3 +28,7 @@ func _on_dialog_requested(npc_name: String, dialog_lines: Array = []) -> void:
 		dialog_box.start_dialog(npc_name, dialog_lines)
 	else:
 		dialog_box.advance_dialog()
+
+
+func _al_cambiar_huevos(nuevo_valor: int) -> void:
+	$HUDContainer/PanelHuevos/Label.text = str(nuevo_valor)

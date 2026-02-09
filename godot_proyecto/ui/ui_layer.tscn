@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dtmrfm2vdxu3b" path="res://ui/mobile_controls/mobile_interact_controls.tscn" id="2_00rn6"]
 [ext_resource type="PackedScene" uid="uid://ccjrvrph0nbwp" path="res://ui/dialog/dialog_box.tscn" id="3_00rn6"]
 [ext_resource type="Script" uid="uid://cjkbmk50710gm" path="res://ui/ui_layer.gd" id="4_ui"]
+[ext_resource type="Texture2D" uid="uid://cjt6f20lhh652" path="res://assets/huevo/huevo.png" id="5_vu3t1"]
 
 [sub_resource type="Animation" id="Animation_vu3t1"]
 length = 0.001
@@ -41,6 +42,25 @@ _data = {
 &"RESET": SubResource("Animation_vu3t1"),
 &"fade_in": SubResource("Animation_8aggs")
 }
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8aggs"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 7.0
+content_margin_bottom = 5.0
+bg_color = Color(0.38467467, 0.46708214, 0.8009248, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8581479, 0.313725, 0.71879905, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_15oer"]
+font_size = 24
 
 [node name="UILayer" type="CanvasLayer" unique_id=97634786]
 script = ExtResource("4_ui")
@@ -93,6 +113,7 @@ offset_bottom = -124.0
 grow_vertical = 0
 
 [node name="ColorRect" type="ColorRect" parent="HUDContainer" unique_id=694718794]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -105,3 +126,24 @@ color = Color(0, 0, 0, 1)
 root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_15oer")
 autoplay = &"fade_in"
+
+[node name="PanelHuevos" type="PanelContainer" parent="HUDContainer" unique_id=213767136]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 15.0
+offset_right = 103.4417
+offset_bottom = 68.0
+scale = Vector2(1.0064586, 1.0731794)
+theme_override_styles/panel = SubResource("StyleBoxFlat_8aggs")
+
+[node name="TextureRect" type="TextureRect" parent="HUDContainer/PanelHuevos" unique_id=973650539]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("5_vu3t1")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="HUDContainer/PanelHuevos" unique_id=2095042255]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "0"
+label_settings = SubResource("LabelSettings_15oer")

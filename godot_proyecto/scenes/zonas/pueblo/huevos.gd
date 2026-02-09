@@ -2,6 +2,7 @@ extends Node2D
 
 @export var min_time: float = 5.0
 @export var max_time: float = 15.0
+@export var max_huevos: int = 10
 
 var label: Label
 var timer: Timer
@@ -27,9 +28,10 @@ func _start_random_timer() -> void:
 	timer.start(random_time)
 
 func _on_timer_timeout() -> void:
-	count += 1
-	label.text = str(count)
+	if count < max_huevos:
+		count += 1
+		label.text = str(count)
 	_start_random_timer()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
