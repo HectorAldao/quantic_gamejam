@@ -2,29 +2,44 @@
 
 [ext_resource type="Script" uid="uid://bt67d7a4227jh" path="res://ui/dialog/dialog_box.gd" id="1_dialog"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mks8r"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.19434926, 0.19434929, 0.19434917, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [sub_resource type="LabelSettings" id="LabelSettings_rbc74"]
 
-[node name="DialogBox" type="Control" unique_id=859321096]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="LabelSettings" id="LabelSettings_mks8r"]
+font_size = 10
+
+[node name="DialogBox" type="PanelContainer" unique_id=443873474]
+offset_right = 501.0
+offset_bottom = 93.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mks8r")
 script = ExtResource("1_dialog")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=265110413]
-layout_mode = 0
-offset_right = 446.0
-offset_bottom = 97.0
-color = Color(0, 0, 0, 0.6666667)
-
 [node name="Label" type="Label" parent="." unique_id=677498308]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 437.0
-offset_bottom = 90.0
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_vertical = 0
 text = "Hola"
 label_settings = SubResource("LabelSettings_rbc74")
+autowrap_mode = 2
+
+[node name="LabelIndicaciones" type="Label" parent="." unique_id=2028291051]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "E: siguiente
+Q: saltar"
+label_settings = SubResource("LabelSettings_mks8r")

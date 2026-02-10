@@ -4,21 +4,169 @@ signal dialog_requested(npc_name: String, dialog_lines: Array)
 
 @export var sprite_cientifica: SpriteFrames
 @export var npc_name: String = "curie"
+@export var huevos_necesarios: int = 0
+@export var menu_height_offset: float = -120.0
+@export var menu_background_color: Color = Color(0.2, 0.2, 0.2, 1.0)
+@export var selection_border_color: Color = Color(1.0, 1.0, 0.0, 1.0)
 
-var player: CharacterBody2D
 var player_in_area: bool = false
+var option_menu: Control = null
+var menu_active: bool = false
+var selected_option: int = 0  # 0 = Si, 1 = No
+var option_buttons: Array = []
 
 # Dictionary containing all dialogs
 var dialogs: Dictionary = {
+	"heisenberg_prologo": [
+		"h Ah, perfecto, llegas justo a tiempo.",
+		"p Buenos días, profesor. Me dijo que tenía algo urgente que...",
+		"h Me voy de viaje. Indefinidamente. Tú te quedas a cargo de esto.",
+		"p ¿Perdón, se refiere a la granja? ¿Una beca doctoral incluye cuidar granjas?",
+		"h No es una granja normal. Es una Granja Cuántica TM.",
+		"p Eso... ¿qué significa exactamente?",
+		"h Mejor que no lo sepas. De hecho, cuanto menos sepas, mejor funcionará todo. Es la regla número uno.",
+		"p ¿Y cuánto tiempo estará fuera?",
+		"h Imposible saberlo con certeza. Podría volver en una hora. O en cinco años. Depende.",
+		"p ¿Depende de qué?",
+		"h De si vuelvo o no.",
+		"h Bueno... Bienvenido a la física cuántica. Tu trabajo es simple: recoger huevos, mantener contentos a los 'visitantes científicos', y sobre todo... No los mires demasiado fijamente.",
+		"p ¿A los científicos?",
+		"h A los huevos. Bueno, a ambos, la verdad. Pero especialmente a los huevos.",
+		"p Profesor, esto no tiene ningún...",
+		"h ¡Perfecto! Empiezas a entenderlo.",
+		"h Ah, y una cosa más: la posición de los huevos solo puedes verificarla desde dentro del gallinero.",
+		"h Pero la cantidad solo la sabrás desde fuera. Y ambas pueden cambiar mientras miras la otra.",
+		"p Eso viola todas las leyes de...",
+		"h Sí, sí. Nos vemos. O no. ¡Quién sabe!"
+	],
 	"curie": [
-		"Hola",
-		"Un experimento dejó así a mi gallina",
-		"La quieres?"
+		"c ¡Ah, el nuevo asistente! Necesito tu ayuda urgentemente.",
+		"p Profesora Curie, es un honor. ¿En qué puedo...?",
+		"c Necesito doce huevos. Exactamente doce.",
+		"p Claro, para un experimento supongo.",
+		"c Para enseñárselos a mis amigas.",
+		"p ¿Sus... amigas?",
+		"c Las llamo 'partículas radiactivas'. Son preciosas. Brillan en la oscuridad.",
+		"p Suena... peligroso.",
+		"c Oh, mucho. Extremadamente peligroso.",
+		"p ¿Mortal?",
+		"c Casi con certeza.",
+		"p Profesora, tal vez deberíamos...",
+		"c Tranquilo. Llevo cuidado de ellas desde hace años.",
+		"p No estoy seguro de que eso sea tranquilizador.",
+		"c ¡Exacto! Nunca estés seguro de nada. Primera lección de ciencia experimental.",
+		"c Excelente trabajo. Has demostrado gran valor. O gran ingenuidad. Probablemente ambas.",
+		"p Gracias, profesora. Ahora si me permite, necesito descansar...",
+		"c ¡Perfecto! Descansa bien. Porque mañana necesitaré el doble."
+	],
+	"dirac": [
+		"d Necesito huevos.",
+		"p Buenos días, profesor Dirac. ¿Cuántos exactamente?",
+		"d La cantidad perfecta.",
+		"p ¿Y eso serían...?",
+		"d Perfecta.",
+		"p Profesor, necesito un número. ¿Seis? ¿Diez? ¿Una docena?",
+		"d No.",
+		"d La ecuación debe balancearse. Simetría perfecta. Ni uno más, ni uno menos que la cantidad exacta requerida por el universo en este momento específico.",
+		"p ¿Y cómo se supone que sepa cuál es esa cantidad?",
+		"d Observación. Intuición. Matemáticas elegantes.",
+		"p ¿Puede darme una pista?",
+		"d ... No.",
+		"d Aceptable.",
+		"p ¿Eso es todo? ¿Solo 'aceptable'?",
+		"p Bueno... Muchas gracias profesor."
+	],
+	"bohr": [
+		"b ¡Amigo mío! Tengo un acertijo para ti.",
+		"p Profesor Bohr, buenos días. ¿Qué necesita?",
+		"b Un huevo que sea blanco y negro al mismo tiempo.",
+		"b No blanco con motas negras ni negro con motas blancas sino blanco y negro superpuestamente.",
+		"p Eso es físicamente imposible. Los huevos son blancos, de un color o moteados, pero no pueden ser...",
+		"b Exacto.",
+		"p ¿Exacto qué?",
+		"b Es imposible. Por eso tiene sentido.",
+		"p Profesor, con todo respeto, eso no tiene ningún sentido.",
+		"b ¡Ahora sí lo entiendes!",
+		"b La complementariedad, mi querido estudiante. Dos estados opuestos, mutuamente excluyentes, pero ambos verdaderos.",
+		"p Está describiéndome una contradicción lógica, no un huevo.",
+		"b En efecto.",
+		"p Entonces, ¿qué hago exactamente?",
+		"b Hazlo de todas formas. Encuentra la manera.",
+		"b ¡Magnífico!",
+		"p ¿De verdad? ¿Funcionó?",
+		"b Lo conseguiste perfectamente. Y también fallaste completamente.",
+		"p No sé si eso es un cumplido o...",
+		"b Ambas cosas. Ninguna de ellas. Depende de cómo lo mires. Estoy muy orgulloso de ti.",
+		"b Y también extremadamente decepcionado.",
+		"p Gracias. Creo."
 	],
 	"schrodinger": [
-		"Hola",
-		"Un experimento dejó así a mi gato",
-		"Lo quieres?"
+		"s ¡Ah, llegas en el momento perfecto!",
+		"p Profesor Schrödinger. He oído hablar de su trabajo con...",
+		"s Sí, sí, el gato. Todos hablan del gato. Pero hoy hablamos de huevos.",
+		"p ¿Qué necesita que haga?",
+		"s No abras los huevos.",
+		"p ¿Perdón?",
+		"s Necesito huevos. Pero no puedes abrirlos. Ni mirarlos. Ni verificar su contenido de ninguna manera.",
+		"p Pero entonces, ¿cómo sabré que son los correctos?",
+		"s No lo sabrás. Esa es la belleza del asunto.",
+		"p Esto es una granja, profesor. No un experimento mental.",
+		"s ¿Cuál es la diferencia?",
+		"p Uno produce comida. El otro produce... papers académicos.",
+		"s Para mí, ambos alimentan el alma de la misma manera.",
+		"s ¡Espléndido! Absolutamente espléndido.",
+		"p ¿Funcionó? ¿Eran los huevos correctos?",
+		"s No lo sé. No lo sabré nunca.",
+		"p Pero... ¿entonces cómo sabe que lo hice bien?",
+		"s No lo sé. Y al no saberlo, ambas posibilidades existen simultáneamente: lo hiciste perfecto, y lo hiciste terrible.",
+		"s Al igual que los huevos, al no abrirlos nunca conservan todas sus posibilidades.",
+		"p Eso no es muy útil para una evaluación.",
+		"s La incertidumbre es la única certeza verdadera, mi joven amigo. Esto no es solo ciencia. Esto es arte. Poesía. Misterio.",
+		"p Es profundamente frustrante es lo que es.",
+		"s ¡Ahora sí lo entiendes!"
+	],
+	"einstein": [
+		"e Veo que ya la han roto.",
+		"p ¡Profesor Einstein! Yo solo seguía las instrucciones. Todos me pedían cosas imposibles y yo...",
+		"e Ese fue tu error.",
+		"p ¿Seguir instrucciones?",
+		"e Exactamente. Las reglas de la cuántica son, en el mejor de los casos, sugerencias poco confiables.",
+		"p Pero usted siempre dice que 'Dios no juega a los dados con el universo'.",
+		"e Sí, y mira dónde me ha llevado esa terquedad. A discutir con Bohr durante décadas.",
+		"e Este lugar... esta 'Granja Cuántica' TM... es todo lo que detesto de la mecánica cuántica hecho realidad.",
+		"e Y sin embargo, aquí estamos.",
+		"p Entonces, ¿qué hago? ¿Cómo arreglo esto?",
+		"e No lo arreglas. Lo aceptas. O mejor aún... Imagina que existe una realidad donde todo funciona perfectamente.",
+		"e Una variable oculta que explica todo este caos.",
+		"p ¿Existe esa realidad?",
+		"e Probablemente no. Pero es reconfortante imaginarla.",
+		"p Eso no resuelve mi problema actual.",
+		"e Los mejores pensamientos nunca lo hacen. ¿Sabes qué? Haz esto: imagina la solución ideal. Luego ignora todo lo demás que contradiga esa solución.",
+		"p ¿Eso no es básicamente negación?",
+		"e Yo lo llamo 'determinismo local'. Suena más científico.",
+		"e No estoy seguro de si esto probó o refutó mi teoría. Pero fue educativo.",
+		"p ¿Eso es bueno?",
+		"e En ciencia, la confusión productiva es mejor que la certeza estéril. Aunque admito preferir la realidad intacta."
+	],
+	"heisenberg_final": [
+		"h ¡Volví!",
+		"p Profesor... bienvenido de vuelta.",
+		"h Veo que todo sigue en pie.",
+		"p Más o menos.",
+		"h ¿Hubo problemas?",
+		"p Los científicos que dejó encargados casi destruyen el espacio-tiempo pidiendo huevos imposibles.",
+		"h Ah, sí. A veces hacen eso, debí advertírtelo.",
+		"p ¿ESO CREE?",
+		"h Pero estás vivo. La granja existe. En alguna forma o estado observable. Eso es todo lo que importa.",
+		"p La mitad de los gallineros existe en dos lugares al mismo tiempo.",
+		"p Dirac no me ha hablado en tres días. Y creo que Schrödinger ha encerrado algo en una caja que no deberíamos abrir jamás pero sinceramente, no se cual de ellas es.",
+		"h Perfecto.",
+		"p ¿Perfecto?",
+		"h Eso significa que funcionó. Si todo estuviera normal, habrías fallado.",
+		"p Tengo tantas preguntas...",
+		"h Y yo tengo cero respuestas concretas. Bienvenido permanentemente a la cuántica. Por cierto, ¿aprendiste algo de todo esto?",
+		"p Que la realidad es negociable.",
+		"h Aprobarás tu tesis doctoral sin problemas."
 	]
 }
 
@@ -28,24 +176,167 @@ func _ready() -> void:
 	$AnimatedSprite2D.apply_scale(Vector2(0.1, 0.1))
 	$AnimatedSprite2D.play("default")
 	
-	# Find player and connect to interact signal
-	var root = get_tree().current_scene
-	_search_player_recursively(root)
-
-	if player:
-		player.interact.connect(_on_player_interact)
+	# Create option menu
+	_create_option_menu()
 	
-
-func _search_player_recursively(node: Node) -> void:
-	if node.has_signal("interact"):
-		player = node
-		return
-	for child in node.get_children():
-		_search_player_recursively(child)
+	# Connect to Global signals
+	Global.interact.connect(_on_player_interact)
+	Global.dialog_finished.connect(_on_dialog_finished)
+	Global.quit.connect(_on_quit_pressed)
 
 
 func _on_player_interact() -> void:
+	if menu_active:
+		# Interact selects current option
+		# Check which button is actually selected based on visibility
+		var option = "no"  # Default to "no"
+		if selected_option == 0 and option_buttons.size() > 0 and option_buttons[0].visible:
+			option = "si"
+		_on_option_selected(option)
+		return
+	
 	var bodies = $AreaDialogo.get_overlapping_bodies()
-	if player in bodies:
-		var dialog_lines = dialogs.get(npc_name, [])
-		dialog_requested.emit(npc_name, dialog_lines)
+	for body in bodies:
+		if body is CharacterBody2D:
+			var dialog_lines = dialogs.get(npc_name, [])
+			dialog_requested.emit(npc_name, dialog_lines)
+			break
+
+
+func _create_option_menu() -> void:
+	# Create CanvasLayer to ensure menu is always on top
+	var canvas_layer = CanvasLayer.new()
+	canvas_layer.layer = 100  # High layer to be on top of everything
+	
+	# Create container for menu
+	option_menu = Control.new()
+	
+	var vbox = VBoxContainer.new()
+	vbox.position = Vector2(-50, 0)
+	
+	# Create "Si" button
+	var btn_si = Button.new()
+	btn_si.text = "Si"
+	btn_si.custom_minimum_size = Vector2(100, 40)
+	# Create style for normal state (no border)
+	var style_normal_si = StyleBoxFlat.new()
+	style_normal_si.bg_color = Color(0.3, 0.3, 0.3, 1.0)
+	style_normal_si.set_corner_radius_all(3)
+	btn_si.add_theme_stylebox_override("normal", style_normal_si)
+	btn_si.add_theme_stylebox_override("hover", style_normal_si)
+	btn_si.add_theme_stylebox_override("pressed", style_normal_si)
+	btn_si.add_theme_stylebox_override("focus", style_normal_si)
+	option_buttons.append(btn_si)
+	vbox.add_child(btn_si)
+	
+	# Create "No" button
+	var btn_no = Button.new()
+	btn_no.text = "No"
+	btn_no.custom_minimum_size = Vector2(100, 40)
+	# Create style for normal state (no border)
+	var style_normal_no = StyleBoxFlat.new()
+	style_normal_no.bg_color = Color(0.3, 0.3, 0.3, 1.0)
+	style_normal_no.set_corner_radius_all(3)
+	btn_no.add_theme_stylebox_override("normal", style_normal_no)
+	btn_no.add_theme_stylebox_override("hover", style_normal_no)
+	btn_no.add_theme_stylebox_override("pressed", style_normal_no)
+	btn_no.add_theme_stylebox_override("focus", style_normal_no)
+	option_buttons.append(btn_no)
+	vbox.add_child(btn_no)
+	
+	option_menu.add_child(vbox)
+	canvas_layer.add_child(option_menu)
+	add_child(canvas_layer)
+	option_menu.hide()
+
+
+func _on_dialog_finished(finished_npc_name: String) -> void:
+	# Only show menu if this is the NPC that finished talking
+	if finished_npc_name == npc_name:
+		menu_active = true
+		
+		# Check if player has enough eggs
+		var tiene_suficientes_huevos = Global.huevos_cogidos >= huevos_necesarios
+		
+		# Hide "Si" button if not enough eggs
+		if option_buttons.size() > 0:
+			option_buttons[0].visible = tiene_suficientes_huevos
+		
+		# Set initial selection based on available options
+		selected_option = 0 if tiene_suficientes_huevos else 1
+		
+		_update_option_highlight()
+		option_menu.show()
+		# Emitir señal de menú abierto
+		Global.menu_opened.emit()
+
+
+func _on_option_selected(option: String) -> void:
+	menu_active = false
+	option_menu.hide()
+	
+	# Si se seleccionó "Si", restar huevos necesarios
+	if option == "si":
+		Global.huevos_cogidos -= huevos_necesarios
+	
+	# Emitir señal de menú cerrado
+	Global.menu_closed.emit()
+	
+	print("Option selected: ", option, " for NPC: ", npc_name)
+
+
+func _process(_delta: float) -> void:
+	if menu_active:
+		# Update menu position to follow the scientist in screen space
+		var screen_pos = get_viewport().get_canvas_transform() * global_position
+		option_menu.position = screen_pos + Vector2(0, menu_height_offset)
+		
+		# Check for up/down input
+		if Input.is_action_just_pressed("move_character_up"):
+			# Skip invisible buttons
+			var new_option = selected_option - 1
+			while new_option >= 0 and not option_buttons[new_option].visible:
+				new_option -= 1
+			if new_option >= 0:
+				selected_option = new_option
+				_update_option_highlight()
+		elif Input.is_action_just_pressed("move_character_down"):
+			# Skip invisible buttons
+			var new_option = selected_option + 1
+			while new_option < option_buttons.size() and not option_buttons[new_option].visible:
+				new_option += 1
+			if new_option < option_buttons.size():
+				selected_option = new_option
+				_update_option_highlight()
+
+
+func _update_option_highlight() -> void:
+	# Highlight selected option with border
+	for i in range(option_buttons.size()):
+		var btn = option_buttons[i]
+		if i == selected_option:
+			# Create style with border for selected option
+			var style_selected = StyleBoxFlat.new()
+			style_selected.bg_color = Color(0.3, 0.3, 0.3, 1.0)
+			style_selected.set_corner_radius_all(3)
+			style_selected.border_color = selection_border_color
+			style_selected.set_border_width_all(3)
+			btn.add_theme_stylebox_override("normal", style_selected)
+			btn.add_theme_stylebox_override("hover", style_selected)
+			btn.add_theme_stylebox_override("pressed", style_selected)
+			btn.add_theme_stylebox_override("focus", style_selected)
+		else:
+			# Create style without border for non-selected option
+			var style_normal = StyleBoxFlat.new()
+			style_normal.bg_color = Color(0.3, 0.3, 0.3, 1.0)
+			style_normal.set_corner_radius_all(3)
+			btn.add_theme_stylebox_override("normal", style_normal)
+			btn.add_theme_stylebox_override("hover", style_normal)
+			btn.add_theme_stylebox_override("pressed", style_normal)
+			btn.add_theme_stylebox_override("focus", style_normal)
+
+
+func _on_quit_pressed() -> void:
+	if menu_active:
+		# Quit directly selects "No"
+		_on_option_selected("no")

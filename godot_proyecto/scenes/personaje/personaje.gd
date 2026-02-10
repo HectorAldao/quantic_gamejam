@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-signal interact
-
 const SPEED = 300.0
 
 
@@ -20,18 +18,8 @@ func _ready() -> void:
 	mobile_move_controls = get_node_or_null("Camera2D/MobileMoveControls")
 	mobile_interact_controls = get_node_or_null("Camera2D/MobileInteractControls")
 	
-	# For stop moving while dialog
-	var root = get_tree().current_scene
-	_connect_signal(root)
-
-
-func _connect_signal(node: Node) -> void:
-	#print(node)
-	if node.has_signal("change_move"):
-		node.change_move.connect(_on_change_move)
-	
-	for child in node.get_children():
-		_connect_signal(child)
+	# Connect to Global change_move signal
+	Global.change_move.connect(_on_change_move)
 
 
 func _physics_process(_delta: float) -> void:
@@ -75,13 +63,17 @@ func _physics_process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	# Handle interact button
 	if event.is_action_pressed("interact"):
-		interact.emit()
+		Global.interact.emit()
 		print("E pulsada")
+	
+	# Handle quit button
+	if event.is_action_pressed("quit"):
+		Global.quit.emit()
 	
 	# Also check mobile interact controls for interact button
 	if mobile_interact_controls and mobile_interact_controls.visible:
 		if mobile_interact_controls.is_interact_pressed():
-			interact.emit()
+			Global.interact.emit()
 			# Reset the pressed state to prevent multiple triggers
 			mobile_interact_controls.interact_pressed = false
 

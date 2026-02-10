@@ -54,6 +54,8 @@ sprite_casa = ExtResource("6_mjabk")
 [node name="Curie" parent="." unique_id=333613127 instance=ExtResource("8_56j6e")]
 position = Vector2(195, -279)
 sprite_cientifica = ExtResource("9_3pfhl")
+huevos_necesarios = 2
+menu_height_offset = -110.0
 
 [node name="Schrodinger" parent="." unique_id=779790831 instance=ExtResource("8_56j6e")]
 position = Vector2(-193, -119)

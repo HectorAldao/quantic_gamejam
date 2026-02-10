@@ -20,6 +20,7 @@ func _ready() -> void:
 	$HUDContainer/PanelHuevos/Label.text = str(Global.huevos_cogidos)
 
 	Global.door_opended.connect(_on_door_opened)
+	Global.fade_out_completed.connect(_on_fade_out_completed)
 	#Global.scene_ready.connect(_on_scene_ready)
 
 
@@ -52,6 +53,14 @@ func _on_door_opened(_target_scene_path) -> void:
 	Global.fade_out_completed.emit()
 
 	animation_fade_in.play("fade_in")
+
+
+func _on_fade_out_completed() -> void:
+	# Wait a frame to ensure new scene is loaded
+	await get_tree().process_frame
+	# Reconnect NPCs in the new scene
+	var root = get_tree().current_scene
+	_connect_npcs(root)
 
 #func _on_scene_ready(_target_scene_path) -> void:
 #	animation_fade_in.play("fade_in")
