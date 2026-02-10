@@ -8,7 +8,7 @@ var root
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+
 	root = get_tree().current_scene
 	_search_player_recursively(root)
 
@@ -36,4 +36,13 @@ func _on_player_interact() -> void:
 		elif old_scene.name == "Granja":
 			Global.huevos = $"../Huevos".huevos
 		
+		Global.door_opended.emit(target_scene_path)
+		
+		# Esperar a que se emita la señal
+		await Global.fade_out_completed
+
 		get_tree().change_scene_to_file(target_scene_path)
+
+
+func _on_change_scene_request() -> void:
+	get_tree().change_scene_to_file(target_scene_path)

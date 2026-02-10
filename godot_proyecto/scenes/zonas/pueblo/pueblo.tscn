@@ -12,7 +12,6 @@
 [ext_resource type="SpriteFrames" uid="uid://by8lmj841y1vw" path="res://scenes/cientifica/curie_sprites.tres" id="9_3pfhl"]
 [ext_resource type="SpriteFrames" uid="uid://b0ys47vlkgkq6" path="res://scenes/cientifica/schrodinger_sprites.tres" id="10_td4hj"]
 [ext_resource type="Script" uid="uid://btvnx178rj1tg" path="res://scenes/zonas/pueblo/puerta_granja.gd" id="11_0l5ct"]
-[ext_resource type="PackedScene" uid="uid://djs8eia3lkxhq" path="res://ui/ui_layer.tscn" id="12_i7phy"]
 [ext_resource type="Script" uid="uid://bgbhc8rx4c8hg" path="res://scenes/zonas/pueblo/huevos.gd" id="13_norcv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i07r1"]
@@ -103,9 +102,6 @@ shape = SubResource("RectangleShape2D_aaqcw")
 
 [node name="Personaje" parent="." unique_id=778088364 instance=ExtResource("7_owgkr")]
 position = Vector2(0, -575)
-
-[node name="UILayer" parent="." unique_id=97634786 instance=ExtResource("12_i7phy")]
-visible = false
 
 [node name="Huevos" type="Node2D" parent="." unique_id=1996660095]
 script = ExtResource("13_norcv")

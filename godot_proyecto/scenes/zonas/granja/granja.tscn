@@ -5,21 +5,21 @@
 [ext_resource type="PackedScene" uid="uid://cmc8gxxdfvept" path="res://scenes/huevo/huevo.tscn" id="2_0tmab"]
 [ext_resource type="Script" uid="uid://btvnx178rj1tg" path="res://scenes/zonas/pueblo/puerta_granja.gd" id="2_ieqsx"]
 [ext_resource type="PackedScene" uid="uid://dp8ojf16qwn8w" path="res://scenes/personaje/personaje.tscn" id="2_wlvj5"]
-[ext_resource type="PackedScene" uid="uid://djs8eia3lkxhq" path="res://ui/ui_layer.tscn" id="4_j1vlt"]
 [ext_resource type="Script" uid="uid://bc2abdysn7x2k" path="res://scenes/zonas/granja/huevos.gd" id="5_ja1ua"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ieqsx"]
+size = Vector2(20, 12.418402)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1vlt"]
-size = Vector2(7.0017624, 11.27298)
+size = Vector2(7.757635, 19.980564)
 
 [node name="Granja" type="Node2D" unique_id=1924357717]
 script = ExtResource("1_supsg")
 huevo_cuantico = ExtResource("2_0tmab")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=38483466]
-position = Vector2(0, 2.3841858e-07)
-scale = Vector2(10.937499, 10.889739)
+position = Vector2(0, 273.97162)
+scale = Vector2(10.937499, 6.6089315)
 texture = ExtResource("1_fjv00")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=25352273]
@@ -28,16 +28,12 @@ rotation = -3.1415925
 scale = Vector2(1.9238148, -68.744576)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1491605216]
-scale = Vector2(0.99999994, 1)
-shape = SubResource("RectangleShape2D_ieqsx")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=192468888]
-position = Vector2(-709.5277, 0)
+position = Vector2(-3.0517578e-05, 3.973422)
 scale = Vector2(0.9999999, 1)
 shape = SubResource("RectangleShape2D_ieqsx")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=767360956]
-position = Vector2(-356.58313, -9.789864)
+position = Vector2(-356.58316, -1.9056072)
 scale = Vector2(35.069214, 0.030773927)
 shape = SubResource("RectangleShape2D_ieqsx")
 
@@ -46,9 +42,9 @@ position = Vector2(-356.58313, 9.964422)
 scale = Vector2(35.069214, 0.030773927)
 shape = SubResource("RectangleShape2D_ieqsx")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=2091188506]
-position = Vector2(-347.74652, -9.353466)
-scale = Vector2(15.314609, 0.035785753)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=192468888]
+position = Vector2(-709.5277, 4.1239586)
+scale = Vector2(1.115058, 1.115058)
 shape = SubResource("RectangleShape2D_ieqsx")
 
 [node name="PuertaPueblo" type="Area2D" parent="." unique_id=1246976185]
@@ -58,20 +54,18 @@ script = ExtResource("2_ieqsx")
 target_scene_path = "uid://cb6u1ac45o58t"
 
 [node name="AreaPuerta" type="CollisionShape2D" parent="PuertaPueblo" unique_id=861783104]
+position = Vector2(-0.05967414, 1.6262512)
 scale = Vector2(1, 0.99999976)
 shape = SubResource("RectangleShape2D_j1vlt")
 
 [node name="Personaje" parent="." unique_id=1717447656 instance=ExtResource("2_wlvj5")]
 position = Vector2(0, 560)
 
-[node name="UILayer" parent="." unique_id=97634786 instance=ExtResource("4_j1vlt")]
-visible = false
-
 [node name="Huevos" type="Node2D" parent="." unique_id=1195456192]
 script = ExtResource("5_ja1ua")
 
 [node name="SpawnArea" type="ReferenceRect" parent="." unique_id=1845448531]
-offset_left = -562.0
-offset_top = -102.0
-offset_right = 571.0
-offset_bottom = 478.0
+offset_left = -569.0
+offset_top = -68.0
+offset_right = 564.0
+offset_bottom = 512.0

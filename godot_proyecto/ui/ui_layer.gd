@@ -2,15 +2,25 @@ extends CanvasLayer
 
 @onready var dialog_box = $HUDContainer/DialogBox
 
+@onready var colorrect: ColorRect = $HUDContainer/ColorRect
+@onready var animation_fade_in: AnimationPlayer = $HUDContainer/ColorRect/AnimationPlayer
+
 func _ready() -> void:
+
 	await get_tree().process_frame
 	visible = true
+	colorrect.visible = true
+	animation_fade_in.play("fade_in")
+
 	# Connect all cientifica NPCs
 	var root = get_tree().current_scene
 	_connect_npcs(root)
 
 	Global.cantidad_huevos_cambiada.connect(_al_cambiar_huevos)
 	$HUDContainer/PanelHuevos/Label.text = str(Global.huevos_cogidos)
+
+	Global.door_opended.connect(_on_door_opened)
+	#Global.scene_ready.connect(_on_scene_ready)
 
 
 
@@ -32,3 +42,16 @@ func _on_dialog_requested(npc_name: String, dialog_lines: Array = []) -> void:
 
 func _al_cambiar_huevos(nuevo_valor: int) -> void:
 	$HUDContainer/PanelHuevos/Label.text = str(nuevo_valor)
+
+func _on_door_opened(_target_scene_path) -> void:
+
+	animation_fade_in.play_backwards("fade_in")
+
+	await animation_fade_in.animation_finished
+
+	Global.fade_out_completed.emit()
+
+	animation_fade_in.play("fade_in")
+
+#func _on_scene_ready(_target_scene_path) -> void:
+#	animation_fade_in.play("fade_in")

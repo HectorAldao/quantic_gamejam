@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*uid://cuuuqokgw0kis"
+UiLayer="*uid://djs8eia3lkxhq"
 
 [input]
 
