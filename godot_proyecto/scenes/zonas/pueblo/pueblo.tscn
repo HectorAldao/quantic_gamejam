@@ -54,39 +54,50 @@ sprite_casa = ExtResource("6_mjabk")
 [node name="Curie" parent="." unique_id=333613127 instance=ExtResource("8_56j6e")]
 position = Vector2(195, -279)
 sprite_cientifica = ExtResource("9_3pfhl")
-huevos_necesarios = 2
-menu_height_offset = -110.0
 
-[node name="Schrodinger" parent="." unique_id=779790831 instance=ExtResource("8_56j6e")]
+[node name="Dirac" parent="." unique_id=1180912838 instance=ExtResource("8_56j6e")]
 position = Vector2(-193, -119)
 sprite_cientifica = ExtResource("10_td4hj")
-npc_name = "schrodinger"
+npc_name = "dirac"
+huevos_necesarios = 10
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=372991180]
+[node name="Bohr" parent="." unique_id=131215653 instance=ExtResource("8_56j6e")]
+position = Vector2(-182, 280)
+sprite_cientifica = ExtResource("10_td4hj")
+npc_name = "bohr"
+huevos_necesarios = 15
+
+[node name="Schrodinger" parent="." unique_id=779790831 instance=ExtResource("8_56j6e")]
+position = Vector2(201, 342)
+sprite_cientifica = ExtResource("10_td4hj")
+npc_name = "schrodinger"
+huevos_necesarios = 20
+
+[node name="Paredes" type="StaticBody2D" parent="." unique_id=372991180]
 position = Vector2(-688, -6)
 rotation = -3.1415925
 scale = Vector2(1.9238148, -68.744576)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=211700022]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes" unique_id=211700022]
 scale = Vector2(0.99999994, 1)
 shape = SubResource("RectangleShape2D_i07r1")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=269109059]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Paredes" unique_id=269109059]
 position = Vector2(-709.5277, 0)
 scale = Vector2(0.9999999, 1)
 shape = SubResource("RectangleShape2D_i07r1")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1971868405]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Paredes" unique_id=1971868405]
 position = Vector2(-356.58313, -9.789864)
 scale = Vector2(35.069214, 0.030773927)
 shape = SubResource("RectangleShape2D_i07r1")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1459178911]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Paredes" unique_id=1459178911]
 position = Vector2(-356.58313, 9.964422)
 scale = Vector2(35.069214, 0.030773927)
 shape = SubResource("RectangleShape2D_i07r1")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1904209381]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Paredes" unique_id=1904209381]
 position = Vector2(-347.74652, -9.353466)
 scale = Vector2(15.314609, 0.035785753)
 shape = SubResource("RectangleShape2D_i07r1")

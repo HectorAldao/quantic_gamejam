@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://ba3eg6whsa6b7"]
+
+[ext_resource type="Texture2D" uid="uid://cpeqsa02qtrk4" path="res://icon.svg" id="1_dtn64"]
+[ext_resource type="Script" uid="uid://d058raf5pfypg" path="res://scenes/animales/animal.gd" id="1_uu74b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_df84y"]
+radius = 31.78299
+
+[node name="Animal" type="Node2D" unique_id=183913162]
+script = ExtResource("1_uu74b")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1354519741]
+scale = Vector2(0.47402596, 0.47402596)
+texture = ExtResource("1_dtn64")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=431872381]
+visible = false
+
+[node name="Area2D" type="Area2D" parent="." unique_id=146579697]
+scale = Vector2(2.862069, 2.0769231)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1857130746]
+scale = Vector2(0.868318, 1.1091603)
+shape = SubResource("CircleShape2D_df84y")

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://btvnx178rj1tg" path="res://scenes/zonas/pueblo/puerta_granja.gd" id="2_ieqsx"]
 [ext_resource type="PackedScene" uid="uid://dp8ojf16qwn8w" path="res://scenes/personaje/personaje.tscn" id="2_wlvj5"]
 [ext_resource type="Script" uid="uid://bc2abdysn7x2k" path="res://scenes/zonas/granja/huevos.gd" id="5_ja1ua"]
+[ext_resource type="PackedScene" uid="uid://ba3eg6whsa6b7" path="res://scenes/animales/animal.tscn" id="7_0tmab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ieqsx"]
 size = Vector2(20, 12.418402)
@@ -69,3 +70,28 @@ offset_left = -569.0
 offset_top = -68.0
 offset_right = 564.0
 offset_bottom = 512.0
+
+[node name="Gallina" parent="." unique_id=183913162 instance=ExtResource("7_0tmab")]
+position = Vector2(-196, 114)
+
+[node name="PolloRadioactivo" parent="." unique_id=750667649 instance=ExtResource("7_0tmab")]
+position = Vector2(-449, 386)
+cientifica = "curie"
+
+[node name="Oveja" parent="." unique_id=233454787 instance=ExtResource("7_0tmab")]
+position = Vector2(-206, 318)
+"multiplicador_tamaño" = 2.0
+velocidad = 35.0
+cientifica = "dirac"
+
+[node name="Erizo" parent="." unique_id=1424811808 instance=ExtResource("7_0tmab")]
+position = Vector2(309, 149)
+"multiplicador_tamaño" = 0.5
+velocidad = 30.0
+cientifica = "bohr"
+
+[node name="Conejo" parent="." unique_id=1397820351 instance=ExtResource("7_0tmab")]
+position = Vector2(273, 359)
+"multiplicador_tamaño" = 1.25
+velocidad = 70.0
+cientifica = "schrodinger"

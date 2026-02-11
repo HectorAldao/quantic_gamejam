@@ -2,6 +2,7 @@ extends Node2D
 
 
 var player_in_area: bool = false
+@onready var animation_player: AnimationPlayer = $Sprite2D/AnimationPlayer
 
 # Entero aleatorio entre 0 y 2 (inclusive)
 var entero_random: int = 0
@@ -20,12 +21,17 @@ func _on_player_interact() -> void:
 	var bodies = $Area2D.get_overlapping_bodies()
 	for body in bodies:
 		if body is CharacterBody2D:
-			queue_free()
-
+			
 			if entero_random != 0:
 				Global.huevos_cogidos += 1
+				animation_player.play("obtenido")
+			else:
+				animation_player.play("quantic_fade_out")
+			
+			await animation_player.animation_finished
+			queue_free()
+		
 			break
-
 
 
 func _process(_delta: float) -> void:

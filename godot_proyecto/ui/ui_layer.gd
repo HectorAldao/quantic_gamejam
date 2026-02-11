@@ -4,12 +4,15 @@ extends CanvasLayer
 
 @onready var colorrect: ColorRect = $HUDContainer/ColorRect
 @onready var animation_fade_in: AnimationPlayer = $HUDContainer/ColorRect/AnimationPlayer
+@onready var label_cientifica: Label = $HUDContainer/NombreCientifica
 
 func _ready() -> void:
 
 	await get_tree().process_frame
 	visible = true
 	colorrect.visible = true
+	label_cientifica.visible = false
+	
 	animation_fade_in.play("fade_in")
 
 	# Connect all cientifica NPCs

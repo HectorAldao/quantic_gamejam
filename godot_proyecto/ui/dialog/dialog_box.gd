@@ -1,11 +1,23 @@
 extends Control
 
 @onready var label = $Label
+@onready var nombre_cientifica_label = UiLayer.get_node("HUDContainer/NombreCientifica")
+@onready var label_siguiente = $LabelSiguiente
+@onready var label_saltar = $LabelSaltar
 
 var current_npc: String = ""
 var current_dialog_index: int = 0
 var current_dialog_list: Array = []
 var waiting_for_menu: bool = false
+
+# Diccionario de nombres de científicas según su ID
+var nombres_cientificas: Dictionary = {
+	"c": "Marie Curie",
+	"s": "Schrödinger",
+	"h": "Heisenberg",
+	"d": "Dirac",
+	"b": "Bohr"
+}
 
 func _ready() -> void:
 	# Hide dialog box initially
@@ -24,6 +36,8 @@ func start_dialog(npc_name: String, dialog_lines: Array = []) -> void:
 		current_npc = npc_name
 		current_dialog_list = dialog_lines
 		current_dialog_index = 0
+		# Asegurar que LabelSaltar sea visible al inicio
+		label_saltar.visible = true
 		show_current_dialog()
 		show()
 		Global.change_move.emit(false)
@@ -33,10 +47,23 @@ func show_current_dialog() -> void:
 	if current_dialog_index < current_dialog_list.size():
 		var dialog_line = current_dialog_list[current_dialog_index]
 		
+		# Ocultar LabelSaltar en el último diálogo
+		if current_dialog_index == current_dialog_list.size() - 1:
+			label_saltar.visible = false
+		
 		# Extraer primera letra (personaje) y emitir señal
 		if dialog_line.length() > 0:
 			var personaje_id = dialog_line.substr(0, 1)
 			Global.cambiar_avatar_dialogo.emit(personaje_id)
+			
+			# Actualizar nombre de científica y visibilidad de la etiqueta
+			if nombres_cientificas.has(personaje_id):
+				# Es una científica - mostrar etiqueta con su nombre
+				nombre_cientifica_label.text = nombres_cientificas[personaje_id]
+				nombre_cientifica_label.visible = true
+			else:
+				# Es el protagonista u otro - ocultar etiqueta
+				nombre_cientifica_label.visible = false
 			
 			# Eliminar primera letra y espacio del texto mostrado
 			if dialog_line.length() > 2 and dialog_line[1] == " ":
@@ -54,6 +81,8 @@ func advance_dialog() -> void:
 	else:
 		# Dialog finished
 		hide()
+		# Ocultar etiqueta de nombre al finalizar diálogo
+		nombre_cientifica_label.visible = false
 		var finished_npc = current_npc
 		current_npc = ""
 		current_dialog_index = 0

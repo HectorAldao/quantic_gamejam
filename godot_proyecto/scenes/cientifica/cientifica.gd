@@ -4,7 +4,7 @@ signal dialog_requested(npc_name: String, dialog_lines: Array)
 
 @export var sprite_cientifica: SpriteFrames
 @export var npc_name: String = "curie"
-@export var huevos_necesarios: int = 0
+@export var huevos_necesarios: int = 5
 @export var menu_height_offset: float = -120.0
 @export var menu_background_color: Color = Color(0.2, 0.2, 0.2, 1.0)
 @export var selection_border_color: Color = Color(1.0, 1.0, 0.0, 1.0)
@@ -258,12 +258,15 @@ func _on_dialog_finished(finished_npc_name: String) -> void:
 		# Check if player has enough eggs
 		var tiene_suficientes_huevos = Global.huevos_cogidos >= huevos_necesarios
 		
-		# Hide "Si" button if not enough eggs
+		# Check if this cientifica has already been accepted
+		var ya_aceptada = Global.cientificas_aceptadas.get(npc_name, false)
+		
+		# Hide "Si" button if not enough eggs OR if already accepted
 		if option_buttons.size() > 0:
-			option_buttons[0].visible = tiene_suficientes_huevos
+			option_buttons[0].visible = tiene_suficientes_huevos and not ya_aceptada
 		
 		# Set initial selection based on available options
-		selected_option = 0 if tiene_suficientes_huevos else 1
+		selected_option = 0 if (tiene_suficientes_huevos and not ya_aceptada) else 1
 		
 		_update_option_highlight()
 		option_menu.show()
@@ -275,9 +278,11 @@ func _on_option_selected(option: String) -> void:
 	menu_active = false
 	option_menu.hide()
 	
-	# Si se seleccionó "Si", restar huevos necesarios
+	# Si se seleccionó "Si", restar huevos necesarios y marcar como aceptada
 	if option == "si":
 		Global.huevos_cogidos -= huevos_necesarios
+		Global.cientificas_aceptadas[npc_name] = true
+		Global.cientificas_aceptadas_changed.emit()
 	
 	# Emitir señal de menú cerrado
 	Global.menu_closed.emit()

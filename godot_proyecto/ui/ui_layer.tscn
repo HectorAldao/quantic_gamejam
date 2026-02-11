@@ -6,6 +6,11 @@
 [ext_resource type="Script" uid="uid://cjkbmk50710gm" path="res://ui/ui_layer.gd" id="4_ui"]
 [ext_resource type="Texture2D" uid="uid://cjt6f20lhh652" path="res://assets/huevo/huevo.png" id="5_vu3t1"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_vu3t1"]
+font_size = 20
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="Animation" id="Animation_vu3t1"]
 length = 0.001
 tracks/0/type = "value"
@@ -98,6 +103,22 @@ offset_right = -68.0
 offset_bottom = -114.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="NombreCientifica" type="Label" parent="HUDContainer" unique_id=770895545]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -158.0
+offset_right = -280.0
+offset_bottom = -132.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Hola"
+label_settings = SubResource("LabelSettings_vu3t1")
 
 [node name="DialogBox" parent="HUDContainer" unique_id=859321096 instance=ExtResource("3_00rn6")]
 layout_mode = 1

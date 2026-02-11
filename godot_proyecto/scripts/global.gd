@@ -5,6 +5,7 @@ extends Node
 
 signal cantidad_huevos_cambiada(nuevo_valor: int)
 signal cambiar_avatar_dialogo(personaje_id: String)
+signal cientificas_aceptadas_changed()
 
 signal door_opended(target_scene_path: String)
 signal fade_out_completed
@@ -27,3 +28,6 @@ var huevos_cogidos: int = 0:
 	set(value):
 		huevos_cogidos = value
 		cantidad_huevos_cambiada.emit(huevos_cogidos)
+
+# Dictionary to track which cientificas have been accepted already
+var cientificas_aceptadas: Dictionary = {}
