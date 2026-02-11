@@ -77,24 +77,24 @@ offset_right = 564.0
 offset_bottom = 512.0
 
 [node name="Gallina" parent="." unique_id=183913162 instance=ExtResource("7_0tmab")]
-position = Vector2(-196, 114)
+position = Vector2(-124.22612, 175.45567)
 sprite_texture = ExtResource("8_12qer")
 
 [node name="PolloRadioactivo" parent="." unique_id=750667649 instance=ExtResource("7_0tmab")]
-position = Vector2(-449, 386)
+position = Vector2(-441.39175, 496.0489)
 sprite_texture = ExtResource("9_4ieh7")
 cientifica = "curie"
 
 [node name="Oveja" parent="." unique_id=233454787 instance=ExtResource("7_0tmab")]
-position = Vector2(-206, 318)
-"multiplicador_tamaño" = 2.0
+position = Vector2(413.2085, 284.74652)
+"multiplicador_tamaño" = 1.5
 velocidad = 35.0
 sprite_texture = ExtResource("10_m1qic")
 cientifica = "dirac"
 mira_derecha = false
 
 [node name="Erizo" parent="." unique_id=1424811808 instance=ExtResource("7_0tmab")]
-position = Vector2(309, 149)
+position = Vector2(-306.9451, 257.1013)
 "multiplicador_tamaño" = 0.5
 velocidad = 30.0
 sprite_texture = ExtResource("11_nes8p")
@@ -102,7 +102,7 @@ cientifica = "bohr"
 mira_derecha = false
 
 [node name="Conejo" parent="." unique_id=1397820351 instance=ExtResource("7_0tmab")]
-position = Vector2(273, 359)
+position = Vector2(-112.33991, 254.96)
 "multiplicador_tamaño" = 1.25
 velocidad = 70.0
 sprite_texture = ExtResource("12_o7v88")

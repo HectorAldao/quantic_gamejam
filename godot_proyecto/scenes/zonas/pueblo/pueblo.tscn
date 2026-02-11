@@ -3,10 +3,6 @@
 [ext_resource type="Script" uid="uid://dck23cm02c86p" path="res://scenes/zonas/pueblo/pueblo.gd" id="1_4ed80"]
 [ext_resource type="Texture2D" uid="uid://cpeqsa02qtrk4" path="res://icon.svg" id="1_aaqcw"]
 [ext_resource type="PackedScene" uid="uid://jy063nk1qcma" path="res://scenes/objetos/casa/casa.tscn" id="2_0l5ct"]
-[ext_resource type="Texture2D" uid="uid://btpk0adbc122m" path="res://scenes/objetos/casa/sprites/casa_1.png" id="3_i7phy"]
-[ext_resource type="Texture2D" uid="uid://d3pvysv52yvb1" path="res://scenes/objetos/casa/sprites/casa_2.png" id="4_norcv"]
-[ext_resource type="Texture2D" uid="uid://cubewld7tm26r" path="res://scenes/objetos/casa/sprites/casa_3.png" id="5_4ed80"]
-[ext_resource type="Texture2D" uid="uid://pcb83qxa30g" path="res://scenes/objetos/casa/sprites/casa_4.png" id="6_mjabk"]
 [ext_resource type="PackedScene" uid="uid://dp8ojf16qwn8w" path="res://scenes/personaje/personaje.tscn" id="7_owgkr"]
 [ext_resource type="PackedScene" uid="uid://dbbfena1obqto" path="res://scenes/cientifica/cientifica.tscn" id="8_56j6e"]
 [ext_resource type="SpriteFrames" uid="uid://by8lmj841y1vw" path="res://scenes/cientifica/curie_sprites.tres" id="9_3pfhl"]
@@ -36,20 +32,20 @@ scale = Vector2(4.68597, 1.0040402)
 texture = ExtResource("1_aaqcw")
 
 [node name="Casa1" parent="." unique_id=674768920 instance=ExtResource("2_0l5ct")]
+modulate = Color(1, 1, 0.5372549, 1)
 position = Vector2(-385, -227)
-sprite_casa = ExtResource("3_i7phy")
 
 [node name="Casa2" parent="." unique_id=1686206632 instance=ExtResource("2_0l5ct")]
+modulate = Color(1, 0.49411765, 1, 1)
 position = Vector2(380, -227)
-sprite_casa = ExtResource("4_norcv")
 
 [node name="Casa3" parent="." unique_id=1322408490 instance=ExtResource("2_0l5ct")]
+modulate = Color(0.36862746, 0.74509805, 0.3764706, 1)
 position = Vector2(-373, 296)
-sprite_casa = ExtResource("5_4ed80")
 
 [node name="Casa4" parent="." unique_id=1292456474 instance=ExtResource("2_0l5ct")]
+modulate = Color(1, 0.54901963, 0.42745098, 1)
 position = Vector2(380, 296)
-sprite_casa = ExtResource("6_mjabk")
 
 [node name="Curie" parent="." unique_id=333613127 instance=ExtResource("8_56j6e")]
 position = Vector2(195, -279)

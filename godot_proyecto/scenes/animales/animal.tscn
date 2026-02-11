@@ -1,7 +1,69 @@
 [gd_scene format=3 uid="uid://ba3eg6whsa6b7"]
 
-[ext_resource type="Texture2D" uid="uid://cpeqsa02qtrk4" path="res://icon.svg" id="1_dtn64"]
 [ext_resource type="Script" uid="uid://d058raf5pfypg" path="res://scenes/animales/animal.gd" id="1_uu74b"]
+[ext_resource type="Texture2D" uid="uid://dnsjcoeyte5q5" path="res://assets/animales/animal_oveja_antimateria.png" id="2_uu74b"]
+
+[sub_resource type="Animation" id="Animation_uu74b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_4aor7"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2, 1.75), Vector2(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cnsyk"]
+_data = {
+&"RESET": SubResource("Animation_uu74b"),
+&"walk": SubResource("Animation_4aor7")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_df84y"]
 radius = 31.78299
@@ -10,15 +72,18 @@ radius = 31.78299
 script = ExtResource("1_uu74b")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1354519741]
-scale = Vector2(0.47402596, 0.47402596)
-texture = ExtResource("1_dtn64")
+scale = Vector2(2, 2)
+texture = ExtResource("2_uu74b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=131272390]
+libraries/ = SubResource("AnimationLibrary_cnsyk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=431872381]
 visible = false
+scale = Vector2(2, 2)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=146579697]
 scale = Vector2(2.862069, 2.0769231)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1857130746]
-scale = Vector2(0.868318, 1.1091603)
 shape = SubResource("CircleShape2D_df84y")

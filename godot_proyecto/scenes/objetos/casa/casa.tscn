@@ -1,17 +1,20 @@
 [gd_scene format=3 uid="uid://jy063nk1qcma"]
 
 [ext_resource type="Script" uid="uid://cxwwu4y3xc4n8" path="res://scenes/objetos/casa/casa.gd" id="1_frsrf"]
+[ext_resource type="Texture2D" uid="uid://cyb52qdwy5hca" path="res://assets/casa/casa_cientifico.png" id="2_8nq62"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hvvb5"]
-size = Vector2(282, 167)
+size = Vector2(148, 136)
 
 [node name="Casa" type="Node2D" unique_id=1890181260]
 script = ExtResource("1_frsrf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=864234462]
+scale = Vector2(1.9663349, 1.9663349)
+texture = ExtResource("2_8nq62")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=780920500]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=686374835]
-position = Vector2(0, 19.5)
+position = Vector2(-4, 35)
 shape = SubResource("RectangleShape2D_hvvb5")

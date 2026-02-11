@@ -20,12 +20,14 @@ var personaje_in_area: bool = false
 # Referencias a los nodos
 var area_interaccion: Area2D
 var collision_shape_area: CollisionShape2D
+var animation_player: AnimationPlayer
 
 
 func _ready() -> void:
 	# Obtener referencias a los nodos
 	area_interaccion = $Area2D
 	collision_shape_area = $Area2D/CollisionShape2D
+	animation_player = $Sprite2D/AnimationPlayer
 	
 	# Buscar el SpawnArea en el padre y posicionar aleatoriamente
 	if get_parent():
@@ -113,12 +115,19 @@ func _process(delta: float) -> void:
 		# Si está cerca del objetivo, detenerse
 		if distance < 5.0:
 			is_moving = false
+			# Detener animación de caminar
+			if animation_player and animation_player.has_animation("walk"):
+				animation_player.stop()
 			# Tiempo de espera inversamente proporcional a la velocidad
 			# Mayor velocidad = menor tiempo de espera
 			wait_timer = randf_range(1.0, 3.0) * (100.0 / max(velocidad, 1.0))
 		else:
 			# Moverse hacia el objetivo
 			global_position += direction * velocidad * delta
+			# Reproducir animación de caminar en bucle
+			if animation_player and animation_player.has_animation("walk"):
+				if not animation_player.is_playing() or animation_player.current_animation != "walk":
+					animation_player.play("walk")
 
 
 func apply_size_multiplier() -> void:
@@ -170,6 +179,9 @@ func _on_interact() -> void:
 		is_paused = true
 		pause_timer = 2.0
 		is_moving = false
+		# Detener animación al interactuar
+		if animation_player and animation_player.has_animation("walk"):
+			animation_player.stop()
 
 
 func _actualizar_visibilidad() -> void:
