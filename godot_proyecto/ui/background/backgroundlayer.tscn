@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://df3reqvk5plnm"]
 
-[ext_resource type="Texture2D" uid="uid://bdwry3lhghde1" path="res://assets/suelos/fondo.png" id="1_wogc8"]
+[ext_resource type="Texture2D" uid="uid://dno48t2mrjai2" path="res://assets/suelos/fondo_estelar_grande.png" id="1_wogc8"]
 
 [node name="BackgroundLayer" type="TextureRect" unique_id=1326306561]
 z_index = -4096
@@ -8,9 +8,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -203.0
-offset_top = -26.0
-offset_right = 565.0
-offset_bottom = 406.0
+offset_top = -126.0
+offset_right = 388.0
+offset_bottom = 506.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_wogc8")

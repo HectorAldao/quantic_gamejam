@@ -107,17 +107,17 @@ offset_right = 564.0
 offset_bottom = 512.0
 
 [node name="Gato" parent="." unique_id=183913162 instance=ExtResource("7_0tmab")]
-position = Vector2(-477.13516, -5.3331823)
+position = Vector2(-547.08594, -24.677002)
 sprite_texture = ExtResource("8_12qer")
 cientifica = "schrodinger"
 
 [node name="PolloRadioactivo" parent="." unique_id=750667649 instance=ExtResource("7_0tmab")]
-position = Vector2(-53.137978, 72.009315)
+position = Vector2(-230.38464, 194.35524)
 sprite_texture = ExtResource("9_4ieh7")
 cientifica = "curie"
 
 [node name="Oveja" parent="." unique_id=233454787 instance=ExtResource("7_0tmab")]
-position = Vector2(-540.18726, -6.9098554)
+position = Vector2(338.2489, 365.05334)
 "multiplicador_tamaño" = 1.5
 velocidad = 35.0
 sprite_texture = ExtResource("10_m1qic")
@@ -125,7 +125,7 @@ cientifica = "dirac"
 mira_derecha = false
 
 [node name="Erizo" parent="." unique_id=1424811808 instance=ExtResource("7_0tmab")]
-position = Vector2(-12.868399, -43.54325)
+position = Vector2(-518.7358, 79.54223)
 "multiplicador_tamaño" = 0.5
 velocidad = 30.0
 sprite_texture = ExtResource("11_nes8p")
@@ -133,13 +133,13 @@ cientifica = "bohr"
 mira_derecha = false
 
 [node name="Conejo" parent="." unique_id=1397820351 instance=ExtResource("7_0tmab")]
-position = Vector2(-192.04338, -51.850197)
+position = Vector2(547.57794, -25.622892)
 "multiplicador_tamaño" = 1.25
 velocidad = 70.0
 sprite_texture = ExtResource("12_o7v88")
 
 [node name="BackgroundLayer" parent="." unique_id=1326306561 instance=ExtResource("13_4ieh7")]
-offset_left = -3488.0
+offset_left = -3522.0
 offset_top = -1443.0
-offset_right = 3527.1113
+offset_right = 3493.1113
 offset_bottom = 2503.0

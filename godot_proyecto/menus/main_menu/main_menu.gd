@@ -68,7 +68,7 @@ func create_menu_option(text: String) -> Button:
 	style_hover.border_width_right = 3
 	style_hover.border_width_top = 3
 	style_hover.border_width_bottom = 3
-	style_hover.border_color = Color(1.0, 1.0, 0.0, 1.0)
+	style_hover.border_color = Color(0.967, 0.485, 0.818, 1.0) 
 	style_hover.corner_radius_top_left = 5
 	style_hover.corner_radius_top_right = 5
 	style_hover.corner_radius_bottom_left = 5
@@ -88,7 +88,7 @@ func create_menu_option(text: String) -> Button:
 func update_selection() -> void:
 	for i in range(menu_options.size()):
 		if i == current_selection:
-			menu_options[i].modulate = Color(1.0, 1.0, 0.0)  # Amarillo
+			menu_options[i].modulate = Color(0.967, 0.485, 0.818, 1.0)  # Amarillo
 		else:
 			menu_options[i].modulate = Color(1.0, 1.0, 1.0)  # Blanco
 
@@ -118,10 +118,22 @@ func _input(event: InputEvent) -> void:
 
 
 func _select_current_option() -> void:
-	UiLayer.get_node("HUDContainer/PanelHuevos").visible = true
 	match current_selection:
 		0:  # Jugar
-			get_tree().change_scene_to_file("res://scenes/zonas/pueblo/pueblo.tscn")
+			await _start_game_with_fade("res://scenes/zonas/pueblo/pueblo.tscn")
 		1:  # Jugar sin tutorial
 			Global.tutorial_was_played = true
-			get_tree().change_scene_to_file("res://scenes/zonas/pueblo/pueblo.tscn")
+			await _start_game_with_fade("res://scenes/zonas/pueblo/pueblo.tscn")
+
+
+func _start_game_with_fade(scene_path: String) -> void:
+	# Emitir señal de puerta abierta para activar fade out
+	Global.door_opended.emit(scene_path)
+	
+	# Esperar a que termine el fade out
+	await Global.fade_out_completed
+
+	UiLayer.get_node("HUDContainer/PanelHuevos").visible = true
+	
+	# Cambiar de escena (el fade in se ejecutará automáticamente en _ready de UiLayer)
+	get_tree().change_scene_to_file(scene_path)

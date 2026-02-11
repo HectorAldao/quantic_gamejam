@@ -15,13 +15,23 @@ script = ExtResource("1_xbn2l")
 
 [node name="BackgroundLayer" parent="." unique_id=1326306561 instance=ExtResource("2_vu5tu")]
 layout_mode = 1
-grow_horizontal = 1
-grow_vertical = 1
+offset_left = -415.0
+offset_top = -194.0
+offset_right = 176.0
+offset_bottom = 438.0
 
 [node name="Controles" type="Control" parent="." unique_id=1610132230]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Controles" unique_id=630101526]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 23.0
+offset_right = 827.0
+offset_bottom = 195.0
+color = Color(0, 0, 0, 0.47058824)
 
 [node name="wasd" type="Control" parent="Controles" unique_id=1559191567]
 anchors_preset = 0
