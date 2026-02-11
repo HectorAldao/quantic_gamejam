@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="quantic_gamejam"
-run/main_scene="uid://cb6u1ac45o58t"
+run/main_scene="uid://8p44tbel0kgx"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -73,3 +73,4 @@ pointing/emulate_mouse_from_touch=false
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.078431375, 0, 0.23137255, 1)

@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://ctc7a6v2h433i"]
+
+[ext_resource type="Texture2D" uid="uid://dnvwgl801osd" path="res://assets/animales/animal_pollo.png" id="1_rf7uv"]
+[ext_resource type="Texture2D" uid="uid://ykuosbl8jh46" path="res://assets/animales/animal_pollo_andar.png" id="2_osfau"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rf7uv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_osfau")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

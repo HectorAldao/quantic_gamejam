@@ -3,13 +3,14 @@
 [ext_resource type="Script" uid="uid://dck23cm02c86p" path="res://scenes/zonas/pueblo/pueblo.gd" id="1_4ed80"]
 [ext_resource type="Texture2D" uid="uid://cpeqsa02qtrk4" path="res://icon.svg" id="1_aaqcw"]
 [ext_resource type="PackedScene" uid="uid://jy063nk1qcma" path="res://scenes/objetos/casa/casa.tscn" id="2_0l5ct"]
+[ext_resource type="PackedScene" uid="uid://df3reqvk5plnm" path="res://ui/background/backgroundlayer.tscn" id="2_mjabk"]
 [ext_resource type="Script" uid="uid://klshk546ac65" path="res://scenes/zonas/pueblo/gato.gd" id="7_0l5ct"]
 [ext_resource type="Texture2D" uid="uid://bfdk8tth2b4eo" path="res://assets/gato/caja_gato_abierta.png" id="7_aaqcw"]
 [ext_resource type="PackedScene" uid="uid://dp8ojf16qwn8w" path="res://scenes/personaje/personaje.tscn" id="7_owgkr"]
 [ext_resource type="PackedScene" uid="uid://dbbfena1obqto" path="res://scenes/cientifica/cientifica.tscn" id="8_56j6e"]
 [ext_resource type="SpriteFrames" uid="uid://by8lmj841y1vw" path="res://scenes/cientifica/curie_sprites.tres" id="9_3pfhl"]
 [ext_resource type="Texture2D" uid="uid://cp43jqxxju6u5" path="res://assets/gato/caja_gato_cerrada.png" id="9_4ed80"]
-[ext_resource type="AudioStream" uid="uid://ct48jflcheqj6" path="res://assets/sonidos/miau.mp3" id="9_i7phy"]
+[ext_resource type="AudioStream" uid="uid://m3upwwwfiqiq" path="res://assets/sonidos/miau.mp3" id="9_i7phy"]
 [ext_resource type="Texture2D" uid="uid://hb3ksaccjd68" path="res://assets/gato/caja_gato_patas.png" id="10_mjabk"]
 [ext_resource type="SpriteFrames" uid="uid://b0ys47vlkgkq6" path="res://scenes/cientifica/schrodinger_sprites.tres" id="10_td4hj"]
 [ext_resource type="Script" uid="uid://btvnx178rj1tg" path="res://scenes/zonas/pueblo/puerta_granja.gd" id="11_0l5ct"]
@@ -31,6 +32,13 @@ font_size = 30
 
 [node name="Pueblo" type="Node2D" unique_id=780892664]
 script = ExtResource("1_4ed80")
+
+[node name="BackgroundLayer" parent="." unique_id=1326306561 instance=ExtResource("2_mjabk")]
+offset_left = -2146.0
+offset_top = -1454.0
+offset_right = 2313.0
+offset_bottom = 1525.0
+stretch_mode = 1
 
 [node name="Suelo" type="Sprite2D" parent="." unique_id=1056217518]
 position = Vector2(0, 2.3841858e-07)
@@ -103,6 +111,7 @@ shape = SubResource("RectangleShape2D_i7phy")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Gato" unique_id=1618194487]
 stream = ExtResource("9_i7phy")
+volume_db = 10.0
 
 [node name="Paredes" type="StaticBody2D" parent="." unique_id=372991180]
 position = Vector2(-688, -6)

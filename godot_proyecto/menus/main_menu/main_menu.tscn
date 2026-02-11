@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://8p44tbel0kgx"]
+
+[ext_resource type="Script" uid="uid://bu27tgj1q83ey" path="res://menus/main_menu/main_menu.gd" id="1_xbn2l"]
+[ext_resource type="LabelSettings" uid="uid://l4wnrk5y82n5" path="res://menus/main_menu/main_menu_label_settings.tres" id="2_1nwmw"]
+[ext_resource type="PackedScene" uid="uid://df3reqvk5plnm" path="res://ui/background/backgroundlayer.tscn" id="2_vu5tu"]
+
+[node name="MainMenu" type="Control" unique_id=515251519]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xbn2l")
+
+[node name="BackgroundLayer" parent="." unique_id=1326306561 instance=ExtResource("2_vu5tu")]
+layout_mode = 1
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Controles" type="Control" parent="." unique_id=1610132230]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="wasd" type="Control" parent="Controles" unique_id=1559191567]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="w" type="Label" parent="Controles/wasd" unique_id=1266285435]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 18.0
+offset_right = 135.0
+offset_bottom = 54.0
+text = "w"
+label_settings = ExtResource("2_1nwmw")
+horizontal_alignment = 1
+
+[node name="a" type="Label" parent="Controles/wasd" unique_id=1137360516]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 59.0
+offset_right = 86.0
+offset_bottom = 86.0
+text = "a"
+label_settings = ExtResource("2_1nwmw")
+horizontal_alignment = 1
+
+[node name="s" type="Label" parent="Controles/wasd" unique_id=962393731]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 59.0
+offset_right = 135.0
+offset_bottom = 95.0
+text = "s"
+label_settings = ExtResource("2_1nwmw")
+horizontal_alignment = 1
+
+[node name="d" type="Label" parent="Controles/wasd" unique_id=840982025]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 59.0
+offset_right = 184.0
+offset_bottom = 86.0
+text = "d"
+label_settings = ExtResource("2_1nwmw")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Controles/wasd" unique_id=139006748]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 43.0
+offset_right = 733.0
+offset_bottom = 79.0
+text = "Mover al personaje y seleccionar en los menús"
+label_settings = ExtResource("2_1nwmw")
+
+[node name="confirmar" type="Control" parent="Controles" unique_id=26744737]
+anchors_preset = 0
+offset_left = 2.0
+offset_top = 45.0
+offset_right = 42.0
+offset_bottom = 85.0
+
+[node name="e" type="Label" parent="Controles/confirmar" unique_id=2020527013]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 59.0
+offset_right = 184.0
+offset_bottom = 86.0
+text = "e"
+label_settings = ExtResource("2_1nwmw")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Controles/confirmar" unique_id=1089289203]
+layout_mode = 0
+offset_left = 231.0
+offset_top = 59.0
+offset_right = 731.0
+offset_bottom = 95.0
+text = "Interactuar o aceptar"
+label_settings = ExtResource("2_1nwmw")
+
+[node name="cancelar" type="Control" parent="Controles" unique_id=2081987092]
+anchors_preset = 0
+offset_left = 2.0
+offset_top = 92.0
+offset_right = 42.0
+offset_bottom = 132.0
+
+[node name="q" type="Label" parent="Controles/cancelar" unique_id=252624828]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 59.0
+offset_right = 184.0
+offset_bottom = 86.0
+text = "q
+"
+label_settings = ExtResource("2_1nwmw")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Controles/cancelar" unique_id=294749525]
+layout_mode = 0
+offset_left = 231.0
+offset_top = 59.0
+offset_right = 731.0
+offset_bottom = 95.0
+text = "Cancelar"
+label_settings = ExtResource("2_1nwmw")
+
+[node name="CentroMenu" type="Control" parent="." unique_id=271962367]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -330.0
+offset_top = -7.0
+offset_right = -290.0
+offset_bottom = 33.0
+grow_horizontal = 0
+grow_vertical = 2

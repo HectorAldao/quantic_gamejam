@@ -20,6 +20,7 @@ signal change_move(can_move: bool)
 
 # Vars
 
+var tutorial_was_played: bool = false
 var root
 var ui
 var ui_container

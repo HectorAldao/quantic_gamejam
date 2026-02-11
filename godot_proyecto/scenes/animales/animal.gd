@@ -50,7 +50,7 @@ func _ready() -> void:
 		var animated_sprite = $AnimatedSprite2D
 		animated_sprite.sprite_frames = sprite_frames
 		animated_sprite.visible = true
-		animated_sprite.play("idle")
+		animated_sprite.play("default")
 		$Sprite2D.visible = false
 	
 	# Aplicar el multiplicador de tamaño
@@ -116,8 +116,15 @@ func _process(delta: float) -> void:
 		if distance < 5.0:
 			is_moving = false
 			# Detener animación de caminar
-			if animation_player and animation_player.has_animation("walk"):
-				animation_player.stop()
+			var animated_sprite = $AnimatedSprite2D
+			if animated_sprite.visible:
+				# Si usa AnimatedSprite2D, reproducir animación default
+				if animated_sprite.sprite_frames and animated_sprite.sprite_frames.has_animation("default"):
+					animated_sprite.play("default")
+			else:
+				# Si usa Sprite2D con AnimationPlayer, detener walk
+				if animation_player and animation_player.has_animation("walk"):
+					animation_player.stop()
 			# Tiempo de espera inversamente proporcional a la velocidad
 			# Mayor velocidad = menor tiempo de espera
 			wait_timer = randf_range(1.0, 3.0) * (100.0 / max(velocidad, 1.0))
@@ -125,9 +132,21 @@ func _process(delta: float) -> void:
 			# Moverse hacia el objetivo
 			global_position += direction * velocidad * delta
 			# Reproducir animación de caminar en bucle
-			if animation_player and animation_player.has_animation("walk"):
-				if not animation_player.is_playing() or animation_player.current_animation != "walk":
-					animation_player.play("walk")
+			var animated_sprite = $AnimatedSprite2D
+			if animated_sprite.visible:
+				# Si usa AnimatedSprite2D, reproducir animación walk si existe, sino default
+				if animated_sprite.sprite_frames:
+					if animated_sprite.sprite_frames.has_animation("walk"):
+						if animated_sprite.animation != "walk":
+							animated_sprite.play("walk")
+					else:
+						if animated_sprite.animation != "default":
+							animated_sprite.play("default")
+			else:
+				# Si usa Sprite2D con AnimationPlayer
+				if animation_player and animation_player.has_animation("walk"):
+					if not animation_player.is_playing() or animation_player.current_animation != "walk":
+						animation_player.play("walk")
 
 
 func apply_size_multiplier() -> void:
@@ -180,8 +199,15 @@ func _on_interact() -> void:
 		pause_timer = 2.0
 		is_moving = false
 		# Detener animación al interactuar
-		if animation_player and animation_player.has_animation("walk"):
-			animation_player.stop()
+		var animated_sprite = $AnimatedSprite2D
+		if animated_sprite.visible:
+			# Si usa AnimatedSprite2D, reproducir animación default
+			if animated_sprite.sprite_frames and animated_sprite.sprite_frames.has_animation("default"):
+				animated_sprite.play("default")
+		else:
+			# Si usa Sprite2D con AnimationPlayer, detener walk
+			if animation_player and animation_player.has_animation("walk"):
+				animation_player.stop()
 
 
 func _actualizar_visibilidad() -> void:
