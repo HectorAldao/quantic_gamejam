@@ -7,6 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://dp8ojf16qwn8w" path="res://scenes/personaje/personaje.tscn" id="2_wlvj5"]
 [ext_resource type="Script" uid="uid://bc2abdysn7x2k" path="res://scenes/zonas/granja/huevos.gd" id="5_ja1ua"]
 [ext_resource type="PackedScene" uid="uid://ba3eg6whsa6b7" path="res://scenes/animales/animal.tscn" id="7_0tmab"]
+[ext_resource type="Texture2D" uid="uid://1ugf6l3tbru" path="res://assets/animales/animal_pollo_base.png" id="8_12qer"]
+[ext_resource type="Texture2D" uid="uid://dnvwgl801osd" path="res://assets/animales/animal_pollo.png" id="9_4ieh7"]
+[ext_resource type="Texture2D" uid="uid://dnsjcoeyte5q5" path="res://assets/animales/animal_oveja_antimateria.png" id="10_m1qic"]
+[ext_resource type="Texture2D" uid="uid://73037jc7j7e2" path="res://assets/animales/animal_erizo.png" id="11_nes8p"]
+[ext_resource type="Texture2D" uid="uid://c0wknu0lfcxrp" path="res://assets/animales/animal_conejo.png" id="12_o7v88"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ieqsx"]
 size = Vector2(20, 12.418402)
@@ -73,25 +78,32 @@ offset_bottom = 512.0
 
 [node name="Gallina" parent="." unique_id=183913162 instance=ExtResource("7_0tmab")]
 position = Vector2(-196, 114)
+sprite_texture = ExtResource("8_12qer")
 
 [node name="PolloRadioactivo" parent="." unique_id=750667649 instance=ExtResource("7_0tmab")]
 position = Vector2(-449, 386)
+sprite_texture = ExtResource("9_4ieh7")
 cientifica = "curie"
 
 [node name="Oveja" parent="." unique_id=233454787 instance=ExtResource("7_0tmab")]
 position = Vector2(-206, 318)
 "multiplicador_tamaño" = 2.0
 velocidad = 35.0
+sprite_texture = ExtResource("10_m1qic")
 cientifica = "dirac"
+mira_derecha = false
 
 [node name="Erizo" parent="." unique_id=1424811808 instance=ExtResource("7_0tmab")]
 position = Vector2(309, 149)
 "multiplicador_tamaño" = 0.5
 velocidad = 30.0
+sprite_texture = ExtResource("11_nes8p")
 cientifica = "bohr"
+mira_derecha = false
 
 [node name="Conejo" parent="." unique_id=1397820351 instance=ExtResource("7_0tmab")]
 position = Vector2(273, 359)
 "multiplicador_tamaño" = 1.25
 velocidad = 70.0
+sprite_texture = ExtResource("12_o7v88")
 cientifica = "schrodinger"

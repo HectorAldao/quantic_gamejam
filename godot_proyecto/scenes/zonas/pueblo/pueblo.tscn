@@ -118,7 +118,8 @@ position = Vector2(0, -575)
 
 [node name="Huevos" type="Node2D" parent="." unique_id=1996660095]
 script = ExtResource("13_norcv")
-max_time = 5.0
+min_time = 1.0
+max_time = 1.0
 
 [node name="HuevosLabel" type="Label" parent="Huevos" unique_id=1930689023]
 offset_left = 178.0

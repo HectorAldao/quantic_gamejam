@@ -1,10 +1,13 @@
+@tool
 extends Node2D
 
 @export var multiplicador_tamaño: float = 1.0
+@export var escala_sprite: float = 2.0
 @export var velocidad: float = 50.0
 @export var sprite_texture: Texture2D = null
 @export var sprite_frames: SpriteFrames = null
 @export var cientifica: String = ""
+@export var mira_derecha: bool = true
 
 var spawn_area: ReferenceRect = null
 var target_position: Vector2 = Vector2.ZERO
@@ -91,6 +94,22 @@ func _process(delta: float) -> void:
 		var direction = (target_position - global_position).normalized()
 		var distance = global_position.distance_to(target_position)
 		
+		# Aplicar flip del sprite según la dirección
+		if direction.x != 0:  # Solo si hay movimiento horizontal
+			var sprite_node = $Sprite2D
+			var animated_sprite = $AnimatedSprite2D
+			
+			if direction.x > 0:  # Movimiento a la derecha
+				if sprite_node.visible:
+					sprite_node.flip_h = not mira_derecha
+				if animated_sprite.visible:
+					animated_sprite.flip_h = not mira_derecha
+			else:  # Movimiento a la izquierda
+				if sprite_node.visible:
+					sprite_node.flip_h = mira_derecha
+				if animated_sprite.visible:
+					animated_sprite.flip_h = mira_derecha
+		
 		# Si está cerca del objetivo, detenerse
 		if distance < 5.0:
 			is_moving = false
@@ -106,6 +125,15 @@ func apply_size_multiplier() -> void:
 	# Aplicar multiplicador al scale del CollisionShape del área
 	if collision_shape_area:
 		collision_shape_area.scale = Vector2.ONE * multiplicador_tamaño
+	
+	# Aplicar escala a los sprites
+	var sprite_node = $Sprite2D
+	var animated_sprite = $AnimatedSprite2D
+	
+	if sprite_node:
+		sprite_node.scale = Vector2.ONE * escala_sprite
+	if animated_sprite:
+		animated_sprite.scale = Vector2.ONE * escala_sprite
 
 
 func choose_random_target() -> void:

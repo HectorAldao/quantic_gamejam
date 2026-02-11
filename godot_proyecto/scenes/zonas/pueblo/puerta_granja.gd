@@ -3,6 +3,7 @@ extends Area2D
 @export_file("*.tscn") var target_scene_path: String
 
 var player_in_area: bool = false
+var atravesada: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,7 +14,8 @@ func _ready() -> void:
 func _on_player_interact() -> void:
 	var bodies = get_overlapping_bodies()
 	for body in bodies:
-		if body is CharacterBody2D:
+		if body is CharacterBody2D and not atravesada:
+			atravesada = true
 			# Guardar datos en el Global antes de salir
 			var old_scene = get_tree().current_scene
 			
