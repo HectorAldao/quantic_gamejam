@@ -20,3 +20,5 @@ shape = SubResource("CircleShape2D_yq61j")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=581934748]
 position_smoothing_enabled = true
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=2019382441]
