@@ -30,9 +30,16 @@ offset_bottom = 438.0
 mouse_filter = 2
 
 [node name="Controles" type="Control" parent="." unique_id=1610132230]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -158.0
+offset_right = -1.0
+offset_bottom = -118.0
+grow_vertical = 0
+scale = Vector2(0.791963, 0.791963)
 mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="Controles" unique_id=630101526]
@@ -45,8 +52,10 @@ color = Color(0, 0, 0, 0.47058824)
 
 [node name="wasd" type="Control" parent="Controles" unique_id=1559191567]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -1.2626852
+offset_top = 12.626852
+offset_right = 38.737316
+offset_bottom = 52.626854
 
 [node name="w" type="Label" parent="Controles/wasd" unique_id=1266285435]
 layout_mode = 0
@@ -99,10 +108,10 @@ label_settings = ExtResource("2_1nwmw")
 
 [node name="confirmar" type="Control" parent="Controles" unique_id=26744737]
 anchors_preset = 0
-offset_left = 2.0
-offset_top = 45.0
-offset_right = 42.0
-offset_bottom = 85.0
+offset_left = -84.59991
+offset_top = 79.54921
+offset_right = -44.599907
+offset_bottom = 119.54921
 
 [node name="e" type="Label" parent="Controles/confirmar" unique_id=2020527013]
 layout_mode = 0
@@ -125,10 +134,10 @@ label_settings = ExtResource("2_1nwmw")
 
 [node name="cancelar" type="Control" parent="Controles" unique_id=2081987092]
 anchors_preset = 0
-offset_left = 2.0
-offset_top = 92.0
-offset_right = 42.0
-offset_bottom = 132.0
+offset_left = 443.2025
+offset_top = 83.33723
+offset_right = 483.2025
+offset_bottom = 123.33723
 
 [node name="q" type="Label" parent="Controles/cancelar" unique_id=252624828]
 layout_mode = 0
