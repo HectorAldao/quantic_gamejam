@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dp8ojf16qwn8w" path="res://scenes/personaje/personaje.tscn" id="2_wlvj5"]
 [ext_resource type="Texture2D" uid="uid://d1osg48pg1whx" path="res://assets/suelos/fondo_granja_mosaico.png" id="3_12qer"]
 [ext_resource type="Script" uid="uid://bc2abdysn7x2k" path="res://scenes/zonas/granja/huevos.gd" id="5_ja1ua"]
+[ext_resource type="Texture2D" uid="uid://k28sqb0qvv6n" path="res://assets/transicion/puerta_gallinero.png" id="5_m1qic"]
 [ext_resource type="PackedScene" uid="uid://ba3eg6whsa6b7" path="res://scenes/animales/animal.tscn" id="7_0tmab"]
 [ext_resource type="Texture2D" uid="uid://b1i5fjsgpda0m" path="res://assets/animales/animal_gato.png" id="8_12qer"]
 [ext_resource type="Texture2D" uid="uid://dnvwgl801osd" path="res://assets/animales/animal_pollo.png" id="9_4ieh7"]
@@ -19,8 +20,6 @@ size = Vector2(20, 12.418402)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1vlt"]
 size = Vector2(7.757635, 19.980564)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_12qer"]
 
 [node name="Granja" type="Node2D" unique_id=1924357717]
 script = ExtResource("1_supsg")
@@ -80,19 +79,15 @@ scale = Vector2(25.136524, 2.1520884)
 script = ExtResource("2_ieqsx")
 target_scene_path = "uid://cb6u1ac45o58t"
 
+[node name="Sprite2D" type="Sprite2D" parent="PuertaPueblo" unique_id=310199427]
+position = Vector2(-0.039783, 7.8992796)
+scale = Vector2(0.14321056, 1.672708)
+texture = ExtResource("5_m1qic")
+
 [node name="AreaPuerta" type="CollisionShape2D" parent="PuertaPueblo" unique_id=861783104]
 position = Vector2(-0.05967414, 1.6262512)
 scale = Vector2(1, 0.99999976)
 shape = SubResource("RectangleShape2D_j1vlt")
-
-[node name="ColorRect" type="ColorRect" parent="PuertaPueblo" unique_id=1151810662]
-material = SubResource("CanvasItemMaterial_12qer")
-offset_left = -3.3019679
-offset_top = -7.434671
-offset_right = 51.11098
-offset_bottom = 8.851156
-scale = Vector2(0.110400096, 1.1534777)
-color = Color(1, 1, 0.15294118, 0.3254902)
 
 [node name="Personaje" parent="." unique_id=1717447656 instance=ExtResource("2_wlvj5")]
 position = Vector2(0, 560)
@@ -108,6 +103,7 @@ offset_bottom = 512.0
 
 [node name="Gato" parent="." unique_id=183913162 instance=ExtResource("7_0tmab")]
 position = Vector2(-547.08594, -24.677002)
+velocidad = 60.0
 sprite_texture = ExtResource("8_12qer")
 cientifica = "schrodinger"
 
@@ -119,7 +115,7 @@ cientifica = "curie"
 [node name="Oveja" parent="." unique_id=233454787 instance=ExtResource("7_0tmab")]
 position = Vector2(338.2489, 365.05334)
 "multiplicador_tamaño" = 1.5
-velocidad = 35.0
+velocidad = 30.0
 sprite_texture = ExtResource("10_m1qic")
 cientifica = "dirac"
 mira_derecha = false
@@ -127,7 +123,7 @@ mira_derecha = false
 [node name="Erizo" parent="." unique_id=1424811808 instance=ExtResource("7_0tmab")]
 position = Vector2(-518.7358, 79.54223)
 "multiplicador_tamaño" = 0.5
-velocidad = 30.0
+velocidad = 60.0
 sprite_texture = ExtResource("11_nes8p")
 cientifica = "bohr"
 mira_derecha = false
@@ -135,7 +131,7 @@ mira_derecha = false
 [node name="Conejo" parent="." unique_id=1397820351 instance=ExtResource("7_0tmab")]
 position = Vector2(547.57794, -25.622892)
 "multiplicador_tamaño" = 1.25
-velocidad = 70.0
+velocidad = 80.0
 sprite_texture = ExtResource("12_o7v88")
 
 [node name="BackgroundLayer" parent="." unique_id=1326306561 instance=ExtResource("13_4ieh7")]

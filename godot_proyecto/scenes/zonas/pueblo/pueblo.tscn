@@ -15,6 +15,7 @@
 [ext_resource type="SpriteFrames" uid="uid://b0ys47vlkgkq6" path="res://scenes/cientifica/schrodinger_sprites.tres" id="10_td4hj"]
 [ext_resource type="Script" uid="uid://btvnx178rj1tg" path="res://scenes/zonas/pueblo/puerta_granja.gd" id="11_0l5ct"]
 [ext_resource type="Script" uid="uid://bgbhc8rx4c8hg" path="res://scenes/zonas/pueblo/huevos.gd" id="13_norcv"]
+[ext_resource type="Script" uid="uid://cbfqoc5ovo8l2" path="res://scenes/zonas/pueblo/cheat.gd" id="16_owgkr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0l5ct"]
 size = Vector2(136, 126)
@@ -29,6 +30,9 @@ size = Vector2(7.0017624, 11.27298)
 
 [sub_resource type="LabelSettings" id="LabelSettings_i7phy"]
 font_size = 30
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjabk"]
+size = Vector2(98, 77)
 
 [node name="Pueblo" type="Node2D" unique_id=780892664]
 script = ExtResource("1_4ed80")
@@ -167,3 +171,11 @@ offset_right = 218.0
 offset_bottom = -624.0
 text = "0"
 label_settings = SubResource("LabelSettings_i7phy")
+
+[node name="Cheat" type="Area2D" parent="." unique_id=959003676]
+position = Vector2(-655, 643)
+script = ExtResource("16_owgkr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cheat" unique_id=324505222]
+position = Vector2(39, -28.5)
+shape = SubResource("RectangleShape2D_mjabk")

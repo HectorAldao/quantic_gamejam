@@ -31,7 +31,8 @@ func _ready() -> void:
 func _connect_npcs(node: Node) -> void:
 	#print(node)
 	if node.has_signal("dialog_requested"):
-		node.dialog_requested.connect(_on_dialog_requested)
+		if not node.dialog_requested.is_connected(_on_dialog_requested):
+			node.dialog_requested.connect(_on_dialog_requested)
 	
 	for child in node.get_children():
 		_connect_npcs(child)

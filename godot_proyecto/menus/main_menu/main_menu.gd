@@ -1,3 +1,44 @@
+#extends Control
+#
+#func _ready() -> void:
+#	UiLayer.get_node("HUDContainer/PanelHuevos").visible = false
+#	
+#	# Obtener referencias a los botones de la escena
+#	var btn_jugar = $CentroMenu/Jugar
+#	var btn_sin_tutorial = $CentroMenu/JugarNoTuto
+#	
+#	# Conectar las señales de los botones
+#	btn_jugar.pressed.connect(_on_jugar_pressed)
+#	btn_sin_tutorial.pressed.connect(_on_jugar_sin_tutorial_pressed)
+#	
+#	# Establecer el foco inicial
+#	btn_jugar.grab_focus()
+#
+## Callbacks de lógica de negocio
+#func _on_jugar_pressed() -> void:
+#	await _start_game_with_fade("res://scenes/zonas/pueblo/pueblo.tscn")
+#
+#func _on_jugar_sin_tutorial_pressed() -> void:
+#	Global.tutorial_was_played = true
+#	await _start_game_with_fade("res://scenes/zonas/pueblo/pueblo.tscn")
+#
+#func _start_game_with_fade(scene_path: String) -> void:
+#	# Guardar referencia al árbol ANTES del await
+#	var tree = get_tree()
+#	
+#	# Emitir señal de puerta abierta para activar fade out
+#	Global.door_opended.emit(scene_path)
+#	
+#	# Esperar a que termine el fade out
+#	await Global.fade_out_completed
+#
+#	UiLayer.get_node("HUDContainer/PanelHuevos").visible = true
+#	
+#	# Usar la referencia guardada
+#	tree.change_scene_to_file(scene_path)
+
+################################
+
 extends Control
 
 var menu_options: Array = []
@@ -6,12 +47,13 @@ var current_selection: int = 0
 func _ready() -> void:
 	
 	UiLayer.get_node("HUDContainer/PanelHuevos").visible = false
-	
+
 	# Obtener referencia al nodo CentroMenu
 	var centro_menu = get_node("CentroMenu")
 	
 	# Crear contenedor para el menú
 	var menu_container = VBoxContainer.new()
+	menu_container.mouse_filter = Control.MOUSE_FILTER_PASS # Permite que el input llegue a los botones
 	
 	# Configurar anchors para centrar el contenedor con respecto a CentroMenu
 	menu_container.anchor_left = 0.5
@@ -44,6 +86,7 @@ func _ready() -> void:
 
 func create_menu_option(text: String) -> Button:
 	var button = Button.new()
+	button.mouse_filter = Control.MOUSE_FILTER_STOP
 	button.text = text
 	button.flat = false
 	button.add_theme_font_size_override("font_size", 32)
@@ -68,7 +111,7 @@ func create_menu_option(text: String) -> Button:
 	style_hover.border_width_right = 3
 	style_hover.border_width_top = 3
 	style_hover.border_width_bottom = 3
-	style_hover.border_color = Color(0.967, 0.485, 0.818, 1.0) 
+	style_hover.border_color = Color("E9429D") 
 	style_hover.corner_radius_top_left = 5
 	style_hover.corner_radius_top_right = 5
 	style_hover.corner_radius_bottom_left = 5
@@ -88,7 +131,7 @@ func create_menu_option(text: String) -> Button:
 func update_selection() -> void:
 	for i in range(menu_options.size()):
 		if i == current_selection:
-			menu_options[i].modulate = Color(0.967, 0.485, 0.818, 1.0)  # Amarillo
+			menu_options[i].modulate = Color("E9429D")  # Amarillo
 		else:
 			menu_options[i].modulate = Color(1.0, 1.0, 1.0)  # Blanco
 
@@ -127,6 +170,9 @@ func _select_current_option() -> void:
 
 
 func _start_game_with_fade(scene_path: String) -> void:
+	# Guardar referencia al árbol ANTES del await
+	var tree = get_tree()
+	
 	# Emitir señal de puerta abierta para activar fade out
 	Global.door_opended.emit(scene_path)
 	
@@ -135,5 +181,5 @@ func _start_game_with_fade(scene_path: String) -> void:
 
 	UiLayer.get_node("HUDContainer/PanelHuevos").visible = true
 	
-	# Cambiar de escena (el fade in se ejecutará automáticamente en _ready de UiLayer)
-	get_tree().change_scene_to_file(scene_path)
+	# Usar la referencia guardada
+	tree.change_scene_to_file(scene_path)

@@ -11,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_xbn2l")
 
 [node name="BackgroundLayer" parent="." unique_id=1326306561 instance=ExtResource("2_vu5tu")]
@@ -19,11 +20,13 @@ offset_left = -415.0
 offset_top = -194.0
 offset_right = 176.0
 offset_bottom = 438.0
+mouse_filter = 2
 
 [node name="Controles" type="Control" parent="." unique_id=1610132230]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="Controles" unique_id=630101526]
 layout_mode = 0
@@ -153,3 +156,22 @@ offset_right = -290.0
 offset_bottom = 33.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
+
+[node name="Jugar" type="Button" parent="CentroMenu" unique_id=1360921744]
+visible = false
+layout_mode = 0
+offset_top = -7.999999
+offset_right = 127.0
+offset_bottom = 31.0
+scale = Vector2(1.2680635, 1.2680635)
+text = "Jugar"
+
+[node name="JugarNoTuto" type="Button" parent="CentroMenu" unique_id=1227273230]
+visible = false
+layout_mode = 0
+offset_top = 52.0
+offset_right = 127.0
+offset_bottom = 91.0
+scale = Vector2(1.2680635, 1.2680635)
+text = "Jugar sin Intro"
