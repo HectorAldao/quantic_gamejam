@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cjt6f20lhh652" path="res://assets/huevo/huevo.png" id="5_vu3t1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vu3t1"]
-font_size = 20
-outline_size = 5
+font_size = 22
+outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_vu3t1"]
@@ -99,10 +99,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -320.0
-offset_top = -158.0
-offset_right = -280.0
-offset_bottom = -132.0
+offset_left = -282.0
+offset_top = -180.0
+offset_right = -237.0
+offset_bottom = -152.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Hola"
@@ -116,9 +116,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -327.0
-offset_top = -122.0
-offset_right = 327.0
-offset_bottom = -37.0
+offset_top = -137.0
+offset_right = 328.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 0
 

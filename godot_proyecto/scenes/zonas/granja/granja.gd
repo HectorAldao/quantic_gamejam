@@ -8,6 +8,11 @@ var entero_random: int = 0
 func _ready() -> void:
 
 	$Huevos.huevos = Global.huevos
+	
+	# Establecer sprite inicial del personaje mirando arriba
+	var personaje = get_tree().get_first_node_in_group("player")
+	if personaje:
+		personaje.sprite_2d.texture = personaje.pj_arrib
 
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()

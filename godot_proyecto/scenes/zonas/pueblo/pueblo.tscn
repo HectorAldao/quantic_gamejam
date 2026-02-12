@@ -4,16 +4,20 @@
 [ext_resource type="PackedScene" uid="uid://jy063nk1qcma" path="res://scenes/objetos/casa/casa.tscn" id="2_0l5ct"]
 [ext_resource type="PackedScene" uid="uid://df3reqvk5plnm" path="res://ui/background/backgroundlayer.tscn" id="2_mjabk"]
 [ext_resource type="AudioStream" uid="uid://bsh1fl1aciw8i" path="res://assets/sonidos/musica_pueblo.mp3" id="2_splmf"]
-[ext_resource type="Texture2D" uid="uid://cmngrfjg4mp5v" path="res://assets/suelos/fondo_base.png" id="3_3pfhl"]
+[ext_resource type="Texture2D" uid="uid://d2133i8ehif4s" path="res://assets/suelos/fondo_base_cesped_oscuro.png" id="4_p23ee"]
 [ext_resource type="Texture2D" uid="uid://q1s23fwtosx1" path="res://assets/cientificas/curie.png" id="6_56j6e"]
+[ext_resource type="Texture2D" uid="uid://c1tql8eh3x2o6" path="res://assets/casa/casa_azulada.png" id="6_38246"]
 [ext_resource type="Script" uid="uid://klshk546ac65" path="res://scenes/zonas/pueblo/gato.gd" id="7_0l5ct"]
 [ext_resource type="Texture2D" uid="uid://bny820bwrkw0k" path="res://assets/cientificas/bohr.png" id="7_3pfhl"]
 [ext_resource type="Texture2D" uid="uid://bfdk8tth2b4eo" path="res://assets/gato/caja_gato_abierta.png" id="7_aaqcw"]
 [ext_resource type="PackedScene" uid="uid://dp8ojf16qwn8w" path="res://scenes/personaje/personaje.tscn" id="7_owgkr"]
+[ext_resource type="Texture2D" uid="uid://dpdg5d872h71v" path="res://assets/casa/casa_morada.png" id="7_yiqyg"]
 [ext_resource type="PackedScene" uid="uid://dbbfena1obqto" path="res://scenes/cientifica/cientifica.tscn" id="8_56j6e"]
 [ext_resource type="Texture2D" uid="uid://bgejn88bgfr3b" path="res://assets/cientificas/dirac.png" id="8_p23ee"]
 [ext_resource type="Texture2D" uid="uid://dbi6nrlk1en8q" path="res://assets/cientificas/sr.png" id="8_td4hj"]
+[ext_resource type="Texture2D" uid="uid://ceh1oncoofn41" path="res://assets/casa/casa_rojiza.png" id="8_v0ovi"]
 [ext_resource type="Texture2D" uid="uid://cp43jqxxju6u5" path="res://assets/gato/caja_gato_cerrada.png" id="9_4ed80"]
+[ext_resource type="Texture2D" uid="uid://b4hnqrty6a85r" path="res://assets/casa/casa_verdosa.png" id="9_66q0a"]
 [ext_resource type="AudioStream" uid="uid://m3upwwwfiqiq" path="res://assets/sonidos/miau.mp3" id="9_i7phy"]
 [ext_resource type="Texture2D" uid="uid://hb3ksaccjd68" path="res://assets/gato/caja_gato_patas.png" id="10_mjabk"]
 [ext_resource type="Texture2D" uid="uid://bkt82llfff7sf" path="res://assets/cientificas/haisenberg.png" id="10_tw8j6"]
@@ -186,24 +190,24 @@ offset_left = -685.0
 offset_top = -672.0
 offset_right = 669.0
 offset_bottom = 673.0
-texture = ExtResource("3_3pfhl")
+texture = ExtResource("4_p23ee")
 stretch_mode = 1
 
 [node name="Casa1" parent="." unique_id=674768920 instance=ExtResource("2_0l5ct")]
-modulate = Color(1, 1, 0.5372549, 1)
-position = Vector2(-385, -227)
+position = Vector2(-378, -218)
+sprite_casa = ExtResource("6_38246")
 
 [node name="Casa2" parent="." unique_id=1686206632 instance=ExtResource("2_0l5ct")]
-modulate = Color(1, 0.49411765, 1, 1)
-position = Vector2(380, -227)
+position = Vector2(386, -255)
+sprite_casa = ExtResource("7_yiqyg")
 
 [node name="Casa3" parent="." unique_id=1322408490 instance=ExtResource("2_0l5ct")]
-modulate = Color(0.36862746, 0.74509805, 0.3764706, 1)
-position = Vector2(-373, 296)
+position = Vector2(-356, 282)
+sprite_casa = ExtResource("8_v0ovi")
 
 [node name="Casa4" parent="." unique_id=1292456474 instance=ExtResource("2_0l5ct")]
-modulate = Color(1, 0.54901963, 0.42745098, 1)
-position = Vector2(380, 296)
+position = Vector2(368, 314)
+sprite_casa = ExtResource("9_66q0a")
 
 [node name="Curie" parent="." unique_id=333613127 instance=ExtResource("8_56j6e")]
 position = Vector2(195, -227)

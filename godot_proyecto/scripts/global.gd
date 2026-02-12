@@ -4,6 +4,9 @@ extends Node
 # Scenes
 
 signal dialog_requested(npc_name: String, dialog_lines: Array)
+signal dialog_menu_requested(npc_name: String)
+signal dialog_close_requested()
+signal dialog_continue_requested()
 signal cantidad_huevos_cambiada(nuevo_valor: int)
 signal cambiar_avatar_dialogo(personaje_id: String)
 signal cientificas_aceptadas_changed()

@@ -45,8 +45,8 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_53dvn"]
 radius = 75.00667
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qgepg"]
-radius = 25.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgepg"]
+size = Vector2(41, 108)
 
 [node name="Cientifica" type="Node2D" unique_id=976474335]
 script = ExtResource("1_qgepg")
@@ -75,4 +75,5 @@ shape = SubResource("CircleShape2D_53dvn")
 [node name="StaticBodyColision" type="StaticBody2D" parent="." unique_id=1573670297]
 
 [node name="CollisionColision" type="CollisionShape2D" parent="StaticBodyColision" unique_id=1425818213]
-shape = SubResource("CircleShape2D_qgepg")
+position = Vector2(-0.5, -14)
+shape = SubResource("RectangleShape2D_qgepg")

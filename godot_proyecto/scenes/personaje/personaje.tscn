@@ -2,21 +2,76 @@
 
 [ext_resource type="SpriteFrames" uid="uid://cxbyitbfikqd0" path="res://scenes/personaje/personaje_sprites.tres" id="1_vycqi"]
 [ext_resource type="Script" uid="uid://bh2slaggp8gp3" path="res://scenes/personaje/personaje.gd" id="1_yq61j"]
+[ext_resource type="Texture2D" uid="uid://b7mg85m20o4gi" path="res://assets/personaje_sprites/personaje_arriba.png" id="2_j5ulf"]
+[ext_resource type="Texture2D" uid="uid://cykk6url1o04p" path="res://assets/personaje_sprites/personaje_abajo.png" id="3_o7af4"]
+[ext_resource type="Texture2D" uid="uid://b2xykucarwc2x" path="res://assets/personaje_sprites/personaje_izquierda.png" id="4_lucw4"]
+[ext_resource type="Texture2D" uid="uid://p611h8ddg8n7" path="res://assets/personaje_sprites/personaje_derecha.png" id="5_3qys2"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yq61j"]
-radius = 25.019993
+[sub_resource type="Animation" id="Animation_o7af4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
+}
 
-[node name="Personaje" type="CharacterBody2D" unique_id=1717447656]
+[sub_resource type="Animation" id="Animation_j5ulf"]
+resource_name = "walk"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(3.02, 2.732)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o7af4"]
+_data = {
+&"RESET": SubResource("Animation_o7af4"),
+&"walk": SubResource("Animation_j5ulf")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j5ulf"]
+
+[node name="Personaje" type="CharacterBody2D" unique_id=1717447656 groups=["player"]]
 script = ExtResource("1_yq61j")
+pj_arrib = ExtResource("2_j5ulf")
+pj_abajo = ExtResource("3_o7af4")
+pj_izqui = ExtResource("4_lucw4")
+pj_derec = ExtResource("5_3qys2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1354832465]
+visible = false
 position = Vector2(0, -18)
 scale = Vector2(0.104619786, 0.104619786)
 sprite_frames = ExtResource("1_vycqi")
 animation = &"down"
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1979902189]
+scale = Vector2(3, 3)
+texture = ExtResource("3_o7af4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=1500717997]
+libraries/ = SubResource("AnimationLibrary_o7af4")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2009475230]
-shape = SubResource("CircleShape2D_yq61j")
+position = Vector2(0, 25.999998)
+scale = Vector2(2.055, 2.055)
+shape = SubResource("CircleShape2D_j5ulf")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=581934748]
 position_smoothing_enabled = true

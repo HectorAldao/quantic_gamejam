@@ -14,6 +14,9 @@ var option_menu: Control = null
 var menu_active: bool = false
 var selected_option: int = 0  # 0 = Si, 1 = No
 var option_buttons: Array = []
+var menu_ya_procesado: bool = false
+var esperando_cierre_final: bool = false
+var mostrando_dialogo_agradecimiento: bool = false
 
 # Dictionary containing all dialogs
 var dialogs: Dictionary = {
@@ -42,7 +45,7 @@ var dialogs: Dictionary = {
 	"curie": [
 		"c ¡Ah, el nuevo asistente! Necesito tu ayuda urgentemente.",
 		"p Profesora Curie, es un honor. ¿En qué puedo...?",
-		"c Necesito doce huevos. Exactamente doce.",
+		"c Necesito cinco huevos. Exactamente cinco.",
 		"p Claro, para un experimento supongo.",
 		"c Para enseñárselos a mis amigas.",
 		"p ¿Sus... amigas?",
@@ -53,11 +56,42 @@ var dialogs: Dictionary = {
 		"c Casi con certeza.",
 		"p Profesora, tal vez deberíamos...",
 		"c Tranquilo. Llevo cuidado de ellas desde hace años.",
+		"c Y si me ayudas con esos cinco huevos, te dejaré cuidar de una de ellas. Son... especiales.",
 		"p No estoy seguro de que eso sea tranquilizador.",
 		"c ¡Exacto! Nunca estés seguro de nada. Primera lección de ciencia experimental.",
+		"x ",
 		"c Excelente trabajo. Has demostrado gran valor. O gran ingenuidad. Probablemente ambas.",
+		"c Como prometí, esta es para ti. Cuídala bien. Brilla un poco, pero es inofensiva. Probablemente.",
 		"p Gracias, profesora. Ahora si me permite, necesito descansar...",
 		"c ¡Perfecto! Descansa bien. Porque mañana necesitaré el doble."
+	],
+	"bohr": [
+		"b ¡Amigo mío! Tengo un acertijo para ti.",
+		"p Profesor Bohr, buenos días. ¿Qué necesita?",
+		"b Necesito dos huevos. Idénticos. Pero no dos huevos separados",
+		"p Por supuesto profesor, la granja está llena de huevos le traeré dos enseguida.",
+		"b No, no, no. Creo que no me has entendido. Quiero dos huevos completos, idénticos, ocupando el mismo espacio al mismo tiempo.",
+		"p Eso es físicamente imposible. Dos objetos no pueden estar en el mismo lugar simultáneamente...",
+		"b Exacto.",
+		"p ¿Exacto qué?",
+		"b Es imposible. Por eso tiene sentido.",
+		"p Profesor, con todo respeto, eso no tiene ningún sentido.",
+		"b ¡Ahora sí lo entiendes!",
+		"b La complementariedad, mi querido estudiante. Dos estados opuestos, mutuamente excluyentes, pero ambos verdaderos.",
+		"b Si logras resolver este acertijo, tengo una criatura complementaria que necesita un nuevo guardián.",
+		"p Está describiéndome una contradicción lógica, no un huevo.",
+		"b En efecto.",
+		"p Entonces, ¿qué hago exactamente?",
+		"b Hazlo de todas formas. Diez huevos. En superposición perfecta.",
+		"x ",
+		"b ¡Magnífico!",
+		"p ¿De verdad? ¿Funcionó?",
+		"b Lo conseguiste perfectamente. Y también fallaste completamente.",
+		"p No sé si eso es un cumplido o...",
+		"b Ambas cosas. Ninguna de ellas. Depende de cómo lo mires. Estoy muy orgulloso de ti.",
+		"b Y también extremadamente decepcionado.",
+		"b Este pequeño es tuyo ahora. Un erizo que no puede pinchar. Fascinante, ¿verdad?",
+		"p Gracias. Creo."
 	],
 	"dirac": [
 		"d Necesito huevos.",
@@ -72,33 +106,13 @@ var dialogs: Dictionary = {
 		"d Observación. Intuición. Matemáticas elegantes.",
 		"p ¿Puede darme una pista?",
 		"d ... No.",
+		"d Si logras el balance perfecto, te confiaré uno de mis especímenes. Simétrico. Elegante.",
+		"x ",
 		"d Aceptable.",
 		"p ¿Eso es todo? ¿Solo 'aceptable'?",
+		"d ...",
+		"d Tómalo. Es tuyo ahora.",
 		"p Bueno... Muchas gracias profesor."
-	],
-	"bohr": [
-		"b ¡Amigo mío! Tengo un acertijo para ti.",
-		"p Profesor Bohr, buenos días. ¿Qué necesita?",
-		"b Un huevo que sea blanco y negro al mismo tiempo.",
-		"b No blanco con motas negras ni negro con motas blancas sino blanco y negro superpuestamente.",
-		"p Eso es físicamente imposible. Los huevos son blancos, de un color o moteados, pero no pueden ser...",
-		"b Exacto.",
-		"p ¿Exacto qué?",
-		"b Es imposible. Por eso tiene sentido.",
-		"p Profesor, con todo respeto, eso no tiene ningún sentido.",
-		"b ¡Ahora sí lo entiendes!",
-		"b La complementariedad, mi querido estudiante. Dos estados opuestos, mutuamente excluyentes, pero ambos verdaderos.",
-		"p Está describiéndome una contradicción lógica, no un huevo.",
-		"b En efecto.",
-		"p Entonces, ¿qué hago exactamente?",
-		"b Hazlo de todas formas. Encuentra la manera.",
-		"b ¡Magnífico!",
-		"p ¿De verdad? ¿Funcionó?",
-		"b Lo conseguiste perfectamente. Y también fallaste completamente.",
-		"p No sé si eso es un cumplido o...",
-		"b Ambas cosas. Ninguna de ellas. Depende de cómo lo mires. Estoy muy orgulloso de ti.",
-		"b Y también extremadamente decepcionado.",
-		"p Gracias. Creo."
 	],
 	"schrodinger": [
 		"s ¡Ah, llegas en el momento perfecto!",
@@ -110,16 +124,19 @@ var dialogs: Dictionary = {
 		"s Necesito huevos. Pero no puedes abrirlos. Ni mirarlos. Ni verificar su contenido de ninguna manera.",
 		"p Pero entonces, ¿cómo sabré que son los correctos?",
 		"s No lo sabrás. Esa es la belleza del asunto.",
+		"s Si aceptas la incertidumbre y me traes veinte huevos sin identificar, te regalaré una de mis mascotas.",
 		"p Esto es una granja, profesor. No un experimento mental.",
 		"s ¿Cuál es la diferencia?",
 		"p Uno produce comida. El otro produce... papers académicos.",
 		"s Para mí, ambos alimentan el alma de la misma manera.",
+		"x ",
 		"s ¡Espléndido! Absolutamente espléndido.",
 		"p ¿Funcionó? ¿Eran los huevos correctos?",
 		"s No lo sé. No lo sabré nunca.",
 		"p Pero... ¿entonces cómo sabe que lo hice bien?",
 		"s No lo sé. Y al no saberlo, ambas posibilidades existen simultáneamente: lo hiciste perfecto, y lo hiciste terrible.",
-		"s Al igual que los huevos, al no abrirlos nunca conservan todas sus posibilidades.",
+		"s Al igual que los huevos, al no abrirlos siempre conservan todas sus posibilidades.",
+		"s Aquí está tu recompensa, supongo que te la llevarás. O no. No lo sabré hasta que te vayas.",
 		"p Eso no es muy útil para una evaluación.",
 		"s La incertidumbre es la única certeza verdadera, mi joven amigo. Esto no es solo ciencia. Esto es arte. Poesía. Misterio.",
 		"p Es profundamente frustrante es lo que es.",
@@ -170,6 +187,7 @@ var dialogs: Dictionary = {
 	]
 }
 
+
 func _ready() -> void:
 
 	$Visual/AnimatedSprite2D.sprite_frames = sprite_cientifica
@@ -184,6 +202,7 @@ func _ready() -> void:
 	# Connect to Global signals
 	Global.interact.connect(_on_player_interact)
 	Global.dialog_finished.connect(_on_dialog_finished)
+	Global.dialog_menu_requested.connect(_on_dialog_menu_requested)
 	Global.quit.connect(_on_quit_pressed)
 
 	await get_tree().create_timer(randf()).timeout
@@ -221,7 +240,7 @@ func _create_option_menu() -> void:
 	
 	# Create "Si" button
 	var btn_si = Button.new()
-	btn_si.text = "Si"
+	btn_si.text = "Los tengo"
 	btn_si.custom_minimum_size = Vector2(100, 40)
 	# Create style for normal state (no border)
 	var style_normal_si = StyleBoxFlat.new()
@@ -236,7 +255,7 @@ func _create_option_menu() -> void:
 	
 	# Create "No" button
 	var btn_no = Button.new()
-	btn_no.text = "No"
+	btn_no.text = "Aún no los tengo"
 	btn_no.custom_minimum_size = Vector2(100, 40)
 	# Create style for normal state (no border)
 	var style_normal_no = StyleBoxFlat.new()
@@ -256,8 +275,15 @@ func _create_option_menu() -> void:
 
 
 func _on_dialog_finished(finished_npc_name: String) -> void:
-	# Only show menu if this is the NPC that finished talking
-	if finished_npc_name == npc_name:
+	# Si estamos esperando el cierre final después de aceptar, cerrar ahora
+	if finished_npc_name == npc_name and esperando_cierre_final:
+		esperando_cierre_final = false
+		menu_ya_procesado = false
+		Global.menu_closed.emit()
+		return
+	
+	# Only show menu if this is the NPC that finished talking AND menu hasn't been processed yet
+	if finished_npc_name == npc_name and not menu_ya_procesado:
 		menu_active = true
 		
 		# Check if player has enough eggs
@@ -277,20 +303,30 @@ func _on_dialog_finished(finished_npc_name: String) -> void:
 		option_menu.show()
 		# Emitir señal de menú abierto
 		Global.menu_opened.emit()
+	
+	# Reset the flag for next conversation
+	if finished_npc_name == npc_name:
+		menu_ya_procesado = false
 
 
 func _on_option_selected(option: String) -> void:
 	menu_active = false
 	option_menu.hide()
 	
-	# Si se seleccionó "Si", restar huevos necesarios y marcar como aceptada
 	if option == "si":
+		# Si se seleccionó "Si", restar huevos necesarios y marcar como aceptada
 		Global.huevos_cogidos -= huevos_necesarios
 		Global.cientificas_aceptadas[npc_name] = true
 		Global.cientificas_aceptadas_changed.emit()
-	
-	# Emitir señal de menú cerrado
-	Global.menu_closed.emit()
+		menu_ya_procesado = true
+		# NO emitir menu_closed todavía, esperar a que termine el diálogo
+		esperando_cierre_final = true
+		Global.dialog_continue_requested.emit()
+	elif option == "no":
+		# Si se seleccionó "No", cerrar el diálogo inmediatamente
+		menu_ya_procesado = true
+		Global.menu_closed.emit()
+		Global.dialog_close_requested.emit()
 	
 	print("Option selected: ", option, " for NPC: ", npc_name)
 
@@ -344,6 +380,32 @@ func _update_option_highlight() -> void:
 			btn.add_theme_stylebox_override("hover", style_normal)
 			btn.add_theme_stylebox_override("pressed", style_normal)
 			btn.add_theme_stylebox_override("focus", style_normal)
+
+
+func _on_dialog_menu_requested(npc_name_from_dialog: String) -> void:
+	# Esta función se llama cuando se detecta una línea con 'x' en el diálogo
+	if npc_name_from_dialog == npc_name:
+		menu_active = true
+		
+		# Check if player has enough eggs
+		var tiene_suficientes_huevos = Global.huevos_cogidos >= huevos_necesarios
+		
+		# Check if this cientifica has already been accepted
+		var ya_aceptada = Global.cientificas_aceptadas.get(npc_name, false)
+		
+		# Hide "Si" button if not enough eggs OR if already accepted
+		if option_buttons.size() > 0:
+			option_buttons[0].visible = tiene_suficientes_huevos and not ya_aceptada
+		
+		# Set initial selection based on available options
+		selected_option = 0 if (tiene_suficientes_huevos and not ya_aceptada) else 1
+		
+		_update_option_highlight()
+		option_menu.show()
+		# Emitir señal de menú abierto
+		Global.menu_opened.emit()
+		# Ya no necesitamos procesar en dialog_finished porque se procesa aquí
+		menu_ya_procesado = true
 
 
 func _on_quit_pressed() -> void:

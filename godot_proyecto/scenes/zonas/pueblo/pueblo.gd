@@ -35,6 +35,13 @@ func _ready() -> void:
 	# Iniciar tutorial si no se ha reproducido
 	if not Global.tutorial_was_played:
 		tutorial_active = true
+		# Establecer sprite inicial del personaje mirando a la derecha para el tutorial
+		var personaje = get_tree().get_first_node_in_group("player")
+		if personaje:
+
+			personaje.sprite_2d.texture = personaje.pj_arrib
+			# Posicionar el personaje en la posición de Haisenberg + 50 en Y
+			personaje.global_position = $Haisenberg.global_position + Vector2(0, 50)
 		# Conectar a las señales necesarias para manejar el tutorial
 		Global.interact.connect(_on_tutorial_interact)
 		Global.dialog_finished.connect(_on_dialog_finished)
@@ -43,6 +50,10 @@ func _ready() -> void:
 		Global.dialog_requested.emit("heisenberg", dialog_lines)
 	else:
 		$Haisenberg.visible = false
+		# Establecer sprite inicial del personaje mirando abajo
+		var personaje = get_tree().get_first_node_in_group("player")
+		if personaje:
+			personaje.sprite_2d.texture = personaje.pj_abajo
 
 
 func _on_tutorial_interact() -> void:

@@ -29,6 +29,8 @@ func _ready() -> void:
 	Global.menu_opened.connect(_on_menu_opened)
 	Global.menu_closed.connect(_on_menu_closed)
 	Global.dialog_finished.connect(_on_dialog_finished_check)
+	Global.dialog_continue_requested.connect(_on_dialog_continue_requested)
+	Global.dialog_close_requested.connect(_on_dialog_close_requested)
 
 
 func start_dialog(npc_name: String, dialog_lines: Array = []) -> void:
@@ -54,6 +56,15 @@ func show_current_dialog() -> void:
 		# Extraer primera letra (personaje) y emitir señal
 		if dialog_line.length() > 0:
 			var personaje_id = dialog_line.substr(0, 1)
+			
+			# Si es 'x', pausar el diálogo y mostrar menú
+			if personaje_id == "x":
+				# Ocultar la caja de diálogo temporalmente
+				#hide()
+				# Emitir señal para mostrar menú
+				Global.dialog_menu_requested.emit(current_npc)
+				return
+			
 			Global.cambiar_avatar_dialogo.emit(personaje_id)
 			
 			# Actualizar nombre de científica y visibilidad de la etiqueta
@@ -104,8 +115,22 @@ func is_dialog_active() -> bool:
 
 func _on_quit() -> void:
 	if is_dialog_active() and current_dialog_list.size() > 0:
-		# Saltar a la última línea del diálogo
-		current_dialog_index = current_dialog_list.size() - 1
+		# Buscar la línea con "x" (donde aparece el menú)
+		var menu_index = -1
+		for i in range(current_dialog_list.size()):
+			var line = current_dialog_list[i]
+			if line.length() > 0 and line[0] == "x":
+				menu_index = i
+				break
+		
+		# Siempre saltar a la línea anterior de la "x" si existe
+		# Si no se encontró la "x", saltar a la última línea
+		if menu_index > 0:
+			# Saltar a la línea previa a la "x"
+			current_dialog_index = menu_index - 1
+		else:
+			# No hay "x", saltar a la última línea
+			current_dialog_index = current_dialog_list.size() - 1
 		show_current_dialog()
 
 
@@ -119,3 +144,33 @@ func _on_menu_closed() -> void:
 
 func _on_dialog_finished_check(_npc_name: String) -> void:
 	pass  # Solo para evitar warnings
+
+
+func _on_dialog_continue_requested() -> void:
+	# Continuar con el diálogo después de seleccionar 'si' en el menú
+	# Saltar la línea 'x' y continuar
+	current_dialog_index += 1
+	if current_dialog_index < current_dialog_list.size():
+		show()
+		show_current_dialog()
+	else:
+		# Si no hay más diálogos, terminar
+		hide()
+		nombre_cientifica_label.visible = false
+		var finished_npc = current_npc
+		current_npc = ""
+		current_dialog_index = 0
+		current_dialog_list = []
+		Global.dialog_finished.emit(finished_npc)
+		Global.change_move.emit(true)
+
+
+func _on_dialog_close_requested() -> void:
+	# Cerrar el diálogo completamente
+	hide()
+	nombre_cientifica_label.visible = false
+	var finished_npc = current_npc
+	current_npc = ""
+	current_dialog_index = 0
+	current_dialog_list = []
+	Global.change_move.emit(true)
