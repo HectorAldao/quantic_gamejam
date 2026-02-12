@@ -172,10 +172,10 @@ var dialogs: Dictionary = {
 
 func _ready() -> void:
 
-	$AnimatedSprite2D.sprite_frames = sprite_cientifica
+	$Visual/AnimatedSprite2D.sprite_frames = sprite_cientifica
 	#$AnimatedSprite2D.apply_scale(Vector2(0.1, 0.1))
 	#$AnimatedSprite2D.play("default")
-	$Sprite2D.texture = texture_cientifica
+	$Visual/Sprite2D.texture = texture_cientifica
 	apply_size_multiplier()
 	
 	# Create option menu
@@ -185,6 +185,9 @@ func _ready() -> void:
 	Global.interact.connect(_on_player_interact)
 	Global.dialog_finished.connect(_on_dialog_finished)
 	Global.quit.connect(_on_quit_pressed)
+
+	await get_tree().create_timer(randf()).timeout
+	$Visual/AnimationPlayer.play("talk")
 
 
 func _on_player_interact() -> void:
@@ -351,8 +354,8 @@ func _on_quit_pressed() -> void:
 func apply_size_multiplier() -> void:
 	
 	# Aplicar escala a los sprites
-	var sprite_node = $Sprite2D
-	var animated_sprite = $AnimatedSprite2D
+	var sprite_node = $Visual/Sprite2D
+	var animated_sprite = $Visual/AnimatedSprite2D
 	
 	if sprite_node:
 		sprite_node.scale = Vector2.ONE * escala_sprite

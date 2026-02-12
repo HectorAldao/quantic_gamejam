@@ -41,6 +41,8 @@ func _ready() -> void:
 		
 		var dialog_lines = dialogs.get("heisenberg_tutorial", [])
 		Global.dialog_requested.emit("heisenberg", dialog_lines)
+	else:
+		$Haisenberg.visible = false
 
 
 func _on_tutorial_interact() -> void:
@@ -54,6 +56,10 @@ func _on_dialog_finished(npc_name: String) -> void:
 	# Solo procesar si el tutorial está activo y el NPC es heisenberg
 	if tutorial_active and npc_name == "heisenberg":
 		tutorial_active = false
+		$Haisenberg/AnimationPlayer.play("run")
+		await $Haisenberg/AnimationPlayer.animation_finished
+		$Haisenberg.visible = false
+
 		Global.tutorial_was_played = true
 		# Desconectar de las señales
 		Global.interact.disconnect(_on_tutorial_interact)

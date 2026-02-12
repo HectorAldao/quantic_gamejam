@@ -1,6 +1,46 @@
 [gd_scene format=3 uid="uid://dbbfena1obqto"]
 
 [ext_resource type="Script" uid="uid://dh7q33laauaqx" path="res://scenes/cientifica/cientifica.gd" id="1_qgepg"]
+[ext_resource type="Texture2D" uid="uid://q1s23fwtosx1" path="res://assets/cientificas/curie.png" id="2_qgepg"]
+
+[sub_resource type="Animation" id="Animation_qgepg"]
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kqch4"]
+resource_name = "talk"
+length = 2.4333334
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.89),
+"transitions": PackedFloat32Array(0.9012505, 0.8705506),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.94)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rsrbx"]
+_data = {
+&"RESET": SubResource("Animation_qgepg"),
+&"talk": SubResource("Animation_kqch4")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_53dvn"]
 radius = 75.00667
@@ -11,10 +51,21 @@ radius = 25.0
 [node name="Cientifica" type="Node2D" unique_id=976474335]
 script = ExtResource("1_qgepg")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=102605316]
+[node name="Visual" type="Node2D" parent="." unique_id=959945851]
+position = Vector2(0, 51)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" unique_id=102605316]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=637524796]
+[node name="Sprite2D" type="Sprite2D" parent="Visual" unique_id=637524796]
+position = Vector2(0, -8)
+scale = Vector2(3, 3)
+texture = ExtResource("2_qgepg")
+offset = Vector2(0, -18.333334)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visual" unique_id=1020104982]
+root_node = NodePath("../Sprite2D")
+libraries/ = SubResource("AnimationLibrary_rsrbx")
 
 [node name="AreaDialogo" type="Area2D" parent="." unique_id=465761263]
 

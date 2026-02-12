@@ -209,6 +209,8 @@ func _on_interact() -> void:
 			if animation_player and animation_player.has_animation("walk"):
 				animation_player.stop()
 
+		$Corazones/AnimationPlayer.play("hearts")
+
 
 func _actualizar_visibilidad() -> void:
 	# Si no se ha especificado científica, el animal es visible por defecto

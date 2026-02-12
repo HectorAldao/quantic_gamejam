@@ -28,6 +28,7 @@ huevo_cuantico = ExtResource("2_0tmab")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1763848304]
 stream = ExtResource("3_nes8p")
+volume_db = -10.0
 autoplay = true
 parameters/looping = true
 

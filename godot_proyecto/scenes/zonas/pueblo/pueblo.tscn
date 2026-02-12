@@ -11,15 +11,78 @@
 [ext_resource type="Texture2D" uid="uid://bfdk8tth2b4eo" path="res://assets/gato/caja_gato_abierta.png" id="7_aaqcw"]
 [ext_resource type="PackedScene" uid="uid://dp8ojf16qwn8w" path="res://scenes/personaje/personaje.tscn" id="7_owgkr"]
 [ext_resource type="PackedScene" uid="uid://dbbfena1obqto" path="res://scenes/cientifica/cientifica.tscn" id="8_56j6e"]
+[ext_resource type="Texture2D" uid="uid://bgejn88bgfr3b" path="res://assets/cientificas/dirac.png" id="8_p23ee"]
 [ext_resource type="Texture2D" uid="uid://dbi6nrlk1en8q" path="res://assets/cientificas/sr.png" id="8_td4hj"]
 [ext_resource type="Texture2D" uid="uid://cp43jqxxju6u5" path="res://assets/gato/caja_gato_cerrada.png" id="9_4ed80"]
 [ext_resource type="AudioStream" uid="uid://m3upwwwfiqiq" path="res://assets/sonidos/miau.mp3" id="9_i7phy"]
 [ext_resource type="Texture2D" uid="uid://hb3ksaccjd68" path="res://assets/gato/caja_gato_patas.png" id="10_mjabk"]
+[ext_resource type="Texture2D" uid="uid://bkt82llfff7sf" path="res://assets/cientificas/haisenberg.png" id="10_tw8j6"]
 [ext_resource type="Script" uid="uid://btvnx178rj1tg" path="res://scenes/zonas/pueblo/puerta_granja.gd" id="11_0l5ct"]
 [ext_resource type="Script" uid="uid://bgbhc8rx4c8hg" path="res://scenes/zonas/pueblo/huevos.gd" id="13_norcv"]
 [ext_resource type="Texture2D" uid="uid://k28sqb0qvv6n" path="res://assets/transicion/puerta_gallinero.png" id="15_3pfhl"]
 [ext_resource type="Script" uid="uid://cbfqoc5ovo8l2" path="res://scenes/zonas/pueblo/cheat.gd" id="16_owgkr"]
 [ext_resource type="Texture2D" uid="uid://nuike3rmwgje" path="res://assets/contador_huevos/contador_huevos.png" id="18_td4hj"]
+
+[sub_resource type="Animation" id="Animation_tw8j6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(105, -574)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_p23ee"]
+resource_name = "run"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1.3660405),
+"update": 0,
+"values": [Vector2(105, -574), Vector2(105, -574), Vector2(105, 604)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(3.585, 2.84), Vector2(2.5, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fgcbo"]
+_data = {
+&"RESET": SubResource("Animation_tw8j6"),
+&"run": SubResource("Animation_p23ee")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0l5ct"]
 size = Vector2(136, 126)
@@ -108,7 +171,7 @@ script = ExtResource("1_4ed80")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=693619289]
 stream = ExtResource("2_splmf")
-volume_db = -15.0
+volume_db = -25.0
 autoplay = true
 parameters/looping = true
 
@@ -148,7 +211,9 @@ texture_cientifica = ExtResource("6_56j6e")
 
 [node name="Dirac" parent="." unique_id=1180912838 instance=ExtResource("8_56j6e")]
 position = Vector2(-193, -119)
+texture_cientifica = ExtResource("8_p23ee")
 npc_name = "dirac"
+escala_sprite = 1.5
 huevos_necesarios = 10
 
 [node name="Bohr" parent="." unique_id=131215653 instance=ExtResource("8_56j6e")]
@@ -162,6 +227,14 @@ position = Vector2(201, 408)
 texture_cientifica = ExtResource("8_td4hj")
 npc_name = "schrodinger"
 huevos_necesarios = 20
+
+[node name="Haisenberg" type="Sprite2D" parent="." unique_id=1519967572]
+position = Vector2(105, -574)
+scale = Vector2(3, 3)
+texture = ExtResource("10_tw8j6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Haisenberg" unique_id=86158593]
+libraries/ = SubResource("AnimationLibrary_fgcbo")
 
 [node name="Gato" type="Node2D" parent="." unique_id=846393420]
 position = Vector2(321, -623)
@@ -234,8 +307,6 @@ position = Vector2(0, -550)
 [node name="Huevos" type="Node2D" parent="." unique_id=1996660095]
 position = Vector2(159, -708)
 script = ExtResource("13_norcv")
-min_time = 1.0
-max_time = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Huevos" unique_id=1233690329]
 position = Vector2(-1, -1)
