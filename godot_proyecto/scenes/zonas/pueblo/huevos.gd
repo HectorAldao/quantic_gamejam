@@ -36,6 +36,8 @@ func _ready() -> void:
 	
 	# Start the timer
 	_start_random_timer()
+	
+	$AnimationPlayer.play("float")
 
 func _start_random_timer() -> void:
 	var random_time = randf_range(min_time, max_time)

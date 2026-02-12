@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://btvnx178rj1tg" path="res://scenes/zonas/pueblo/puerta_granja.gd" id="2_ieqsx"]
 [ext_resource type="PackedScene" uid="uid://dp8ojf16qwn8w" path="res://scenes/personaje/personaje.tscn" id="2_wlvj5"]
 [ext_resource type="Texture2D" uid="uid://d1osg48pg1whx" path="res://assets/suelos/fondo_granja_mosaico.png" id="3_12qer"]
+[ext_resource type="AudioStream" uid="uid://dlnnnskxwofjc" path="res://assets/sonidos/musica_granja.mp3" id="3_nes8p"]
 [ext_resource type="Script" uid="uid://bc2abdysn7x2k" path="res://scenes/zonas/granja/huevos.gd" id="5_ja1ua"]
 [ext_resource type="Texture2D" uid="uid://k28sqb0qvv6n" path="res://assets/transicion/puerta_gallinero.png" id="5_m1qic"]
 [ext_resource type="PackedScene" uid="uid://ba3eg6whsa6b7" path="res://scenes/animales/animal.tscn" id="7_0tmab"]
@@ -24,6 +25,11 @@ size = Vector2(7.757635, 19.980564)
 [node name="Granja" type="Node2D" unique_id=1924357717]
 script = ExtResource("1_supsg")
 huevo_cuantico = ExtResource("2_0tmab")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1763848304]
+stream = ExtResource("3_nes8p")
+autoplay = true
+parameters/looping = true
 
 [node name="Suelo" type="Node2D" parent="." unique_id=507993272]
 
@@ -102,18 +108,18 @@ offset_right = 564.0
 offset_bottom = 512.0
 
 [node name="Gato" parent="." unique_id=183913162 instance=ExtResource("7_0tmab")]
-position = Vector2(-547.08594, -24.677002)
+position = Vector2(424.242, 14.034207)
 velocidad = 60.0
 sprite_texture = ExtResource("8_12qer")
 cientifica = "schrodinger"
 
 [node name="PolloRadioactivo" parent="." unique_id=750667649 instance=ExtResource("7_0tmab")]
-position = Vector2(-230.38464, 194.35524)
+position = Vector2(-496.92282, 195.58513)
 sprite_texture = ExtResource("9_4ieh7")
 cientifica = "curie"
 
 [node name="Oveja" parent="." unique_id=233454787 instance=ExtResource("7_0tmab")]
-position = Vector2(338.2489, 365.05334)
+position = Vector2(450.1765, -44.340977)
 "multiplicador_tamaño" = 1.5
 velocidad = 30.0
 sprite_texture = ExtResource("10_m1qic")
@@ -121,7 +127,7 @@ cientifica = "dirac"
 mira_derecha = false
 
 [node name="Erizo" parent="." unique_id=1424811808 instance=ExtResource("7_0tmab")]
-position = Vector2(-518.7358, 79.54223)
+position = Vector2(-442.0559, 169.6571)
 "multiplicador_tamaño" = 0.5
 velocidad = 60.0
 sprite_texture = ExtResource("11_nes8p")
@@ -129,7 +135,7 @@ cientifica = "bohr"
 mira_derecha = false
 
 [node name="Conejo" parent="." unique_id=1397820351 instance=ExtResource("7_0tmab")]
-position = Vector2(547.57794, -25.622892)
+position = Vector2(-341.64957, 119.12195)
 "multiplicador_tamaño" = 1.25
 velocidad = 80.0
 sprite_texture = ExtResource("12_o7v88")

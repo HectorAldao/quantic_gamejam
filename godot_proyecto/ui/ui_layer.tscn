@@ -50,9 +50,10 @@ _data = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_15oer"]
-font_size = 24
+font_size = 30
+font_color = Color(0.14901961, 0, 0.6, 1)
 outline_size = 5
-outline_color = Color(0, 0, 0, 1)
+outline_color = Color(0.7490196, 0.49803922, 1, 1)
 
 [node name="UILayer" type="CanvasLayer" unique_id=97634786]
 script = ExtResource("4_ui")
@@ -157,10 +158,10 @@ offset = Vector2(1, -19)
 
 [node name="Label" type="Label" parent="HUDContainer/PanelHuevos" unique_id=2095042255]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 22.0
-offset_right = 104.0
-offset_bottom = 56.0
+offset_left = 91.0
+offset_top = 18.0
+offset_right = 108.0
+offset_bottom = 60.0
 size_flags_horizontal = 8
 text = "0"
 label_settings = SubResource("LabelSettings_15oer")

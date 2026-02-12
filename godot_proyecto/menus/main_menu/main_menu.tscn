@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bu27tgj1q83ey" path="res://menus/main_menu/main_menu.gd" id="1_xbn2l"]
 [ext_resource type="LabelSettings" uid="uid://l4wnrk5y82n5" path="res://menus/main_menu/main_menu_label_settings.tres" id="2_1nwmw"]
+[ext_resource type="AudioStream" uid="uid://cmfwvdo80gm5i" path="res://assets/sonidos/musica_menu.mp3" id="2_ml8bw"]
 [ext_resource type="PackedScene" uid="uid://df3reqvk5plnm" path="res://ui/background/backgroundlayer.tscn" id="2_vu5tu"]
 
 [node name="MainMenu" type="Control" unique_id=515251519]
@@ -13,6 +14,12 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_xbn2l")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=896178265]
+stream = ExtResource("2_ml8bw")
+volume_db = -30.0
+autoplay = true
+parameters/looping = true
 
 [node name="BackgroundLayer" parent="." unique_id=1326306561 instance=ExtResource("2_vu5tu")]
 layout_mode = 1

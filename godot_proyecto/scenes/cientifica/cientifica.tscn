@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbbfena1obqto"]
+[gd_scene format=3 uid="uid://dbbfena1obqto"]
 
 [ext_resource type="Script" uid="uid://dh7q33laauaqx" path="res://scenes/cientifica/cientifica.gd" id="1_qgepg"]
 
@@ -8,17 +8,20 @@ radius = 75.00667
 [sub_resource type="CircleShape2D" id="CircleShape2D_qgepg"]
 radius = 25.0
 
-[node name="Cientifica" type="Node2D"]
+[node name="Cientifica" type="Node2D" unique_id=976474335]
 script = ExtResource("1_qgepg")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=102605316]
+visible = false
 
-[node name="AreaDialogo" type="Area2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=637524796]
 
-[node name="CollisionDialogo" type="CollisionShape2D" parent="AreaDialogo"]
+[node name="AreaDialogo" type="Area2D" parent="." unique_id=465761263]
+
+[node name="CollisionDialogo" type="CollisionShape2D" parent="AreaDialogo" unique_id=938497218]
 shape = SubResource("CircleShape2D_53dvn")
 
-[node name="StaticBodyColision" type="StaticBody2D" parent="."]
+[node name="StaticBodyColision" type="StaticBody2D" parent="." unique_id=1573670297]
 
-[node name="CollisionColision" type="CollisionShape2D" parent="StaticBodyColision"]
+[node name="CollisionColision" type="CollisionShape2D" parent="StaticBodyColision" unique_id=1425818213]
 shape = SubResource("CircleShape2D_qgepg")

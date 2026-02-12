@@ -1,21 +1,25 @@
 [gd_scene format=3 uid="uid://cb6u1ac45o58t"]
 
 [ext_resource type="Script" uid="uid://dck23cm02c86p" path="res://scenes/zonas/pueblo/pueblo.gd" id="1_4ed80"]
-[ext_resource type="Texture2D" uid="uid://cpeqsa02qtrk4" path="res://icon.svg" id="1_aaqcw"]
 [ext_resource type="PackedScene" uid="uid://jy063nk1qcma" path="res://scenes/objetos/casa/casa.tscn" id="2_0l5ct"]
 [ext_resource type="PackedScene" uid="uid://df3reqvk5plnm" path="res://ui/background/backgroundlayer.tscn" id="2_mjabk"]
+[ext_resource type="AudioStream" uid="uid://bsh1fl1aciw8i" path="res://assets/sonidos/musica_pueblo.mp3" id="2_splmf"]
+[ext_resource type="Texture2D" uid="uid://cmngrfjg4mp5v" path="res://assets/suelos/fondo_base.png" id="3_3pfhl"]
+[ext_resource type="Texture2D" uid="uid://q1s23fwtosx1" path="res://assets/cientificas/curie.png" id="6_56j6e"]
 [ext_resource type="Script" uid="uid://klshk546ac65" path="res://scenes/zonas/pueblo/gato.gd" id="7_0l5ct"]
+[ext_resource type="Texture2D" uid="uid://bny820bwrkw0k" path="res://assets/cientificas/bohr.png" id="7_3pfhl"]
 [ext_resource type="Texture2D" uid="uid://bfdk8tth2b4eo" path="res://assets/gato/caja_gato_abierta.png" id="7_aaqcw"]
 [ext_resource type="PackedScene" uid="uid://dp8ojf16qwn8w" path="res://scenes/personaje/personaje.tscn" id="7_owgkr"]
 [ext_resource type="PackedScene" uid="uid://dbbfena1obqto" path="res://scenes/cientifica/cientifica.tscn" id="8_56j6e"]
-[ext_resource type="SpriteFrames" uid="uid://by8lmj841y1vw" path="res://scenes/cientifica/curie_sprites.tres" id="9_3pfhl"]
+[ext_resource type="Texture2D" uid="uid://dbi6nrlk1en8q" path="res://assets/cientificas/sr.png" id="8_td4hj"]
 [ext_resource type="Texture2D" uid="uid://cp43jqxxju6u5" path="res://assets/gato/caja_gato_cerrada.png" id="9_4ed80"]
 [ext_resource type="AudioStream" uid="uid://m3upwwwfiqiq" path="res://assets/sonidos/miau.mp3" id="9_i7phy"]
 [ext_resource type="Texture2D" uid="uid://hb3ksaccjd68" path="res://assets/gato/caja_gato_patas.png" id="10_mjabk"]
-[ext_resource type="SpriteFrames" uid="uid://b0ys47vlkgkq6" path="res://scenes/cientifica/schrodinger_sprites.tres" id="10_td4hj"]
 [ext_resource type="Script" uid="uid://btvnx178rj1tg" path="res://scenes/zonas/pueblo/puerta_granja.gd" id="11_0l5ct"]
 [ext_resource type="Script" uid="uid://bgbhc8rx4c8hg" path="res://scenes/zonas/pueblo/huevos.gd" id="13_norcv"]
+[ext_resource type="Texture2D" uid="uid://k28sqb0qvv6n" path="res://assets/transicion/puerta_gallinero.png" id="15_3pfhl"]
 [ext_resource type="Script" uid="uid://cbfqoc5ovo8l2" path="res://scenes/zonas/pueblo/cheat.gd" id="16_owgkr"]
+[ext_resource type="Texture2D" uid="uid://nuike3rmwgje" path="res://assets/contador_huevos/contador_huevos.png" id="18_td4hj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0l5ct"]
 size = Vector2(136, 126)
@@ -26,10 +30,75 @@ size = Vector2(68, 66)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i07r1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aaqcw"]
-size = Vector2(7.0017624, 11.27298)
+size = Vector2(7.0017624, 24.223091)
 
 [sub_resource type="LabelSettings" id="LabelSettings_i7phy"]
 font_size = 30
+font_color = Color(0.7490196, 0.49803922, 1, 1)
+outline_size = 10
+outline_color = Color(0.14901961, 0, 0.6, 1)
+
+[sub_resource type="Animation" id="Animation_td4hj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(159, -708)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_splmf"]
+resource_name = "float"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6333333),
+"transitions": PackedFloat32Array(0.3, 3),
+"update": 0,
+"values": [Vector2(159, -708), Vector2(159, -716.515)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.6333333),
+"transitions": PackedFloat32Array(0.3, 3),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_td4hj"]
+_data = {
+&"RESET": SubResource("Animation_td4hj"),
+&"float": SubResource("Animation_splmf")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjabk"]
 size = Vector2(98, 77)
@@ -37,21 +106,25 @@ size = Vector2(98, 77)
 [node name="Pueblo" type="Node2D" unique_id=780892664]
 script = ExtResource("1_4ed80")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=693619289]
+stream = ExtResource("2_splmf")
+volume_db = -15.0
+autoplay = true
+parameters/looping = true
+
 [node name="BackgroundLayer" parent="." unique_id=1326306561 instance=ExtResource("2_mjabk")]
 offset_left = -3733.0
 offset_top = -2138.0
 offset_right = 3013.0
 offset_bottom = 1842.0
 
-[node name="Suelo" type="Sprite2D" parent="." unique_id=1056217518]
-position = Vector2(0, 2.3841858e-07)
-scale = Vector2(10.937499, 10.889739)
-texture = ExtResource("1_aaqcw")
-
-[node name="Granja" type="Sprite2D" parent="." unique_id=1696222272]
-position = Vector2(-19, -687)
-scale = Vector2(4.68597, 1.0040402)
-texture = ExtResource("1_aaqcw")
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1391656261]
+offset_left = -685.0
+offset_top = -672.0
+offset_right = 669.0
+offset_bottom = 673.0
+texture = ExtResource("3_3pfhl")
+stretch_mode = 1
 
 [node name="Casa1" parent="." unique_id=674768920 instance=ExtResource("2_0l5ct")]
 modulate = Color(1, 1, 0.5372549, 1)
@@ -71,23 +144,22 @@ position = Vector2(380, 296)
 
 [node name="Curie" parent="." unique_id=333613127 instance=ExtResource("8_56j6e")]
 position = Vector2(195, -227)
-sprite_cientifica = ExtResource("9_3pfhl")
+texture_cientifica = ExtResource("6_56j6e")
 
 [node name="Dirac" parent="." unique_id=1180912838 instance=ExtResource("8_56j6e")]
 position = Vector2(-193, -119)
-sprite_cientifica = ExtResource("10_td4hj")
 npc_name = "dirac"
 huevos_necesarios = 10
 
 [node name="Bohr" parent="." unique_id=131215653 instance=ExtResource("8_56j6e")]
 position = Vector2(-182, 280)
-sprite_cientifica = ExtResource("10_td4hj")
+texture_cientifica = ExtResource("7_3pfhl")
 npc_name = "bohr"
 huevos_necesarios = 15
 
 [node name="Schrodinger" parent="." unique_id=779790831 instance=ExtResource("8_56j6e")]
-position = Vector2(201, 342)
-sprite_cientifica = ExtResource("10_td4hj")
+position = Vector2(201, 408)
+texture_cientifica = ExtResource("8_td4hj")
 npc_name = "schrodinger"
 huevos_necesarios = 20
 
@@ -140,37 +212,46 @@ position = Vector2(-356.58313, 9.964422)
 scale = Vector2(35.069214, 0.030773927)
 shape = SubResource("RectangleShape2D_i07r1")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Paredes" unique_id=1904209381]
-position = Vector2(-347.74652, -9.353466)
-scale = Vector2(15.314609, 0.035785753)
-shape = SubResource("RectangleShape2D_i07r1")
-
 [node name="PuertaGranja" type="Area2D" parent="." unique_id=373123021]
-position = Vector2(-24, -602)
+position = Vector2(-24, -612)
 scale = Vector2(25.136524, 2.1520884)
 script = ExtResource("11_0l5ct")
 target_scene_path = "uid://bo1022ow6xyjf"
 
 [node name="AreaPuerta" type="CollisionShape2D" parent="PuertaGranja" unique_id=1827709907]
-position = Vector2(0.5569585, -4.6466455)
+position = Vector2(0.3978275, -14.899567)
 scale = Vector2(1, 0.99999976)
 shape = SubResource("RectangleShape2D_aaqcw")
 
+[node name="Sprite2D" type="Sprite2D" parent="PuertaGranja" unique_id=1515415942]
+position = Vector2(0.51717573, -17.657265)
+scale = Vector2(-0.144, -1.673)
+texture = ExtResource("15_3pfhl")
+
 [node name="Personaje" parent="." unique_id=778088364 instance=ExtResource("7_owgkr")]
-position = Vector2(0, -575)
+position = Vector2(0, -550)
 
 [node name="Huevos" type="Node2D" parent="." unique_id=1996660095]
+position = Vector2(159, -708)
 script = ExtResource("13_norcv")
 min_time = 1.0
 max_time = 1.0
 
+[node name="Sprite2D" type="Sprite2D" parent="Huevos" unique_id=1233690329]
+position = Vector2(-1, -1)
+scale = Vector2(3.0849218, 3.0849218)
+texture = ExtResource("18_td4hj")
+
 [node name="HuevosLabel" type="Label" parent="Huevos" unique_id=1930689023]
-offset_left = 178.0
-offset_top = -666.0
-offset_right = 218.0
-offset_bottom = -624.0
+offset_left = 16.47794
+offset_top = -22.879478
+offset_right = 56.47794
+offset_bottom = 19.120522
 text = "0"
 label_settings = SubResource("LabelSettings_i7phy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Huevos" unique_id=27653427]
+libraries/ = SubResource("AnimationLibrary_td4hj")
 
 [node name="Cheat" type="Area2D" parent="." unique_id=959003676]
 position = Vector2(-655, 643)

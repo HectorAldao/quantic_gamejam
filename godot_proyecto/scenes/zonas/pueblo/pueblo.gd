@@ -1,6 +1,6 @@
 extends Node2D
 
-signal dialog_requested(npc_name: String, dialog_lines: Array)
+var tutorial_active: bool = false
 
 # Dictionary containing tutorial dialog
 var dialogs: Dictionary = {
@@ -34,5 +34,27 @@ func _ready() -> void:
 	
 	# Iniciar tutorial si no se ha reproducido
 	if not Global.tutorial_was_played:
+		tutorial_active = true
+		# Conectar a las señales necesarias para manejar el tutorial
+		Global.interact.connect(_on_tutorial_interact)
+		Global.dialog_finished.connect(_on_dialog_finished)
+		
 		var dialog_lines = dialogs.get("heisenberg_tutorial", [])
-		dialog_requested.emit("heisenberg", dialog_lines)
+		Global.dialog_requested.emit("heisenberg", dialog_lines)
+
+
+func _on_tutorial_interact() -> void:
+	if tutorial_active:
+		# Avanzar el diálogo del tutorial
+		var dialog_lines = dialogs.get("heisenberg_tutorial", [])
+		Global.dialog_requested.emit("heisenberg", dialog_lines)
+
+
+func _on_dialog_finished(npc_name: String) -> void:
+	# Solo procesar si el tutorial está activo y el NPC es heisenberg
+	if tutorial_active and npc_name == "heisenberg":
+		tutorial_active = false
+		Global.tutorial_was_played = true
+		# Desconectar de las señales
+		Global.interact.disconnect(_on_tutorial_interact)
+		Global.dialog_finished.disconnect(_on_dialog_finished)

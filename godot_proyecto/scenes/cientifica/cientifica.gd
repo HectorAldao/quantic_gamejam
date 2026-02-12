@@ -1,9 +1,9 @@
 extends Node2D
 
-signal dialog_requested(npc_name: String, dialog_lines: Array)
-
 @export var sprite_cientifica: SpriteFrames
+@export var texture_cientifica: Texture
 @export var npc_name: String = "curie"
+@export var escala_sprite: float = 3
 @export var huevos_necesarios: int = 5
 @export var menu_height_offset: float = -120.0
 @export var menu_background_color: Color = Color(0.2, 0.2, 0.2, 1.0)
@@ -173,8 +173,10 @@ var dialogs: Dictionary = {
 func _ready() -> void:
 
 	$AnimatedSprite2D.sprite_frames = sprite_cientifica
-	$AnimatedSprite2D.apply_scale(Vector2(0.1, 0.1))
-	$AnimatedSprite2D.play("default")
+	#$AnimatedSprite2D.apply_scale(Vector2(0.1, 0.1))
+	#$AnimatedSprite2D.play("default")
+	$Sprite2D.texture = texture_cientifica
+	apply_size_multiplier()
 	
 	# Create option menu
 	_create_option_menu()
@@ -199,7 +201,7 @@ func _on_player_interact() -> void:
 	for body in bodies:
 		if body is CharacterBody2D:
 			var dialog_lines = dialogs.get(npc_name, [])
-			dialog_requested.emit(npc_name, dialog_lines)
+			Global.dialog_requested.emit(npc_name, dialog_lines)
 			break
 
 
@@ -345,3 +347,14 @@ func _on_quit_pressed() -> void:
 	if menu_active:
 		# Quit directly selects "No"
 		_on_option_selected("no")
+
+func apply_size_multiplier() -> void:
+	
+	# Aplicar escala a los sprites
+	var sprite_node = $Sprite2D
+	var animated_sprite = $AnimatedSprite2D
+	
+	if sprite_node:
+		sprite_node.scale = Vector2.ONE * escala_sprite
+	if animated_sprite:
+		animated_sprite.scale = Vector2.ONE * escala_sprite

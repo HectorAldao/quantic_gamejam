@@ -15,27 +15,15 @@ func _ready() -> void:
 	
 	animation_fade_in.play("fade_in")
 
-	# Connect all cientifica NPCs
-	var root = get_tree().current_scene
-	_connect_npcs(root)
+	# Connect to Global dialog_requested signal
+	Global.dialog_requested.connect(_on_dialog_requested)
 
 	Global.cantidad_huevos_cambiada.connect(_al_cambiar_huevos)
 	$HUDContainer/PanelHuevos/Label.text = str(Global.huevos_cogidos)
 
 	Global.door_opended.connect(_on_door_opened)
-	Global.fade_out_completed.connect(_on_fade_out_completed)
 	#Global.scene_ready.connect(_on_scene_ready)
 
-
-
-func _connect_npcs(node: Node) -> void:
-	#print(node)
-	if node.has_signal("dialog_requested"):
-		if not node.dialog_requested.is_connected(_on_dialog_requested):
-			node.dialog_requested.connect(_on_dialog_requested)
-	
-	for child in node.get_children():
-		_connect_npcs(child)
 
 
 func _on_dialog_requested(npc_name: String, dialog_lines: Array = []) -> void:
@@ -57,14 +45,6 @@ func _on_door_opened(_target_scene_path) -> void:
 	Global.fade_out_completed.emit()
 
 	animation_fade_in.play("fade_in")
-
-
-func _on_fade_out_completed() -> void:
-	# Wait a frame to ensure new scene is loaded
-	await get_tree().process_frame
-	# Reconnect NPCs in the new scene
-	var root = get_tree().current_scene
-	_connect_npcs(root)
 
 #func _on_scene_ready(_target_scene_path) -> void:
 #	animation_fade_in.play("fade_in")
