@@ -276,6 +276,7 @@ radius = 31.78299
 
 [node name="Animal" type="Node2D" unique_id=183913162]
 script = ExtResource("1_uu74b")
+sonidos = null
 
 [node name="Corazones" type="Node2D" parent="." unique_id=1271350925]
 position = Vector2(10, -31.999998)
@@ -314,3 +315,5 @@ scale = Vector2(2.862069, 2.0769231)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1857130746]
 shape = SubResource("CircleShape2D_df84y")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1294828914]

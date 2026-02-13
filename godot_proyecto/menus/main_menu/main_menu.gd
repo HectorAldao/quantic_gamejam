@@ -49,6 +49,7 @@ func _ready() -> void:
 	UiLayer.get_node("HUDContainer/PanelHuevos").visible = false
 
 	# Obtener referencia al nodo CentroMenu
+	#var centro_menu = get_node("VBoxContainer/CentroMenu")
 	var centro_menu = get_node("CentroMenu")
 	
 	# Crear contenedor para el menú

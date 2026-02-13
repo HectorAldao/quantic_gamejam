@@ -218,13 +218,13 @@ position = Vector2(-193, -119)
 texture_cientifica = ExtResource("8_p23ee")
 npc_name = "dirac"
 escala_sprite = 1.5
-huevos_necesarios = 10
+huevos_necesarios = 15
 
 [node name="Bohr" parent="." unique_id=131215653 instance=ExtResource("8_56j6e")]
 position = Vector2(-182, 280)
 texture_cientifica = ExtResource("7_3pfhl")
 npc_name = "bohr"
-huevos_necesarios = 15
+huevos_necesarios = 10
 
 [node name="Schrodinger" parent="." unique_id=779790831 instance=ExtResource("8_56j6e")]
 position = Vector2(201, 408)
@@ -304,6 +304,8 @@ shape = SubResource("RectangleShape2D_aaqcw")
 position = Vector2(0.51717573, -17.657265)
 scale = Vector2(-0.144, -1.673)
 texture = ExtResource("15_3pfhl")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PuertaGranja" unique_id=694898529]
 
 [node name="Personaje" parent="." unique_id=778088364 instance=ExtResource("7_owgkr")]
 position = Vector2(0, -550)

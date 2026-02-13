@@ -4,6 +4,7 @@
 [ext_resource type="LabelSettings" uid="uid://l4wnrk5y82n5" path="res://menus/main_menu/main_menu_label_settings.tres" id="2_1nwmw"]
 [ext_resource type="AudioStream" uid="uid://cmfwvdo80gm5i" path="res://assets/sonidos/musica_menu.mp3" id="2_ml8bw"]
 [ext_resource type="PackedScene" uid="uid://df3reqvk5plnm" path="res://ui/background/backgroundlayer.tscn" id="2_vu5tu"]
+[ext_resource type="Texture2D" uid="uid://bgaftrof3poty" path="res://assets/logo/logo_granja_cuantica_2.png" id="5_oic2i"]
 
 [node name="MainMenu" type="Control" unique_id=515251519]
 layout_mode = 3
@@ -191,3 +192,18 @@ offset_right = 127.0
 offset_bottom = 91.0
 scale = Vector2(1.2680635, 1.2680635)
 text = "Jugar sin Intro"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=659148825]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -476.0
+offset_top = -309.0
+offset_right = -57.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_oic2i")

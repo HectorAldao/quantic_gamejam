@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var min_time: float = 5.0
-@export var max_time: float = 15.0
+@export var min_time: float = 4.0
+@export var max_time: float = 10.0
 @export var max_huevos: int = 10
 
 var label: Label
@@ -57,7 +57,7 @@ func _on_cientificas_aceptadas_changed() -> void:
 	# Apply bonuses based on accepted cientificas
 	if Global.cientificas_aceptadas.has("curie"):
 		min_time -= 1
-		max_time -= 1
+		max_time -= 2
 		max_huevos += 2
 	
 	if Global.cientificas_aceptadas.has("dirac"):
@@ -67,12 +67,12 @@ func _on_cientificas_aceptadas_changed() -> void:
 	
 	if Global.cientificas_aceptadas.has("bohr"):
 		min_time -= 1
-		max_time -= 3
+		max_time -= 2
 		max_huevos += 3
 	
 	if Global.cientificas_aceptadas.has("schrodinger"):
 		min_time -= 1
-		max_time -= 4
+		max_time -= 2
 		max_huevos += 3
 	
 	# Ensure times don't go below a minimum threshold

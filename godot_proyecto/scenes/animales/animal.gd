@@ -8,6 +8,7 @@ extends Node2D
 @export var sprite_frames: SpriteFrames = null
 @export var cientifica: String = ""
 @export var mira_derecha: bool = true
+@export var sonidos: Array[AudioStream] = []
 
 var spawn_area: ReferenceRect = null
 var target_position: Vector2 = Vector2.ZERO
@@ -21,6 +22,7 @@ var personaje_in_area: bool = false
 var area_interaccion: Area2D
 var collision_shape_area: CollisionShape2D
 var animation_player: AnimationPlayer
+var audio_player: AudioStreamPlayer2D
 
 
 func _ready() -> void:
@@ -28,6 +30,7 @@ func _ready() -> void:
 	area_interaccion = $Area2D
 	collision_shape_area = $Area2D/CollisionShape2D
 	animation_player = $Sprite2D/AnimationPlayer
+	audio_player = $AudioStreamPlayer2D
 	
 	# Buscar el SpawnArea en el padre y posicionar aleatoriamente
 	if get_parent():
@@ -210,6 +213,11 @@ func _on_interact() -> void:
 				animation_player.stop()
 
 		$Corazones/AnimationPlayer.play("hearts")
+
+		if sonidos.size() > 0 and audio_player and visible:
+			var sonido_aleatorio = sonidos[randi() % sonidos.size()]
+			audio_player.stream = sonido_aleatorio
+			audio_player.play()
 
 
 func _actualizar_visibilidad() -> void:
