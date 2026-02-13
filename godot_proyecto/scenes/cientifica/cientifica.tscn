@@ -50,6 +50,7 @@ size = Vector2(41, 108)
 
 [node name="Cientifica" type="Node2D" unique_id=976474335]
 script = ExtResource("1_qgepg")
+selection_border_color = Color(1, 0.3372549, 1, 0.95686275)
 
 [node name="Visual" type="Node2D" parent="." unique_id=959945851]
 position = Vector2(0, 51)

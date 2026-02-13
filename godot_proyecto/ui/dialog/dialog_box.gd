@@ -98,15 +98,10 @@ func advance_dialog() -> void:
 		current_npc = ""
 		current_dialog_index = 0
 		current_dialog_list = []
-		# Esperar un frame para ver si se abre un menú
-		waiting_for_menu = true
 		# Emitir señal de diálogo terminado
 		Global.dialog_finished.emit(finished_npc)
-		await get_tree().create_timer(0.05).timeout
-		if waiting_for_menu:
-			# No se abrió menú, reactivar movimiento
-			Global.change_move.emit(true)
-			waiting_for_menu = false
+		# Reactivar movimiento ya que el diálogo terminó sin menú
+		Global.change_move.emit(true)
 
 
 func is_dialog_active() -> bool:

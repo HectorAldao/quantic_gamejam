@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var sonidos_huevo_cogido: Array[AudioStream] = []
+@export var sonidos_huevo_no_cogido: Array[AudioStream] = []
 
 var player_in_area: bool = false
 @onready var animation_player: AnimationPlayer = $Sprite2D/AnimationPlayer
@@ -21,12 +23,16 @@ func _on_player_interact() -> void:
 	var bodies = $Area2D.get_overlapping_bodies()
 	for body in bodies:
 		if body is CharacterBody2D:
-			
+			var asp = $AudioStreamPlayer2D
 			if entero_random != 0:
 				Global.huevos_cogidos += 1
 				animation_player.play("obtenido")
+				asp.stream = sonidos_huevo_cogido[randi() % sonidos_huevo_cogido.size()]
 			else:
 				animation_player.play("quantic_fade_out")
+				asp.stream = sonidos_huevo_no_cogido[randi() % sonidos_huevo_no_cogido.size()]
+				
+			asp.play()
 			
 			await animation_player.animation_finished
 			queue_free()

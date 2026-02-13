@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://k28sqb0qvv6n" path="res://assets/transicion/puerta_gallinero.png" id="15_3pfhl"]
 [ext_resource type="Script" uid="uid://cbfqoc5ovo8l2" path="res://scenes/zonas/pueblo/cheat.gd" id="16_owgkr"]
 [ext_resource type="Texture2D" uid="uid://nuike3rmwgje" path="res://assets/contador_huevos/contador_huevos.png" id="18_td4hj"]
+[ext_resource type="AudioStream" uid="uid://ddati17u3spn5" path="res://assets/sonidos/puerta_granja.mp3" id="23_yiqyg"]
 
 [sub_resource type="Animation" id="Animation_tw8j6"]
 length = 0.001
@@ -134,7 +135,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_splmf"]
 resource_name = "float"
-length = 3.0
+length = 2.3666666
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -143,7 +144,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.6333333),
+"times": PackedFloat32Array(0, 1.2333333),
 "transitions": PackedFloat32Array(0.3, 3),
 "update": 0,
 "values": [Vector2(159, -708), Vector2(159, -716.515)]
@@ -155,7 +156,7 @@ tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.6333333),
+"times": PackedFloat32Array(0, 1.2333333),
 "transitions": PackedFloat32Array(0.3, 3),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.05, 1.05)]
@@ -165,6 +166,68 @@ tracks/1/keys = {
 _data = {
 &"RESET": SubResource("Animation_td4hj"),
 &"float": SubResource("Animation_splmf")
+}
+
+[sub_resource type="Animation" id="Animation_yiqyg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(182, 709)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_v0ovi"]
+resource_name = "float"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8666667),
+"transitions": PackedFloat32Array(0.7578583, 1.3195081),
+"update": 0,
+"values": [Vector2(182, 709), Vector2(182, 702.625)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8666667),
+"transitions": PackedFloat32Array(0.7578583, 1.3195081),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_66q0a"]
+_data = {
+&"RESET": SubResource("Animation_yiqyg"),
+&"float": SubResource("Animation_v0ovi")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjabk"]
@@ -306,9 +369,7 @@ scale = Vector2(-0.144, -1.673)
 texture = ExtResource("15_3pfhl")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PuertaGranja" unique_id=694898529]
-
-[node name="Personaje" parent="." unique_id=778088364 instance=ExtResource("7_owgkr")]
-position = Vector2(0, -550)
+stream = ExtResource("23_yiqyg")
 
 [node name="Huevos" type="Node2D" parent="." unique_id=1996660095]
 position = Vector2(159, -708)
@@ -329,6 +390,49 @@ label_settings = SubResource("LabelSettings_i7phy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Huevos" unique_id=27653427]
 libraries/ = SubResource("AnimationLibrary_td4hj")
+
+[node name="PuertaFinal" type="Area2D" parent="." unique_id=324253362]
+position = Vector2(8, 613)
+rotation = -3.1415927
+scale = Vector2(25.136524, 2.1520884)
+script = ExtResource("11_0l5ct")
+target_scene_path = "uid://blxd72xmkw14c"
+
+[node name="AreaPuerta" type="CollisionShape2D" parent="PuertaFinal" unique_id=237100450]
+position = Vector2(0.3978275, -14.899567)
+scale = Vector2(1, 0.99999976)
+shape = SubResource("RectangleShape2D_aaqcw")
+
+[node name="Sprite2D" type="Sprite2D" parent="PuertaFinal" unique_id=1287735726]
+position = Vector2(0.51717573, -17.657265)
+scale = Vector2(-0.144, -1.673)
+texture = ExtResource("15_3pfhl")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PuertaFinal" unique_id=160241504]
+stream = ExtResource("23_yiqyg")
+
+[node name="Huevos30" type="Node2D" parent="." unique_id=1819759365]
+position = Vector2(182, 709)
+
+[node name="Sprite2D" type="Sprite2D" parent="Huevos30" unique_id=1683752383]
+position = Vector2(-1, -1)
+scale = Vector2(3.4030542, 3.4030542)
+texture = ExtResource("18_td4hj")
+
+[node name="HuevosLabel" type="Label" parent="Huevos30" unique_id=821703686]
+offset_left = -13.999996
+offset_top = -22.879478
+offset_right = 26.000004
+offset_bottom = 19.120522
+text = "30"
+label_settings = SubResource("LabelSettings_i7phy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Huevos30" unique_id=277176256]
+libraries/ = SubResource("AnimationLibrary_66q0a")
+autoplay = &"float"
+
+[node name="Personaje" parent="." unique_id=778088364 instance=ExtResource("7_owgkr")]
+position = Vector2(0, -550)
 
 [node name="Cheat" type="Area2D" parent="." unique_id=959003676]
 position = Vector2(-655, 643)

@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://caso7rsmoyydy" path="res://scenes/huevo/huevo.gd" id="1_dhisd"]
 [ext_resource type="Texture2D" uid="uid://cjt6f20lhh652" path="res://assets/huevo/huevo.png" id="2_dhisd"]
+[ext_resource type="AudioStream" uid="uid://b2akqui6cac6j" path="res://assets/sonidos/coger_huevo_1.mp3" id="2_k4dau"]
+[ext_resource type="AudioStream" uid="uid://bhxdws6mmlkxj" path="res://assets/sonidos/coger_huevo_2.mp3" id="3_1lxxs"]
+[ext_resource type="AudioStream" uid="uid://vs3oy7pf1esn" path="res://assets/sonidos/no_huevos_2.mp3" id="4_od7gn"]
 
 [sub_resource type="Animation" id="Animation_dhisd"]
 length = 0.001
@@ -113,6 +116,8 @@ radius = 97.57333
 [node name="Huevo" type="Node2D" unique_id=1524998521]
 scale = Vector2(0.087467715, 0.087467715)
 script = ExtResource("1_dhisd")
+sonidos_huevo_cogido = Array[AudioStream]([ExtResource("2_k4dau"), ExtResource("3_1lxxs")])
+sonidos_huevo_no_cogido = Array[AudioStream]([ExtResource("4_od7gn")])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1344822892]
 modulate = Color(0.1584723, 0.15847233, 0.15847224, 1)
@@ -134,3 +139,5 @@ scale = Vector2(6.540077, 6.2006736)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=698912437]
 shape = SubResource("CircleShape2D_pulgs")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1349405573]

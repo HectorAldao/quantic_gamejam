@@ -56,7 +56,13 @@ func _ready() -> void:
 		# Establecer sprite inicial del personaje mirando abajo
 		var personaje = get_tree().get_first_node_in_group("player")
 		if personaje:
-			personaje.sprite_2d.texture = personaje.pj_abajo
+			if not Global.from_final:
+				personaje.sprite_2d.texture = personaje.pj_abajo
+			else:
+				personaje.sprite_2d.texture = personaje.pj_arrib
+				personaje.global_position = $PuertaFinal.global_position + Vector2(0, -60)
+				
+		Global.from_final = false
 
 
 func _on_tutorial_interact() -> void:
@@ -70,11 +76,12 @@ func _on_dialog_finished(npc_name: String) -> void:
 	# Solo procesar si el tutorial está activo y el NPC es heisenberg
 	if tutorial_active and npc_name == "heisenberg":
 		tutorial_active = false
+		Global.tutorial_was_played = true
 		$Haisenberg/AnimationPlayer.play("run")
 		await $Haisenberg/AnimationPlayer.animation_finished
 		$Haisenberg.visible = false
 
-		Global.tutorial_was_played = true
+		
 		# Desconectar de las señales
 		Global.interact.disconnect(_on_tutorial_interact)
 		Global.dialog_finished.disconnect(_on_dialog_finished)

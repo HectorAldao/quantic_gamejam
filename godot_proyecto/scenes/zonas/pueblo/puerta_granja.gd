@@ -26,6 +26,12 @@ func _on_player_interact() -> void:
 			
 			Global.door_opended.emit(target_scene_path)
 			
+			$AudioStreamPlayer2D.play()
+			
+			#print(get_tree().current_scene.name)
+			if get_tree().current_scene.name == "Final":
+				Global.from_final = true
+			
 			# Esperar a que se emita la señal
 			await Global.fade_out_completed
 

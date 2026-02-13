@@ -25,7 +25,7 @@ var dialogs: Dictionary = {
 		"p Buenos días, profesor. Me dijo que tenía algo urgente que...",
 		"h Me voy de viaje. Indefinidamente. Tú te quedas a cargo de esto.",
 		"p ¿Perdón, se refiere a la granja? ¿Una beca doctoral incluye cuidar granjas?",
-		"h No es una granja normal. Es una Granja Cuántica TM.",
+		"h No es una granja normal. Es una Granja Cuántica ™.",
 		"p Eso... ¿qué significa exactamente?",
 		"h Mejor que no lo sepas. De hecho, cuanto menos sepas, mejor funcionará todo. Es la regla número uno.",
 		"p ¿Y cuánto tiempo estará fuera?",
@@ -150,7 +150,7 @@ var dialogs: Dictionary = {
 		"e Exactamente. Las reglas de la cuántica son, en el mejor de los casos, sugerencias poco confiables.",
 		"p Pero usted siempre dice que 'Dios no juega a los dados con el universo'.",
 		"e Sí, y mira dónde me ha llevado esa terquedad. A discutir con Bohr durante décadas.",
-		"e Este lugar... esta 'Granja Cuántica' TM... es todo lo que detesto de la mecánica cuántica hecho realidad.",
+		"e Este lugar... esta 'Granja Cuántica' ™... es todo lo que detesto de la mecánica cuántica hecho realidad.",
 		"e Y sin embargo, aquí estamos.",
 		"p Entonces, ¿qué hago? ¿Cómo arreglo esto?",
 		"e No lo arreglas. Lo aceptas. O mejor aún... Imagina que existe una realidad donde todo funciona perfectamente.",
@@ -282,27 +282,35 @@ func _on_dialog_finished(finished_npc_name: String) -> void:
 		Global.menu_closed.emit()
 		return
 	
+	if name == "Heisenberg":
+		Global.hablado_con_heis = true
+	elif name == "Einstein":
+		Global.hablado_con_eins = true
+	
+	if Global.hablado_con_heis and Global.hablado_con_eins:
+		Global.final.emit()
+	
 	# Only show menu if this is the NPC that finished talking AND menu hasn't been processed yet
-	if finished_npc_name == npc_name and not menu_ya_procesado:
-		menu_active = true
-		
-		# Check if player has enough eggs
-		var tiene_suficientes_huevos = Global.huevos_cogidos >= huevos_necesarios
-		
-		# Check if this cientifica has already been accepted
-		var ya_aceptada = Global.cientificas_aceptadas.get(npc_name, false)
-		
-		# Hide "Si" button if not enough eggs OR if already accepted
-		if option_buttons.size() > 0:
-			option_buttons[0].visible = tiene_suficientes_huevos and not ya_aceptada
-		
-		# Set initial selection based on available options
-		selected_option = 0 if (tiene_suficientes_huevos and not ya_aceptada) else 1
-		
-		_update_option_highlight()
-		option_menu.show()
-		# Emitir señal de menú abierto
-		Global.menu_opened.emit()
+	#if finished_npc_name == npc_name and not menu_ya_procesado:
+	#	menu_active = true
+	#	
+	#	# Check if player has enough eggs
+	#	var tiene_suficientes_huevos = Global.huevos_cogidos >= huevos_necesarios
+	#	
+	#	# Check if this cientifica has already been accepted
+	#	var ya_aceptada = Global.cientificas_aceptadas.get(npc_name, false)
+	#	
+	#	# Hide "Si" button if not enough eggs OR if already accepted
+	#	if option_buttons.size() > 0:
+	#		option_buttons[0].visible = tiene_suficientes_huevos and not ya_aceptada
+	#	
+	#	# Set initial selection based on available options
+	#	selected_option = 0 if (tiene_suficientes_huevos and not ya_aceptada) else 1
+	#	
+	#	_update_option_highlight()
+	#	option_menu.show()
+	#	# Emitir señal de menú abierto
+	#	Global.menu_opened.emit()
 	
 	# Reset the flag for next conversation
 	if finished_npc_name == npc_name:

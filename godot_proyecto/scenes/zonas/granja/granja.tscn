@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bc2abdysn7x2k" path="res://scenes/zonas/granja/huevos.gd" id="5_ja1ua"]
 [ext_resource type="Texture2D" uid="uid://k28sqb0qvv6n" path="res://assets/transicion/puerta_gallinero.png" id="5_m1qic"]
 [ext_resource type="PackedScene" uid="uid://ba3eg6whsa6b7" path="res://scenes/animales/animal.tscn" id="7_0tmab"]
+[ext_resource type="AudioStream" uid="uid://ddati17u3spn5" path="res://assets/sonidos/puerta_granja.mp3" id="7_f70rk"]
 [ext_resource type="Texture2D" uid="uid://b1i5fjsgpda0m" path="res://assets/animales/animal_gato.png" id="8_12qer"]
 [ext_resource type="Texture2D" uid="uid://dnvwgl801osd" path="res://assets/animales/animal_pollo.png" id="9_4ieh7"]
 [ext_resource type="Texture2D" uid="uid://dnsjcoeyte5q5" path="res://assets/animales/animal_oveja_antimateria.png" id="10_m1qic"]
@@ -102,8 +103,11 @@ position = Vector2(-0.05967414, 1.6262512)
 scale = Vector2(1, 0.99999976)
 shape = SubResource("RectangleShape2D_j1vlt")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PuertaPueblo" unique_id=78871831]
+stream = ExtResource("7_f70rk")
+
 [node name="Personaje" parent="." unique_id=1717447656 instance=ExtResource("2_wlvj5")]
-position = Vector2(0, 560)
+position = Vector2(0, 545)
 
 [node name="Huevos" type="Node2D" parent="." unique_id=1195456192]
 script = ExtResource("5_ja1ua")

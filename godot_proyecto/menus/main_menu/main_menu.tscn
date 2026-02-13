@@ -4,7 +4,46 @@
 [ext_resource type="LabelSettings" uid="uid://l4wnrk5y82n5" path="res://menus/main_menu/main_menu_label_settings.tres" id="2_1nwmw"]
 [ext_resource type="AudioStream" uid="uid://cmfwvdo80gm5i" path="res://assets/sonidos/musica_menu.mp3" id="2_ml8bw"]
 [ext_resource type="PackedScene" uid="uid://df3reqvk5plnm" path="res://ui/background/backgroundlayer.tscn" id="2_vu5tu"]
+[ext_resource type="Texture2D" uid="uid://dwtjlcmnrph10" path="res://assets/logo/aura.webp" id="5_er5qh"]
 [ext_resource type="Texture2D" uid="uid://bgaftrof3poty" path="res://assets/logo/logo_granja_cuantica_2.png" id="5_oic2i"]
+
+[sub_resource type="Animation" id="Animation_er5qh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_f7ts8"]
+resource_name = "rotate"
+length = 12.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_81su3"]
+_data = {
+&"RESET": SubResource("Animation_er5qh"),
+&"rotate": SubResource("Animation_f7ts8")
+}
 
 [node name="MainMenu" type="Control" unique_id=515251519]
 layout_mode = 3
@@ -162,17 +201,17 @@ label_settings = ExtResource("2_1nwmw")
 
 [node name="CentroMenu" type="Control" parent="." unique_id=271962367]
 layout_mode = 1
-anchors_preset = 6
+anchors_preset = 3
 anchor_left = 1.0
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -330.0
-offset_top = -7.0
-offset_right = -290.0
-offset_bottom = 33.0
+anchor_bottom = 1.0
+offset_left = -271.0
+offset_top = -250.0
+offset_right = -231.0
+offset_bottom = -210.0
 grow_horizontal = 0
-grow_vertical = 2
+grow_vertical = 0
 mouse_filter = 2
 
 [node name="Jugar" type="Button" parent="CentroMenu" unique_id=1360921744]
@@ -193,17 +232,28 @@ offset_bottom = 91.0
 scale = Vector2(1.2680635, 1.2680635)
 text = "Jugar sin Intro"
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=659148825]
+[node name="Logo" type="TextureRect" parent="." unique_id=659148825]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -476.0
-offset_top = -309.0
-offset_right = -57.0
-offset_bottom = 110.0
+offset_left = -240.0
+offset_top = -323.0
+offset_right = 179.0
+offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_oic2i")
+
+[node name="Aura" type="Sprite2D" parent="Logo" unique_id=2117213658]
+modulate = Color(0.99215686, 0.3882353, 1, 0.32156864)
+z_index = -1
+position = Vector2(216, 231)
+scale = Vector2(1.920246, 1.920246)
+texture = ExtResource("5_er5qh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Logo/Aura" unique_id=2099305835]
+libraries/ = SubResource("AnimationLibrary_81su3")
+autoplay = &"rotate"

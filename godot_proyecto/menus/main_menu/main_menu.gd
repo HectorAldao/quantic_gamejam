@@ -73,7 +73,7 @@ func _ready() -> void:
 	
 	# Crear opciones del menú
 	var option1 = create_menu_option("Jugar")
-	var option2 = create_menu_option("Jugar sin tutorial")
+	var option2 = create_menu_option("Jugar sin intro")
 	
 	menu_container.add_child(option1)
 	menu_container.add_child(option2)
