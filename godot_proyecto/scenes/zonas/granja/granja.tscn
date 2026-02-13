@@ -25,12 +25,54 @@
 [ext_resource type="AudioStream" uid="uid://qa3cb3bqqpxn" path="res://assets/sonidos/erizo_1.mp3" id="21_iednb"]
 [ext_resource type="AudioStream" uid="uid://udear2c6nc8t" path="res://assets/sonidos/conejo_lea_1.mp3" id="23_iednb"]
 [ext_resource type="AudioStream" uid="uid://3ngrs1k6q0uk" path="res://assets/sonidos/conejo_lea_2.mp3" id="24_otj3e"]
+[ext_resource type="Texture2D" uid="uid://d38clopa5xe1l" path="res://assets/text_box/textbox.png" id="25_otj3e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ieqsx"]
 size = Vector2(20, 12.418402)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1vlt"]
 size = Vector2(7.757635, 19.980564)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8p500"]
+font_color = Color(0.89843434, 0.59071314, 0.88948995, 1)
+
+[sub_resource type="Animation" id="Animation_otj3e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-254, 661)]
+}
+
+[sub_resource type="Animation" id="Animation_8p500"]
+resource_name = "float"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.0098014),
+"transitions": PackedFloat32Array(0.8408964, 1.2311445),
+"update": 0,
+"values": [Vector2(-254, 661), Vector2(-254, 650.165)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e2s36"]
+_data = {
+&"RESET": SubResource("Animation_otj3e"),
+&"float": SubResource("Animation_8p500")
+}
 
 [node name="Granja" type="Node2D" unique_id=1924357717]
 script = ExtResource("1_supsg")
@@ -158,6 +200,29 @@ position = Vector2(552.5961, 249.01628)
 velocidad = 80.0
 sprite_texture = ExtResource("12_o7v88")
 sonidos = Array[AudioStream]([ExtResource("23_iednb"), ExtResource("24_otj3e")])
+
+[node name="Explicacion" type="Node2D" parent="." unique_id=1205513705]
+position = Vector2(-254, 661)
+
+[node name="Sprite2D" type="Sprite2D" parent="Explicacion" unique_id=354580545]
+position = Vector2(-5, -18.000002)
+scale = Vector2(1.5559661, 1.7684654)
+texture = ExtResource("25_otj3e")
+
+[node name="Label" type="Label" parent="Explicacion" unique_id=230859321]
+offset_left = -130.0
+offset_top = 7.0
+offset_right = 124.0
+offset_bottom = 82.0
+text = "Pero ver donde están, impide 
+saber exactamente cuántos hay"
+label_settings = SubResource("LabelSettings_8p500")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Explicacion" unique_id=2017296931]
+libraries/ = SubResource("AnimationLibrary_e2s36")
+autoplay = &"float"
 
 [node name="BackgroundLayer" parent="." unique_id=1326306561 instance=ExtResource("13_4ieh7")]
 offset_left = -3522.0

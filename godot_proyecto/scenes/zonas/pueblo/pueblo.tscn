@@ -30,6 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://ddati17u3spn5" path="res://assets/sonidos/puerta_granja.mp3" id="23_yiqyg"]
 [ext_resource type="Script" uid="uid://drgdot8r36rgv" path="res://scenes/zonas/pueblo/huevos_30.gd" id="27_66q0a"]
 [ext_resource type="Texture2D" uid="uid://c0a1sqoegka16" path="res://assets/candado/candado.png" id="28_bgec2"]
+[ext_resource type="Texture2D" uid="uid://d38clopa5xe1l" path="res://assets/text_box/textbox.png" id="29_pljbx"]
 
 [sub_resource type="Animation" id="Animation_tw8j6"]
 length = 0.001
@@ -322,6 +323,48 @@ _data = {
 &"open": SubResource("Animation_i6at2")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_pljbx"]
+font_size = 17
+font_color = Color(0.89843434, 0.59071314, 0.88948995, 1)
+
+[sub_resource type="Animation" id="Animation_h0ni0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-316, -802.085)]
+}
+
+[sub_resource type="Animation" id="Animation_js6xl"]
+resource_name = "float"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.0333333),
+"transitions": PackedFloat32Array(1.5691684, 0.6597539),
+"update": 0,
+"values": [Vector2(-316, -802.085), Vector2(-316, -792.485)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ym308"]
+_data = {
+&"RESET": SubResource("Animation_h0ni0"),
+&"float": SubResource("Animation_js6xl")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjabk"]
 size = Vector2(98, 77)
 
@@ -541,6 +584,29 @@ texture = ExtResource("28_bgec2")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Huevos30/Candado" unique_id=706115278]
 root_node = NodePath("../Sprite2D")
 libraries/ = SubResource("AnimationLibrary_i6at2")
+
+[node name="Explicacion" type="Node2D" parent="." unique_id=342864109]
+position = Vector2(-316, -802.085)
+
+[node name="Sprite2D" type="Sprite2D" parent="Explicacion" unique_id=500231203]
+position = Vector2(-5, -18.000002)
+scale = Vector2(1.5559661, 1.7684654)
+texture = ExtResource("29_pljbx")
+
+[node name="Label" type="Label" parent="Explicacion" unique_id=24015963]
+offset_left = -130.0
+offset_top = 7.0
+offset_right = 124.0
+offset_bottom = 82.0
+text = "Recoge los huevos cuánticos.
+Desde fuera se ve cuántos hay."
+label_settings = SubResource("LabelSettings_pljbx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Explicacion" unique_id=1260539281]
+libraries/ = SubResource("AnimationLibrary_ym308")
+autoplay = &"float"
 
 [node name="Personaje" parent="." unique_id=778088364 instance=ExtResource("7_owgkr")]
 position = Vector2(0, -550)
