@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://btvnx178rj1tg" path="res://scenes/zonas/pueblo/puerta_granja.gd" id="11_0l5ct"]
 [ext_resource type="Script" uid="uid://bgbhc8rx4c8hg" path="res://scenes/zonas/pueblo/huevos.gd" id="13_norcv"]
 [ext_resource type="Texture2D" uid="uid://k28sqb0qvv6n" path="res://assets/transicion/puerta_gallinero.png" id="15_3pfhl"]
+[ext_resource type="Texture2D" uid="uid://b50xcrkusd1ep" path="res://assets/logo/granja_cuantica.png" id="15_v0ovi"]
 [ext_resource type="Script" uid="uid://cbfqoc5ovo8l2" path="res://scenes/zonas/pueblo/cheat.gd" id="16_owgkr"]
 [ext_resource type="Texture2D" uid="uid://nuike3rmwgje" path="res://assets/contador_huevos/contador_huevos.png" id="18_td4hj"]
 [ext_resource type="AudioStream" uid="uid://ddati17u3spn5" path="res://assets/sonidos/puerta_granja.mp3" id="23_yiqyg"]
@@ -353,7 +354,7 @@ scale = Vector2(35.069214, 0.030773927)
 shape = SubResource("RectangleShape2D_i07r1")
 
 [node name="PuertaGranja" type="Area2D" parent="." unique_id=373123021]
-position = Vector2(-24, -612)
+position = Vector2(-35, -612)
 scale = Vector2(25.136524, 2.1520884)
 script = ExtResource("11_0l5ct")
 target_scene_path = "uid://bo1022ow6xyjf"
@@ -370,6 +371,11 @@ texture = ExtResource("15_3pfhl")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PuertaGranja" unique_id=694898529]
 stream = ExtResource("23_yiqyg")
+
+[node name="Granja" type="Sprite2D" parent="." unique_id=202359194]
+position = Vector2(-25, -762)
+scale = Vector2(2.6280851, 2.6280851)
+texture = ExtResource("15_v0ovi")
 
 [node name="Huevos" type="Node2D" parent="." unique_id=1996660095]
 position = Vector2(159, -708)
