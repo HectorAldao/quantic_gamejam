@@ -46,3 +46,4 @@ var candado_cerrado: bool = true
 
 var hablado_con_eins: bool = false
 var hablado_con_heis: bool = false
+var se_puede_hablar: bool = true

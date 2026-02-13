@@ -210,6 +210,10 @@ func _ready() -> void:
 
 
 func _on_player_interact() -> void:
+	# Comprobar si se puede hablar
+	if not Global.se_puede_hablar:
+		return
+	
 	if menu_active:
 		# Interact selects current option
 		# Check which button is actually selected based on visibility
@@ -289,8 +293,9 @@ func _on_dialog_finished(finished_npc_name: String) -> void:
 		elif npc_name == "einstein":
 			Global.hablado_con_eins = true
 		
-		# Solo verificar y cambiar escena desde la instancia correcta
+		# Desactivar conversaciones si se ha hablado con ambos científicos
 		if Global.hablado_con_heis and Global.hablado_con_eins:
+			Global.se_puede_hablar = false
 			Global.door_opended.emit("res://scenes/creditos/creditos.tscn")
 			await Global.fade_out_completed
 			get_tree().change_scene_to_file("res://scenes/creditos/creditos.tscn")
