@@ -22,6 +22,9 @@
 [ext_resource type="AudioStream" uid="uid://x42cqpy5febe" path="res://assets/sonidos/gallina_2.mp3" id="15_cc5dy"]
 [ext_resource type="AudioStream" uid="uid://4tcsk5ecsbi3" path="res://assets/sonidos/oveja_1.mp3" id="17_iednb"]
 [ext_resource type="AudioStream" uid="uid://dkuwstgheuc1l" path="res://assets/sonidos/oveja_2.mp3" id="18_otj3e"]
+[ext_resource type="AudioStream" uid="uid://qa3cb3bqqpxn" path="res://assets/sonidos/erizo_1.mp3" id="21_iednb"]
+[ext_resource type="AudioStream" uid="uid://udear2c6nc8t" path="res://assets/sonidos/conejo_lea_1.mp3" id="23_iednb"]
+[ext_resource type="AudioStream" uid="uid://3ngrs1k6q0uk" path="res://assets/sonidos/conejo_lea_2.mp3" id="24_otj3e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ieqsx"]
 size = Vector2(20, 12.418402)
@@ -119,20 +122,20 @@ offset_right = 564.0
 offset_bottom = 512.0
 
 [node name="Gato" parent="." unique_id=183913162 instance=ExtResource("7_0tmab")]
-position = Vector2(-248.9445, 59.571934)
+position = Vector2(-218.68622, 349.15244)
 velocidad = 60.0
 sprite_texture = ExtResource("8_12qer")
 cientifica = "schrodinger"
 sonidos = Array[AudioStream]([ExtResource("11_j0tgv"), ExtResource("12_f70rk")])
 
 [node name="PolloRadioactivo" parent="." unique_id=750667649 instance=ExtResource("7_0tmab")]
-position = Vector2(214.60191, 380.48282)
+position = Vector2(-452.56174, 163.28639)
 sprite_texture = ExtResource("9_4ieh7")
 cientifica = "curie"
 sonidos = Array[AudioStream]([ExtResource("14_53ur3"), ExtResource("15_cc5dy")])
 
 [node name="Oveja" parent="." unique_id=233454787 instance=ExtResource("7_0tmab")]
-position = Vector2(-363.95947, 460.76456)
+position = Vector2(326.89972, 125.7439)
 "multiplicador_tamaño" = 1.5
 velocidad = 30.0
 sprite_texture = ExtResource("10_m1qic")
@@ -141,20 +144,20 @@ mira_derecha = false
 sonidos = Array[AudioStream]([ExtResource("17_iednb"), ExtResource("18_otj3e")])
 
 [node name="Erizo" parent="." unique_id=1424811808 instance=ExtResource("7_0tmab")]
-position = Vector2(87.64186, 107.3037)
+position = Vector2(-165.11188, 495.9673)
 "multiplicador_tamaño" = 0.5
 velocidad = 60.0
 sprite_texture = ExtResource("11_nes8p")
 cientifica = "bohr"
 mira_derecha = false
-sonidos = Array[AudioStream]([])
+sonidos = Array[AudioStream]([ExtResource("21_iednb")])
 
 [node name="Conejo" parent="." unique_id=1397820351 instance=ExtResource("7_0tmab")]
-position = Vector2(-432.48694, -22.35149)
+position = Vector2(552.5961, 249.01628)
 "multiplicador_tamaño" = 1.25
 velocidad = 80.0
 sprite_texture = ExtResource("12_o7v88")
-sonidos = Array[AudioStream]([])
+sonidos = Array[AudioStream]([ExtResource("23_iednb"), ExtResource("24_otj3e")])
 
 [node name="BackgroundLayer" parent="." unique_id=1326306561 instance=ExtResource("13_4ieh7")]
 offset_left = -3522.0

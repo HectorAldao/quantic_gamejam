@@ -16,6 +16,16 @@ func _on_player_interact() -> void:
 	for body in bodies:
 		if body is CharacterBody2D and not atravesada:
 			atravesada = true
+			if name == "PuertaFinal":
+				if Global.huevos_cogidos < 30 and Global.candado_cerrado:
+					Global.not_enough_eggs.emit()
+					atravesada = false
+					return
+				else:
+					if Global.candado_cerrado:
+						Global.open_final_door.emit()
+						await Global.final_door_opend
+						Global.candado_cerrado = false
 			# Guardar datos en el Global antes de salir
 			var old_scene = get_tree().current_scene
 			

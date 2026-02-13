@@ -21,6 +21,9 @@ signal menu_opened
 signal menu_closed
 signal change_move(can_move: bool)
 
+signal not_enough_eggs
+signal open_final_door
+signal final_door_opend
 signal final
 
 
@@ -39,6 +42,7 @@ var huevos_cogidos: int = 0:
 # Dictionary to track which cientificas have been accepted already
 var cientificas_aceptadas: Dictionary = {}
 var from_final: bool = false
+var candado_cerrado: bool = true
 
 var hablado_con_eins: bool = false
 var hablado_con_heis: bool = false

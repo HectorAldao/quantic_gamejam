@@ -37,13 +37,21 @@ func _al_cambiar_huevos(nuevo_valor: int) -> void:
 	$HUDContainer/PanelHuevos/Label.text = str(nuevo_valor)
 
 func _on_door_opened(_target_scene_path) -> void:
-
-	animation_fade_in.play_backwards("fade_in")
+	
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.can_move = false
+	
+	if _target_scene_path != "res://scenes/creditos/creditos.tscn":
+		animation_fade_in.play_backwards("fade_in")
+	else:
+		animation_fade_in.play("fade_in", -1, -0.25, true)
 
 	await animation_fade_in.animation_finished
 
 	Global.fade_out_completed.emit()
-
+	if player:
+		player.can_move = true
 	animation_fade_in.play("fade_in")
 
 #func _on_scene_ready(_target_scene_path) -> void:

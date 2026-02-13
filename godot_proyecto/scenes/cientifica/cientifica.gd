@@ -282,13 +282,18 @@ func _on_dialog_finished(finished_npc_name: String) -> void:
 		Global.menu_closed.emit()
 		return
 	
-	if name == "Heisenberg":
-		Global.hablado_con_heis = true
-	elif name == "Einstein":
-		Global.hablado_con_eins = true
-	
-	if Global.hablado_con_heis and Global.hablado_con_eins:
-		Global.final.emit()
+	# Solo actualizar flags y verificar transición si este es el NPC que terminó de hablar
+	if finished_npc_name == npc_name:
+		if npc_name == "heisenberg_final":
+			Global.hablado_con_heis = true
+		elif npc_name == "einstein":
+			Global.hablado_con_eins = true
+		
+		# Solo verificar y cambiar escena desde la instancia correcta
+		if Global.hablado_con_heis and Global.hablado_con_eins:
+			Global.door_opended.emit("res://scenes/creditos/creditos.tscn")
+			await Global.fade_out_completed
+			get_tree().change_scene_to_file("res://scenes/creditos/creditos.tscn")
 	
 	# Only show menu if this is the NPC that finished talking AND menu hasn't been processed yet
 	#if finished_npc_name == npc_name and not menu_ya_procesado:

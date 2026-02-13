@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://blxd72xmkw14c"]
 
-[ext_resource type="Texture2D" uid="uid://cmngrfjg4mp5v" path="res://assets/suelos/fondo_base.png" id="1_0b56j"]
+[ext_resource type="AudioStream" uid="uid://dk34kgkp5ijnk" path="res://assets/sonidos/musica_final.mp3" id="1_b0pk6"]
+[ext_resource type="Texture2D" uid="uid://cfguk1hnpsg47" path="res://assets/suelos/fondo_base_baldosas.png" id="2_3yqi4"]
 [ext_resource type="PackedScene" uid="uid://dp8ojf16qwn8w" path="res://scenes/personaje/personaje.tscn" id="2_mibmj"]
 [ext_resource type="Script" uid="uid://btvnx178rj1tg" path="res://scenes/zonas/pueblo/puerta_granja.gd" id="3_7i2hc"]
 [ext_resource type="PackedScene" uid="uid://df3reqvk5plnm" path="res://ui/background/backgroundlayer.tscn" id="3_iig2x"]
@@ -15,13 +16,20 @@ size = Vector2(7.0017624, 24.223091)
 
 [node name="Final" type="Node2D" unique_id=1585664642]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1862039766]
+stream = ExtResource("1_b0pk6")
+volume_db = -20.0
+autoplay = true
+parameters/looping = true
+
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1931994495]
+modulate = Color(1, 1, 1, 0.39215687)
 offset_left = -374.0
 offset_top = -323.0
 offset_right = 2673.8599
 offset_bottom = 1965.7559
 scale = Vector2(0.26215118, 0.26215118)
-texture = ExtResource("1_0b56j")
+texture = ExtResource("2_3yqi4")
 stretch_mode = 1
 
 [node name="BackgroundLayer" parent="." unique_id=1326306561 instance=ExtResource("3_iig2x")]
