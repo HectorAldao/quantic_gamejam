@@ -95,12 +95,12 @@ func create_menu_option(text: String) -> Button:
 	
 	# Crear StyleBox con contorno
 	var style_normal = StyleBoxFlat.new()
-	style_normal.bg_color = Color(0.2, 0.2, 0.2, 0.8)
+	style_normal.bg_color = Color(0.015, 0.05, 0.2, 0.9)
 	style_normal.border_width_left = 2
 	style_normal.border_width_right = 2
 	style_normal.border_width_top = 2
 	style_normal.border_width_bottom = 2
-	style_normal.border_color = Color(1.0, 1.0, 1.0, 1.0)
+	style_normal.border_color = Color(0.025, 0.08, 0.32, 1.0)
 	style_normal.corner_radius_top_left = 5
 	style_normal.corner_radius_top_right = 5
 	style_normal.corner_radius_bottom_left = 5
